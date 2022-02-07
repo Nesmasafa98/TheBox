@@ -8,18 +8,18 @@ namespace Client
 {
     public class Room
     {
-        string roomName;
-        User Player1;
-        User Player2;
-        User[] Watchers;
-        Board board;
-        bool StartGame = false;
-        Game game;
+       public string id;
+        public User Player1;
+        public User Player2;
+        public User[] Watchers;
+        public Board board;
+        public bool StartGame = false;
+        public Game game;
 
-        public Room(User owner, string name, string size)
+        public Room(User owner, string Id, string size)
         {
             Player1 = owner;
-            roomName = name;
+            this.id = Id;
             board = new Board(size);
         }
 

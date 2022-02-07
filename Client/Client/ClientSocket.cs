@@ -53,13 +53,13 @@ namespace Client
 
                 {
 
-                    Console.WriteLine("type:");
+                    Console.WriteLine("Enter New Command:");
 
                     String s = streamReader.ReadString();
 
 
                     Console.WriteLine("reecive " + s);
-                    if (s == "join")
+                    if (s == "log")
                     {
                         Console.WriteLine("ana Da5lt join ");
                         Console.WriteLine (streamReader.ReadString());
@@ -83,13 +83,50 @@ namespace Client
                         string strJson = JsonConvert.SerializeObject(Myuser);
                      
                         streamWriter.Write(strJson);
-                        streamWriter.Write("ahmed");
-                        streamWriter.Write("ahmed");
+                        Console.WriteLine("Enter Id of Room");
+                        String Idroom = Console.ReadLine();
+                        streamWriter.Write(Idroom);
+                        Console.WriteLine("Enter Size Of room");
+                        String size = Console.ReadLine();
+                        streamWriter.Write(size);
+                        Room room = JsonConvert.DeserializeObject<Room>(streamReader.ReadString());
+                        Console.WriteLine("I receive room!");
+
+
+                        Myuser.room = room;
+
+                        Console.WriteLine(" do it bedad");
+
+
+                        Console.WriteLine("ana gamed");
+                                                    
+                    }
+
+                    if (s == "join")
+                    {
+                        Console.WriteLine("Start Join");
+
+                        Console.WriteLine("AnaBreceive");
+                        string strJson = JsonConvert.SerializeObject(Myuser);
+
+                        streamWriter.Write(strJson);
+                        Console.WriteLine("Enter Id of Room");
+                        String Idroom = Console.ReadLine();
+                        streamWriter.Write(Idroom);
+
+                        Room deptObj = JsonConvert.DeserializeObject<Room>(streamReader.ReadString());
+                        Console.WriteLine("I receive room!");
+
 
                         Console.WriteLine("ana gamed");
 
+                        Console.WriteLine("End Join");
+
+
                     }
-            
+
+
+
                     s = "";
                 }
             }

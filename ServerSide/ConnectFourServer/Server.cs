@@ -18,7 +18,7 @@ namespace ConnectFourServer
     class Server
     {
         TcpListener server;
-        ArrayList avaibleRoom = new ArrayList();
+        List<Room> avaibleRoom = new List<Room>();
         ArrayList players = new ArrayList();
 
 
@@ -64,16 +64,16 @@ namespace ConnectFourServer
                 {
                     string theString;
                     
-                    {
+                    
                         theString = streamReader.ReadString();
                         Console.WriteLine("value of Received is :" + theString);
                         streamWriter.Flush();
                         Console.WriteLine("helooooo");
-                        if (theString == "join")
+                        if (theString == "log")
                         {
                         
 
-                            streamWriter.Write("join");
+                            streamWriter.Write("log");
                             
                             streamWriter.Write("start");
                            foreach ( var i  in avaibleRoom )
@@ -94,16 +94,75 @@ namespace ConnectFourServer
                         }
 
                         if (theString == "create")
-                        //  {
+                    
                         {
+                            Console.WriteLine("Start Create");
+
                             streamWriter.Write("create");
 
 
                             User player1 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
+                            string id = streamReader.ReadString();
+                            avaibleRoom.Add(new Room(player1, id, streamReader.ReadString()));
+                            Console.Write(" i create a room ");
 
-                        avaibleRoom.Add(new Room(player1, streamReader.ReadString(), streamReader.ReadString()));
-                            Console.Write("ohh i did it ");
+                            int i = 0;
+
+                            for (; i < avaibleRoom.Count; i++)
+                            {
+                                if (avaibleRoom[i].id == id)
+
+                                {
+                                    Console.WriteLine("i find it ");
+
+                                    break;
+
+                                }
+                            }
+
+                        while (avaibleRoom[i].StartGame == false) ;
+
+
+
+                        string strJson = JsonConvert.SerializeObject(avaibleRoom[i]);
+                        streamWriter.Write(strJson);
+                        Console.WriteLine(" End Create ");
+
+
+
+
+                    }
+
+
+
+                    if (theString== "join")
+                    {
+                        streamWriter.Write("join");
+                        Console.WriteLine("Start Join");
+
+                        Console.WriteLine("AnaBreceive");
+                        User player2 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
+                        string roomId = streamReader.ReadString();
+
+                        int i = 0;
+                        for (; i<avaibleRoom.Count;i++)
+                        {   if (avaibleRoom[i].id == roomId)
+
+                            {
+                                avaibleRoom[i].PlayBtn(player2);
+
+
+                                string strJson = JsonConvert.SerializeObject(avaibleRoom[i]);
+                                streamWriter.Write(strJson);
+                                break;
+                            }
                         }
+                        Console.WriteLine("ok I did it ");
+                        Console.WriteLine("Start Join");
+
+
+
+
                     }
 
                     Console.WriteLine("Message recieved by client:" + theString);

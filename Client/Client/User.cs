@@ -14,7 +14,7 @@ namespace Client
         public  bool IsPlayer;
 
 //        public ClientSocket socketconfig;
-    public    Room room;
+    public   Room room;
 
 
 

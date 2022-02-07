@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\source\\repos\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj": {}
+    "E:\\projectsWorkspace\\ConnectFour\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\source\\repos\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj": {
+    "E:\\projectsWorkspace\\ConnectFour\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj",
+        "projectUniqueName": "E:\\projectsWorkspace\\ConnectFour\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj",
         "projectName": "ConnectFourServer",
-        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj",
+        "projectPath": "E:\\projectsWorkspace\\ConnectFour\\ServerSide\\ConnectFourServer\\ConnectFourServer.csproj",
         "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\ServerSide\\ConnectFourServer\\obj\\",
+        "outputPath": "E:\\projectsWorkspace\\ConnectFour\\ServerSide\\ConnectFourServer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",

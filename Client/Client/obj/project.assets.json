@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\Client\\Client\\Client.csproj",
+      "projectUniqueName": "E:\\projectsWorkspace\\ConnectFour\\Client\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Client\\Client\\Client.csproj",
+      "projectPath": "E:\\projectsWorkspace\\ConnectFour\\Client\\Client\\Client.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\source\\repos\\Client\\Client\\obj\\",
+      "outputPath": "E:\\projectsWorkspace\\ConnectFour\\Client\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
