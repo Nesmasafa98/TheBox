@@ -93,15 +93,7 @@ C:\Users\Mostafa M. Gad\Downloads\The Box v0.1-20220205T163531Z-001\The Box v0.1
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe.config
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.pdb
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\AdamsLair.WinForms.dll
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\AltoControls.dll
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\PopupControl.dll
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\Simplify.Windows.Forms.dll
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\AdamsLair.WinForms.pdb
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\AdamsLair.WinForms.xml
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\PopupControl.pdb
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\Simplify.Windows.Forms.xml
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.AssemblyReference.cache
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.SuggestedBindingRedirects.cache
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources

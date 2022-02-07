@@ -12,7 +12,8 @@ namespace The_Box_v0._1
 {
     public partial class Dialog : Form
     {
-        string BoardSize;
+        
+        public string BoardSize { get; set; }
         string roomName;
         Room room;
         MainForm mainForm;
