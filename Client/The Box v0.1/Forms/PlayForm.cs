@@ -13,11 +13,17 @@ namespace The_Box_v0._1.Forms
 {
     public partial class PlayForm : Form
     {
+        MainForm mainForm;
         public PlayForm()
         {
             InitializeComponent();
         }
 
+        public PlayForm(MainForm mf)
+        {
+            InitializeComponent();
+            mainForm = mf;
+        }
         private void Button5_Click(object sender, EventArgs e)
         {
             Dialog dlg = new Dialog();
@@ -26,6 +32,10 @@ namespace The_Box_v0._1.Forms
             if (dResult == DialogResult.OK)
             {
                 listBox1.Items.Add(dlg.RoomName);
+                Forms.BoardForm boardForm = new BoardForm();
+                boardForm.Show();
+                this.Hide();
+                mainForm.Hide();
             }
         }
     }

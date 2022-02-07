@@ -45,6 +45,12 @@ namespace The_Box_v0._1
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+        private void HdrPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
         //Methods
         private Color SelectThemeColor()
         {
@@ -56,12 +62,6 @@ namespace The_Box_v0._1
             tempIndex = index;
             string color = ThemeColor.ColorList[index];
             return ColorTranslator.FromHtml(color);
-        }
-
-        private void HdrPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
         private void ActivateButton(object btnSender)
@@ -78,8 +78,6 @@ namespace The_Box_v0._1
                     currentButton.Font = new System.Drawing.Font("Trebuchet MS", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     HdrPanel.BackColor = color;
                     WelcPanel.BackColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    ThemeColor.PrimaryColor = color;
-                    ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
                     CloseFormbtn.Visible = true;
                 }
             }
@@ -119,7 +117,7 @@ namespace The_Box_v0._1
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.PlayForm(),sender);
+            OpenChildForm(new Forms.PlayForm(this),sender);
 
         }
 
