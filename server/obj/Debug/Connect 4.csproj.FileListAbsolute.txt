@@ -1,0 +1,10 @@
+C:\Users\Gnrl-30\source\repos\Connect 4\bin\Debug\Connect 4.exe.config
+C:\Users\Gnrl-30\source\repos\Connect 4\bin\Debug\Connect 4.exe
+C:\Users\Gnrl-30\source\repos\Connect 4\bin\Debug\Connect 4.pdb
+C:\Users\Gnrl-30\source\repos\Connect 4\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gnrl-30\source\repos\Connect 4\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.csprojAssemblyReference.cache
+C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.csproj.CopyComplete
+C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.exe
+C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.pdb
