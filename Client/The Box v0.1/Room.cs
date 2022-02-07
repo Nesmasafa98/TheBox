@@ -20,15 +20,15 @@ namespace The_Box_v0._1
         {
             Player1 = owner;
             roomName = name;
-
-            board = new Forms.BoardForm(index);
+            game = new Game(index);
+            //board = new Forms.BoardForm(index);
         }
 
         public void PlayBtn(User player)
         {
             Player2 = player;
             StartGame = true;
-            game = new Game();
+            //game = new Game();
         }
     }
 }

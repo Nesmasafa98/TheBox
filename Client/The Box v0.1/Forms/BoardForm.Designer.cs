@@ -255,6 +255,7 @@
             this.Name = "BoardForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BoardForm";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardForm_MouseClick);
             this.Resize += new System.EventHandler(this.BoardForm_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

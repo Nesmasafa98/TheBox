@@ -68,8 +68,6 @@ namespace The_Box_v0._1.Forms
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            //InitializeAxisValues();
-
             DrawBoard();
             DrawElipses();
         }
@@ -94,13 +92,8 @@ namespace The_Box_v0._1.Forms
             _elipsWidth = (_width / (_col + 3));
             _gabY = (_height - ((_height / (_row + 3)) * _row)) / (_row);
             _elipsHight = (_height / (_row + 3));
-            
-
-
-
-
-
         }
+
         void DrawElipses()
         {
             InitializeAxisValues();
@@ -168,6 +161,17 @@ namespace The_Box_v0._1.Forms
         private void BoardForm_Resize(object sender, EventArgs e)
         {
             Invalidate();
+        }
+
+        private void BoardForm_MouseClick(object sender, MouseEventArgs e)
+        {
+            Color pColor = new Color();
+
+        }
+
+        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

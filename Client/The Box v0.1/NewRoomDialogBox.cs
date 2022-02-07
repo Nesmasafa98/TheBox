@@ -50,19 +50,14 @@ namespace The_Box_v0._1
             if(radioButton1.Checked)
             {
                 IndexBoardSize = 1;
-                //BoardSize = radioButton1.Text;
             }
             else if(radioButton2.Checked)
             {
                 IndexBoardSize = 2;
-
-                //BoardSize = radioButton2.Text;
             }
             else if(radioButton3.Checked)
             {
                 IndexBoardSize = 3;
-
-                //BoardSize = radioButton3.Text;
             }
 
             room = new Room(player, roomName, IndexBoardSize);
