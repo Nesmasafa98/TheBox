@@ -71,7 +71,7 @@ namespace The_Box_v0._1
                 if (currentButton != (Button)btnSender)
                 {
                     DisableButton();
-                     color = SelectThemeColor();
+                    color = SelectThemeColor();
                     currentButton = (Button)btnSender;
                     currentButton.BackColor = color;
                     currentButton.ForeColor = Color.White;

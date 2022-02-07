@@ -14,6 +14,8 @@ namespace The_Box_v0._1
     {
         
         public string BoardSize { get; set; }
+        int indexBoardSize;
+        public int IndexBoardSize { get; set; }
         string roomName;
         Room room;
         MainForm mainForm;
@@ -47,17 +49,23 @@ namespace The_Box_v0._1
             roomName = materialTextBox21.Text;
             if(radioButton1.Checked)
             {
-                BoardSize = radioButton1.Text;
+                IndexBoardSize = 1;
+                //BoardSize = radioButton1.Text;
             }
             else if(radioButton2.Checked)
             {
-                BoardSize = radioButton2.Text;
+                IndexBoardSize = 2;
+
+                //BoardSize = radioButton2.Text;
             }
             else if(radioButton3.Checked)
             {
-                BoardSize = radioButton3.Text;
+                IndexBoardSize = 3;
+
+                //BoardSize = radioButton3.Text;
             }
-            room = new Room(player, roomName, BoardSize);
+
+            room = new Room(player, roomName, IndexBoardSize);
             //PlayGame playGame = new PlayGame();
             //playGame.Show();
             //mainForm.Hide();

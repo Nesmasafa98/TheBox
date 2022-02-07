@@ -38,8 +38,38 @@ namespace The_Box_v0._1.Forms
             InitializeAxisValues();
 
         }
+        public BoardForm(int index)
+        {
+            InitializeComponent();
+            SetColorForBrush();
+            switch (index)
+            {
+                case 1:
+                    _row = 7;
+                    _col = 8;
+                    
+                    break;
+                case 2:
+                    _row = 7;
+                    _col = 9;
+                    break;
+                case 3:
+                    _row = 7;
+                    _col = 10;
+                    break;
+                default:
+                    _row = 6;
+                    _col = 7;
+                    break;
+            }
+            
+            InitializeAxisValues();
+
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
+            //InitializeAxisValues();
+
             DrawBoard();
             DrawElipses();
         }
@@ -60,16 +90,20 @@ namespace The_Box_v0._1.Forms
             _width = _xEnd - _xStart;
             _height = _yEnd - _yStart;
             _rec = new RectangleF(_xStart, _yStart, _width, _height);
-            _gabX = (_width - ((_width / (_col + 3)) * _col)) / (_col );
+            _gabX = (_width - ((_width / (_col + 3)) * _col)) / (_col);
             _elipsWidth = (_width / (_col + 3));
-            _elipsHight = (Height / (_row + 3));
             _gabY = (_height - ((_height / (_row + 3)) * _row)) / (_row);
+            _elipsHight = (_height / (_row + 3));
+            
+
+
 
 
 
         }
         void DrawElipses()
         {
+            InitializeAxisValues();
             Graphics graphics = this.CreateGraphics();
             for (int i = 0; i < _row; i++)
             {
@@ -100,6 +134,7 @@ namespace The_Box_v0._1.Forms
         }
         void DrawBoard()
         {
+            InitializeAxisValues();
             Graphics g = this.CreateGraphics();
             g.FillRectangle(_brush, _rec);
         }
@@ -116,17 +151,23 @@ namespace The_Box_v0._1.Forms
                 this.WindowState = FormWindowState.Normal;
             }
             
+            
         }
 
         private void Minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-
+            //Invalidate();
         }
 
         private void CloseAppbtn_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BoardForm_Resize(object sender, EventArgs e)
+        {
+            Invalidate();
         }
     }
 }

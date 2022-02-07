@@ -14,9 +14,6 @@ namespace The_Box_v0._1
         int[][] State;
 
         //return
-        public Board(string s)
-        {
-            size = s;
-        }
+        
     }
 }

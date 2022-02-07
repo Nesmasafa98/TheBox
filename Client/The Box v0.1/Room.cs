@@ -12,15 +12,16 @@ namespace The_Box_v0._1
         User Player1;
         User Player2;
         User[] Watchers;
-        Board board;
+        Forms.BoardForm board;
         bool StartGame = false;
         Game game;
 
-        public Room(User owner, string name, string size)
+        public Room(User owner, string name, int index)
         {
             Player1 = owner;
             roomName = name;
-            board = new Board(size);
+
+            board = new Forms.BoardForm(index);
         }
 
         public void PlayBtn(User player)
