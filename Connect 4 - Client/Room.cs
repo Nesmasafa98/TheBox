@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +30,18 @@ namespace Connect_4___Client
             Player2 = player;
             StartGame = true;
             game = new Game();
+        }
+
+
+        public static Room ReceiveRoom(String s)
+        {
+
+            return JsonConvert.DeserializeObject<Room>(s);
+        }
+        public static Room ReceiveRoom(BinaryReader receiver)
+        {
+
+            return JsonConvert.DeserializeObject<Room>(receiver.ReadString());
         }
     }
 }

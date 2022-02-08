@@ -8,3 +8,13 @@ C:\Users\Gnrl-30\source\repos\Connect 4 - Client\obj\Debug\Connect 4 - Client.cs
 C:\Users\Gnrl-30\source\repos\Connect 4 - Client\obj\Debug\Connect 4 - Client.csproj.CopyComplete
 C:\Users\Gnrl-30\source\repos\Connect 4 - Client\obj\Debug\Connect 4 - Client.exe
 C:\Users\Gnrl-30\source\repos\Connect 4 - Client\obj\Debug\Connect 4 - Client.pdb
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\bin\Debug\Connect 4 - Client.exe.config
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\bin\Debug\Connect 4 - Client.exe
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\bin\Debug\Connect 4 - Client.pdb
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\bin\Debug\Newtonsoft.Json.dll
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\bin\Debug\Newtonsoft.Json.xml
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\obj\Debug\Connect 4 - Client.csproj.AssemblyReference.cache
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\obj\Debug\Connect 4 - Client.csproj.CoreCompileInputs.cache
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\obj\Debug\Connect 4 - Client.csproj.CopyComplete
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\obj\Debug\Connect 4 - Client.exe
+E:\projectsWorkspace\ConnectFour\Connect 4 - Client\obj\Debug\Connect 4 - Client.pdb

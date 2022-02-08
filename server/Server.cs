@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.Json;
+
 using Newtonsoft.Json;
 using System.Collections;
 
@@ -16,7 +16,7 @@ namespace Connect_4
     class Server
     {
         TcpListener server;
-        List<Room> avaibleRoom = new List<Room>();
+        //List<Room> avaibleRoom = new List<Room>();
         ArrayList players = new ArrayList();
 
 
@@ -28,7 +28,7 @@ namespace Connect_4
 
             server.Start();
             // server2.Start();
-            avaibleRoom.Add(new Room(new User("ahmed"), "ahmed", "tarek"));
+            //avaibleRoom.Add(new Room(new User("ahmed"), "ahmed", "tarek"));
             Console.WriteLine("************This is Server ************");
 
             Console.WriteLine("************This is Server program************" + PortNum);
@@ -76,12 +76,7 @@ namespace Connect_4
                             streamWriter.Write("log");
 
                             streamWriter.Write("start");
-                            foreach (var i in avaibleRoom)
-                            {
-                                string strJson = JsonConvert.SerializeObject(i);
-                                streamWriter.Write(strJson);
-
-                            }
+                            Room.sendAvaibleRooms(streamWriter);
                             streamWriter.Write("end");
 
 
@@ -103,28 +98,16 @@ namespace Connect_4
 
                             User player1 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
                             string id = streamReader.ReadString();
-                            avaibleRoom.Add(new Room(player1, id, streamReader.ReadString()));
+                            Room.avaibleRoom.Add(new Room(player1, id, streamReader.ReadString()));
                             Console.Write(" i create a room ");
 
-                            int i = 0;
+                            Room.FindindexOfRoom(id);
 
-                            for (; i < avaibleRoom.Count; i++)
-                            {
-                                if (avaibleRoom[i].id == id)
-
-                                {
-                                    Console.WriteLine("i find it ");
-
-                                    break;
-
-                                }
-                            }
-
-                            while (avaibleRoom[i].StartGame == false) ;
+                            while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame == false) ;
 
 
 
-                            string strJson = JsonConvert.SerializeObject(avaibleRoom[i]);
+                            string strJson = JsonConvert.SerializeObject(Room.avaibleRoom[Room.FindindexOfRoom(id)]);
                             streamWriter.Write(strJson);
                             Console.WriteLine(" End Create ");
 
@@ -143,23 +126,9 @@ namespace Connect_4
                             Console.WriteLine("AnaBreceive");
                             User player2 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
                             string roomId = streamReader.ReadString();
-
-                            int i = 0;
-                            for (; i < avaibleRoom.Count; i++)
-                            {
-                                if (avaibleRoom[i].id == roomId)
-
-                                {
-                                    avaibleRoom[i].PlayBtn(player2);
-
-
-                                    string strJson = JsonConvert.SerializeObject(avaibleRoom[i]);
-                                    streamWriter.Write(strJson);
-                                    break;
-                                }
-                            }
+                            Room.addSecoondPlayTORoom(roomId, streamWriter, player2);
                             Console.WriteLine("ok I did it ");
-                            Console.WriteLine("Start Join");
+                            Console.WriteLine("End Join");
 
                         }
                         Console.WriteLine("Message recieved by client:" + theString);

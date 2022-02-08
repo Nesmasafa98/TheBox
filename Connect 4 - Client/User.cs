@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +44,14 @@ namespace Connect_4___Client
             //room = null;
 
 
+        }
+
+        public static void  SendPlayer(User player, BinaryWriter binaryWriter)
+        {
+
+            string strJson = JsonConvert.SerializeObject(player);
+
+            binaryWriter.Write(strJson);
         }
     }
 }

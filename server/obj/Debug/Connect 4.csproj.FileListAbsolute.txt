@@ -8,3 +8,13 @@ C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.csproj.CoreCompileIn
 C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.csproj.CopyComplete
 C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.exe
 C:\Users\Gnrl-30\source\repos\Connect 4\obj\Debug\Connect 4.pdb
+E:\projectsWorkspace\ConnectFour\server\bin\Debug\Connect 4.exe.config
+E:\projectsWorkspace\ConnectFour\server\bin\Debug\Connect 4.exe
+E:\projectsWorkspace\ConnectFour\server\bin\Debug\Connect 4.pdb
+E:\projectsWorkspace\ConnectFour\server\bin\Debug\Newtonsoft.Json.dll
+E:\projectsWorkspace\ConnectFour\server\bin\Debug\Newtonsoft.Json.xml
+E:\projectsWorkspace\ConnectFour\server\obj\Debug\Connect 4.csproj.AssemblyReference.cache
+E:\projectsWorkspace\ConnectFour\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+E:\projectsWorkspace\ConnectFour\server\obj\Debug\Connect 4.csproj.CopyComplete
+E:\projectsWorkspace\ConnectFour\server\obj\Debug\Connect 4.exe
+E:\projectsWorkspace\ConnectFour\server\obj\Debug\Connect 4.pdb

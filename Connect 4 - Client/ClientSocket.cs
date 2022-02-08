@@ -7,8 +7,8 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Text.Json;
-using Newtonsoft.Json;
+
+//using Newtonsoft.Json;
 
 namespace Connect_4___Client
 {
@@ -66,7 +66,7 @@ namespace Connect_4___Client
                         {
 
 
-                            Room deptObj = JsonConvert.DeserializeObject<Room>(s);
+                            Room receivedRoom = Room.ReceiveRoom(s);
                             Console.WriteLine("I receive room!");
                             s = streamReader.ReadString();
 
@@ -78,16 +78,16 @@ namespace Connect_4___Client
                     if (s == "create")
                     {
                         Console.WriteLine("AnaBreceive");
-                        string strJson = JsonConvert.SerializeObject(Myuser);
+                        User.SendPlayer(Myuser, streamWriter);
 
-                        streamWriter.Write(strJson);
                         Console.WriteLine("Enter Id of Room");
                         String Idroom = Console.ReadLine();
                         streamWriter.Write(Idroom);
                         Console.WriteLine("Enter Size Of room");
                         String size = Console.ReadLine();
                         streamWriter.Write(size);
-                        Room room = JsonConvert.DeserializeObject<Room>(streamReader.ReadString());
+                      
+                        Room room = Room.ReceiveRoom(streamReader);
                         Console.WriteLine("I receive room!");
 
 
@@ -105,14 +105,13 @@ namespace Connect_4___Client
                         Console.WriteLine("Start Join");
 
                         Console.WriteLine("AnaBreceive");
-                        string strJson = JsonConvert.SerializeObject(Myuser);
+                        User.SendPlayer(Myuser, streamWriter);
 
-                        streamWriter.Write(strJson);
                         Console.WriteLine("Enter Id of Room");
                         String Idroom = Console.ReadLine();
                         streamWriter.Write(Idroom);
 
-                        Room deptObj = JsonConvert.DeserializeObject<Room>(streamReader.ReadString());
+                        Room   room = Room.ReceiveRoom(streamReader);
                         Console.WriteLine("I receive room!");
 
 
