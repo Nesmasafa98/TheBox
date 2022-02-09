@@ -12,7 +12,7 @@ namespace The_Box_v0._1
         User Player1;
         User Player2;
         User[] Watchers;
-        Forms.BoardForm board;
+        Forms.RoomForm board;
         bool StartGame = false;
         Game game;
 
@@ -20,8 +20,8 @@ namespace The_Box_v0._1
         {
             Player1 = owner;
             roomName = name;
-            game = new Game(index);
-            //board = new Forms.BoardForm(index);
+            //game = new Game(index);
+            board = new Forms.RoomForm(index);
         }
 
         public void PlayBtn(User player)

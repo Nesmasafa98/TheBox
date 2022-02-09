@@ -34,7 +34,7 @@ namespace The_Box_v0._1.Forms
                 listBox1.Items.Add(dlg.RoomName);
                 //Forms.BoardForm boardForm = new BoardForm();
 
-                Forms.BoardForm boardForm = new BoardForm(dlg.IndexBoardSize);
+                Forms.RoomForm boardForm = new RoomForm(dlg.IndexBoardSize);
                 boardForm.Show();
                 this.Hide();
                 mainForm.Hide();

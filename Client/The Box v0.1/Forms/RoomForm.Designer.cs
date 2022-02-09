@@ -1,6 +1,6 @@
 ﻿namespace The_Box_v0._1.Forms
 {
-    partial class BoardForm
+    partial class RoomForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,8 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.BoardPanel = new System.Windows.Forms.Panel();
+            this.PlayBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -51,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.PlayBtn);
             this.panel1.Controls.Add(this.CloseAppbtn);
             this.panel1.Controls.Add(this.Minimize);
             this.panel1.Controls.Add(this.MaximizeAppbtn);
@@ -243,19 +246,38 @@
             this.button7.Text = "Quit";
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // BoardForm
+            // BoardPanel
+            // 
+            this.BoardPanel.Location = new System.Drawing.Point(197, 100);
+            this.BoardPanel.Name = "BoardPanel";
+            this.BoardPanel.Size = new System.Drawing.Size(917, 559);
+            this.BoardPanel.TabIndex = 2;
+            this.BoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoardPanel_Paint);
+            this.BoardPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardPanel_MouseClick);
+            // 
+            // PlayBtn
+            // 
+            this.PlayBtn.Location = new System.Drawing.Point(508, 36);
+            this.PlayBtn.Name = "PlayBtn";
+            this.PlayBtn.Size = new System.Drawing.Size(75, 23);
+            this.PlayBtn.TabIndex = 9;
+            this.PlayBtn.Text = "Play";
+            this.PlayBtn.UseVisualStyleBackColor = true;
+            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
+            // 
+            // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(1114, 662);
+            this.Controls.Add(this.BoardPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BoardForm";
+            this.Name = "RoomForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BoardForm";
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardForm_MouseClick);
             this.Resize += new System.EventHandler(this.BoardForm_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -284,5 +306,7 @@
         private System.Windows.Forms.Button MaximizeAppbtn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Panel BoardPanel;
+        private System.Windows.Forms.Button PlayBtn;
     }
 }

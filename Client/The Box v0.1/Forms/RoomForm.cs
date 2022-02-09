@@ -11,8 +11,15 @@ using System.Windows.Forms;
 
 namespace The_Box_v0._1.Forms
 {
-    public partial class BoardForm : Form
+    public partial class RoomForm : Form
     {
+        Game game;
+        //instance of Game
+        //Game game1 = new Game();
+        //List of Games to save and redraw with
+        List<Game> pieces;
+
+
         int _row;
         int _col;//862*435
         Brush _brush;
@@ -29,7 +36,10 @@ namespace The_Box_v0._1.Forms
         float _elipsWidth;
         float _elipsHight;
         float _gabY;
-        public BoardForm()
+
+        float xCoor;
+        float yCoor;
+        public RoomForm()
         {
             InitializeComponent();
             SetColorForBrush();
@@ -38,7 +48,7 @@ namespace The_Box_v0._1.Forms
             InitializeAxisValues();
 
         }
-        public BoardForm(int index)
+        public RoomForm(int index)
         {
             InitializeComponent();
             SetColorForBrush();
@@ -64,7 +74,7 @@ namespace The_Box_v0._1.Forms
             }
             
             InitializeAxisValues();
-
+            pieces = new List<Game>();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -102,7 +112,10 @@ namespace The_Box_v0._1.Forms
             {
                 for (int j = 0; j < _col; j++)
                 {
-                    graphics.FillEllipse(_elipsBrush, (float)(0.5 *_gabX + _xStart + (_gabX+_elipsWidth) * j), (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i), _elipsWidth, _elipsHight);
+                    xCoor = (float)(0.5 * _gabX + _xStart + (_gabX + _elipsWidth) * j);
+                    yCoor = (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i);
+                    //graphics.FillEllipse(_elipsBrush, (float)(0.5 *_gabX + _xStart + (_gabX+_elipsWidth) * j), (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i), _elipsWidth, _elipsHight);
+                    graphics.FillEllipse(_elipsBrush, xCoor, yCoor, _elipsWidth, _elipsHight);
 
                 }
             }
@@ -150,7 +163,6 @@ namespace The_Box_v0._1.Forms
         private void Minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
-            //Invalidate();
         }
 
         private void CloseAppbtn_Click(object sender, EventArgs e)
@@ -160,18 +172,83 @@ namespace The_Box_v0._1.Forms
 
         private void BoardForm_Resize(object sender, EventArgs e)
         {
+            BoardPanel.Width = this.Width - 247;
+            BoardPanel.Height = this.Height - 150;
             Invalidate();
         }
 
-        private void BoardForm_MouseClick(object sender, MouseEventArgs e)
-        {
-            Color pColor = new Color();
 
+        private void PlayBtn_Click(object sender, EventArgs e)
+        {
+            BoardPanel.Visible = false;
+            game = new Game(_row, _col);
         }
 
-        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void BoardPanel_Paint(object sender, PaintEventArgs e)
         {
-
+            //game.drawBoard(e);
+            foreach (Game piece in pieces)
+            {
+                piece.redrawGamePiece(e.Graphics);
+            }
         }
+
+        private void BoardPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            Color pcolor = new Color();
+            Game piece = new Game(e.X, e.Y, pcolor, xCoor, yCoor, _elipsWidth, _elipsHight);
+            BoardPanel.Visible = true;
+            Graphics f = this.BoardPanel.CreateGraphics();
+            //Graphics f = this.CreateGraphics();
+
+            pcolor = Color.Red;
+            pieces.Add(piece);
+            game.drawGamePiece(e, f);
+            if (game.player1)
+            {
+                pcolor = Color.Black;
+                pieces.Add(piece);
+            }
+            else
+            {
+                pcolor = Color.Red;
+                pieces.Add(piece);
+            }
+
+            
+            /*using (Graphics f = this.BoardPanel.CreateGraphics())
+            {
+                game.drawGamePiece(e, f);
+                if (game.player1)
+                {
+                    pcolor = Color.Black;
+                    pieces.Add(piece);
+                }
+                else
+                {
+                    pcolor = Color.Red;
+                    pieces.Add(piece);
+                }
+
+            }*/
+
+            if (game.WinningPlayer() == Color.Red)
+            {
+                MessageBox.Show("Red Player Wins", "Red Beat Black", MessageBoxButtons.OK);
+                game.Reset();
+                panel1.Invalidate();
+            }
+            else if (game.WinningPlayer() == Color.Black)
+            {
+                MessageBox.Show("Black Player Wins", "Black Beat Red", MessageBoxButtons.OK);
+                game.Reset();
+                panel1.Invalidate();
+            }
+        }
+
+        
+
+
+        
     }
 }
