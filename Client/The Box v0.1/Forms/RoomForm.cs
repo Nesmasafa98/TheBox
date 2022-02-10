@@ -12,33 +12,34 @@ using System.Windows.Forms;
 namespace The_Box_v0._1.Forms
 {
     public partial class RoomForm : Form
-    {
-        Game game;
+    {  
+       protected Game game;
         //instance of Game
         //Game game1 = new Game();
         //List of Games to save and redraw with
-        List<Game> pieces;
-
-
-        int _row;
-        int _col;//862*435
-        Brush _brush;
-        Color _color;
-        Brush _elipsBrush;
-        RectangleF _rec;
-        float _width;
-        float _height;
-        float _xStart;
-        float _yStart;
-        float _xEnd;
-        float _yEnd;
-        float _gabX;
-        float _elipsWidth;
-        float _elipsHight;
-        float _gabY;
-
-        float xCoor;
-        float yCoor;
+       protected List<Game> pieces;
+      
+      
+       protected int _row;
+       protected int _col;//862*435
+       protected Brush _brush;
+       protected Color _color;
+       protected Brush _elipsBrush;
+       protected RectangleF _rec;
+       protected float _width;
+       protected float _height;
+       protected float _xStart;
+       protected float _yStart;
+       protected float _xEnd;
+       protected float _yEnd;
+       protected float _gabX;
+       protected float _elipsWidth;
+       protected float _elipsHight;
+       protected float _gabY;
+       
+       protected float xCoor;
+       protected float yCoor;
+       protected int _index;
         public RoomForm()
         {
             InitializeComponent();
@@ -52,6 +53,7 @@ namespace The_Box_v0._1.Forms
         {
             InitializeComponent();
             SetColorForBrush();
+            _index = index;
             switch (index)
             {
                 case 1:
@@ -76,25 +78,21 @@ namespace The_Box_v0._1.Forms
             InitializeAxisValues();
             pieces = new List<Game>();
         }
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            DrawBoard();
-            DrawElipses();
-        }
 
-        private void SetColorForBrush()
+
+        protected void SetColorForBrush()
         {
             _color = Color.FromArgb(0, 150, 136);
             _brush = new SolidBrush(_color);
             _elipsBrush = new SolidBrush(Color.FromArgb(39, 39, 58));
         }
 
-        private void InitializeAxisValues()
+        protected void InitializeAxisValues()
         {
             _xEnd = this.Width - 50;
             _yEnd = this.Height-50;
-            _xStart = 200;
-            _yStart = 100;
+            _xStart = 0;
+            _yStart = 0;
             _width = _xEnd - _xStart;
             _height = _yEnd - _yStart;
             _rec = new RectangleF(_xStart, _yStart, _width, _height);
@@ -104,7 +102,7 @@ namespace The_Box_v0._1.Forms
             _elipsHight = (_height / (_row + 3));
         }
 
-        void DrawElipses()
+        protected void DrawElipses()
         {
             InitializeAxisValues();
             Graphics graphics = this.CreateGraphics();
@@ -138,13 +136,24 @@ namespace The_Box_v0._1.Forms
             Application.Exit();
             
         }
-        void DrawBoard()
+        protected void DrawBoard()
         {
             InitializeAxisValues();
             Graphics g = this.CreateGraphics();
             g.FillRectangle(_brush, _rec);
         }
-
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.BoardPanel.Controls.Add(childForm);
+            this.BoardPanel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            
+        }
 
         private void MaximizeAppbtn_Click(object sender, EventArgs e)
         {
@@ -180,7 +189,8 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            BoardPanel.Visible = false;
+            OpenChildForm(new Forms.Board(_row, _col), sender);
+            //BoardPanel.Visible = false;
             game = new Game(_row, _col);
         }
 

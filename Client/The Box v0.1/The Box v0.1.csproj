@@ -51,6 +51,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Board.cs" />
+    <Compile Include="Forms\Board.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Board.Designer.cs">
+      <DependentUpon>Board.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RoomForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Room.cs" />
     <Compile Include="ThemeColor.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="Forms\Board.resx">
+      <DependentUpon>Board.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomForm.resx">
       <DependentUpon>RoomForm.cs</DependentUpon>
     </EmbeddedResource>

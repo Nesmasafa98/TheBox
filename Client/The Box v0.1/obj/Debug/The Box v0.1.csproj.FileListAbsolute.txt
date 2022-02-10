@@ -96,7 +96,6 @@ C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Deb
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.AssemblyReference.cache
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.SuggestedBindingRedirects.cache
-C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.PlayForm.resources
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Login.resources
 C:\Users\AboKhaled\Source\Repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.MainForm.resources
@@ -123,3 +122,5 @@ C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj
 C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
 C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb
 C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
+C:\Users\AboKhaled\source\repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.Board.resources
+C:\Users\AboKhaled\source\repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
