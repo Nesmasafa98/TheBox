@@ -40,6 +40,8 @@ namespace The_Box_v0._1.Forms
        protected float xCoor;
        protected float yCoor;
        protected int _index;
+        MainForm mainForm;
+        PlayForm playForm;
         public RoomForm()
         {
             InitializeComponent();
@@ -49,10 +51,12 @@ namespace The_Box_v0._1.Forms
             InitializeAxisValues();
 
         }
-        public RoomForm(int index)
+        public RoomForm(int index , MainForm main , PlayForm play)
         {
             InitializeComponent();
             SetColorForBrush();
+            mainForm= main;
+            playForm= play;
             _index = index;
             switch (index)
             {
@@ -256,9 +260,11 @@ namespace The_Box_v0._1.Forms
             }
         }
 
-        
-
-
-        
+        private void QuitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            mainForm.Show();
+            playForm.Show();
+        }
     }
 }

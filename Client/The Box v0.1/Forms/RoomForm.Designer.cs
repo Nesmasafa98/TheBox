@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PlayBtn = new System.Windows.Forms.Button();
             this.CloseAppbtn = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
             this.MaximizeAppbtn = new System.Windows.Forms.Button();
@@ -42,9 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.QuitBtn = new System.Windows.Forms.Button();
             this.BoardPanel = new System.Windows.Forms.Panel();
-            this.PlayBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,6 +69,16 @@
             this.panel1.Size = new System.Drawing.Size(1114, 100);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // PlayBtn
+            // 
+            this.PlayBtn.Location = new System.Drawing.Point(508, 36);
+            this.PlayBtn.Name = "PlayBtn";
+            this.PlayBtn.Size = new System.Drawing.Size(75, 23);
+            this.PlayBtn.TabIndex = 9;
+            this.PlayBtn.Text = "Play";
+            this.PlayBtn.UseVisualStyleBackColor = true;
+            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
             // CloseAppbtn
             // 
@@ -184,7 +194,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.QuitBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
@@ -231,20 +241,21 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button7
+            // QuitBtn
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
-            this.button7.Location = new System.Drawing.Point(12, 469);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(119, 33);
-            this.button7.TabIndex = 3;
-            this.button7.Text = "Quit";
-            this.button7.UseVisualStyleBackColor = false;
+            this.QuitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.QuitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.QuitBtn.FlatAppearance.BorderSize = 0;
+            this.QuitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.QuitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.QuitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
+            this.QuitBtn.Location = new System.Drawing.Point(12, 469);
+            this.QuitBtn.Name = "QuitBtn";
+            this.QuitBtn.Size = new System.Drawing.Size(119, 33);
+            this.QuitBtn.TabIndex = 3;
+            this.QuitBtn.Text = "Quit";
+            this.QuitBtn.UseVisualStyleBackColor = false;
+            this.QuitBtn.Click += new System.EventHandler(this.QuitBtn_Click);
             // 
             // BoardPanel
             // 
@@ -254,16 +265,6 @@
             this.BoardPanel.TabIndex = 2;
             this.BoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoardPanel_Paint);
             this.BoardPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardPanel_MouseClick);
-            // 
-            // PlayBtn
-            // 
-            this.PlayBtn.Location = new System.Drawing.Point(508, 36);
-            this.PlayBtn.Name = "PlayBtn";
-            this.PlayBtn.Size = new System.Drawing.Size(75, 23);
-            this.PlayBtn.TabIndex = 9;
-            this.PlayBtn.Text = "Play";
-            this.PlayBtn.UseVisualStyleBackColor = true;
-            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
             // 
             // RoomForm
             // 
@@ -296,7 +297,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button QuitBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;

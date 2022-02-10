@@ -54,6 +54,10 @@ namespace The_Box_v0._1.Forms
             DrawBoard();
             DrawElipses();
         }
+        protected override void OnResize(EventArgs e)
+        {
+            Invalidate();
+        }
         protected void SetColorForBrush()
         {
             _color = Color.FromArgb(0, 150, 136);
