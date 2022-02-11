@@ -11,23 +11,19 @@ namespace The_Box_v0._1
     //return
     public class Game
     {
-        int BoardWidth, BoardHeight;
+
         public bool player1;
         public bool player2;
         private Color pieceColor;
+
         public enum state { empty = 0, player1 = 1, player2 = 2 };
-        private state[,] boardState = new state[10, 7];
-        List<int> full = new List<int> { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 };
-        int X;
-        float xCoordinate;
-        float yCoordinate;
-        float elipsWidth;
-        float elipsHeight;
+        public state[,] boardState;
+        List<int> full = new List<int>();
+
+        //int X;        
         int row;
         int col;
 
-
-        Forms.RoomForm board;
 
         public Game(int r, int c)
         {
@@ -36,38 +32,40 @@ namespace The_Box_v0._1
             row = r;
             col = c;
             pieceColor = Color.Red;
-            for (int i = 0; i < c; i++)
+            boardState = new state[col, row];
+            for (int i = 0; i < col; i++)
             {
-                for (int j = 0; j < r; j++)
+                full.Add(row - 1);
+            }
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < row; j++)
                 {
                     boardState[i, j] = state.empty;
                 }
             }
         }
 
-        public Game(int x, int y, Color pcolor, float xC, float yC, float eW, float eH)
+        public Game(int x, int y, Color pcolor, int constant)
         {
-            state STATE = new state();
+            //state STATE = new state();
             if (pcolor == Color.Red)
             {
                 player1 = true;
                 player2 = false;
                 pieceColor = Color.Red;
-                STATE = state.player1;
+                //STATE = state.player1;
             }
-            else if (pcolor == Color.Black)
+            else if (pcolor == Color.Blue)
             {
                 player2 = true;
                 player1 = false;
-                pieceColor = Color.Black;
+                pieceColor = Color.Blue;
             }
 
-            boardState[x / 100, y / 100] = STATE;
-            X = x / 100;
-            xCoordinate = xC;
-            yCoordinate = yC;
-            elipsWidth = eW;
-            elipsHeight = eH;
+            //boardState[x / constant, y / constant] = STATE;
+            //X = x / constant;
+
         }
 
         //Method that changes the players turn and game piece color
@@ -81,41 +79,36 @@ namespace The_Box_v0._1
             }
             else
             {
-                pieceColor = Color.Black;
+                pieceColor = Color.Blue;
             }
         }
 
         //Method to draw the individual game pieces
         // Draws red piece if player 1 and black piece if player 2
 
-        public void drawGamePiece(MouseEventArgs e, Graphics f)
+        public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm)
         {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(pieceColor);
-            int xlocal = (e.X / 100);
-
-            if (full[xlocal] >= 0)
+            if (full[index] >= 0)
             {
-
-                if (player1 && boardState[xlocal, full[xlocal]] == state.empty)
+                if (player1 && boardState[index, full[index]] == state.empty)
                 {
-                    boardState[xlocal, full[xlocal]] = state.player1;
-                    //f.FillEllipse(myBrush, xlocal * 100, full[xlocal] * 100, 100, 100);
-                    f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
-                    full[xlocal]--;
+                    boardState[index, full[index]] = state.player1;
+                    boardForm.DrawElipse(full[index], index, pieceColor);
+                    full[index]--;
                     playerTurn();
                 }
-                else if (player2 && boardState[xlocal, full[xlocal]] == state.empty)
+                else if (player2 && boardState[index, full[index]] == state.empty)
                 {
-                    boardState[xlocal, full[xlocal]] = state.player2;
-                    //f.FillEllipse(myBrush, xlocal * 100, full[xlocal] * 100, 100, 100);
-                    f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
-                    full[xlocal]--;
+                    boardState[index, full[index]] = state.player2;
+                    boardForm.DrawElipse(full[index], index, pieceColor);
+                    full[index]--;
                     playerTurn();
                 }
             }
         }
 
         //Method to redraw the pieces after maximization
+        /*
         public void redrawGamePiece(Graphics f)
         {
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(pieceColor);
@@ -126,20 +119,18 @@ namespace The_Box_v0._1
                 if (player1)
                 {
                     boardState[xlocal, full[xlocal]] = state.player1;
-                    //f.FillEllipse(myBrush, xlocal * 100, full[xlocal] * 100, 100, 100);
                     f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
 
                 }
                 else if (player2)
                 {
                     boardState[xlocal, full[xlocal]] = state.player2;
-                    //f.FillEllipse(myBrush, xlocal * 100, full[xlocal] * 100, 100, 100);
                     f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
-
                 }
             }
         }
-
+        */
+        /*
         public void drawBoard(PaintEventArgs e)
         {
             Pen line = new Pen(Color.Black);
@@ -167,13 +158,17 @@ namespace The_Box_v0._1
                 }
             }
         }
+        */
 
         public void Reset()
         {
-            full = new List<int>(col) { 6, 6, 6, 6, 6, 6, 6, 6, 6, 6 };
             player1 = true;
             player2 = false;
             pieceColor = Color.Red;
+            for (int i = 0; i < col; i++)
+            {
+                full[i] = row - 1;
+            }
             for (int i = 0; i < col; i++)
             {
                 for (int j = 0; j < row; j++)
@@ -182,10 +177,12 @@ namespace The_Box_v0._1
                 }
             }
         }
+
+
         public Color WinningPlayer()
         {
             bool RedPlayer = false;
-            bool BlackPlayer = false;
+            bool BluePlayer = false;
             //vertical win
             for (int i = 0; i < boardState.GetLength(0) - 3; i++)
             {
@@ -197,7 +194,7 @@ namespace The_Box_v0._1
                     }
                     if (boardState[i, j] == state.player2 && boardState[i + 1, j] == state.player2 && boardState[i + 2, j] == state.player2 && boardState[i + 3, j] == state.player2)
                     {
-                        BlackPlayer = true;
+                        BluePlayer = true;
                     }
                 }
             }
@@ -213,7 +210,7 @@ namespace The_Box_v0._1
                     }
                     else if (boardState[i, j] == state.player2 && boardState[i, j + 1] == state.player2 && boardState[i, j + 2] == state.player2 && this.boardState[i, j + 3] == state.player2)
                     {
-                        BlackPlayer = true;
+                        BluePlayer = true;
                     }
                 }
             }
@@ -230,7 +227,7 @@ namespace The_Box_v0._1
                     }
                     else if (boardState[i, j] == state.player2 && this.boardState[i - 1, j + 1] == state.player2 && boardState[i - 2, j + 2] == state.player2 && boardState[i - 3, j + 3] == state.player2)
                     {
-                        BlackPlayer = true;
+                        BluePlayer = true;
                     }
                 }
             }
@@ -246,7 +243,7 @@ namespace The_Box_v0._1
                     }
                     if (boardState[i, j] == state.player2 && boardState[i - 1, j - 1] == state.player2 && boardState[i - 2, j - 2] == state.player2 && boardState[i - 3, j - 3] == state.player2)
                     {
-                        BlackPlayer = true;
+                        BluePlayer = true;
                     }
 
                 }
@@ -254,7 +251,7 @@ namespace The_Box_v0._1
 
             if (RedPlayer)
                 return Color.Red;
-            else if (BlackPlayer)
+            else if (BluePlayer)
                 return Color.Black;
             else
                 return Color.Empty;

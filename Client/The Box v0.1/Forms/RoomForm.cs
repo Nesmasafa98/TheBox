@@ -42,6 +42,38 @@ namespace The_Box_v0._1.Forms
        protected int _index;
         MainForm mainForm;
         PlayForm playForm;
+
+        public RoomForm(int index)
+        {
+            InitializeComponent();
+            SetColorForBrush();
+            DetrimineSize(index);
+            pieces = new List<Game>();
+        }
+        protected void DetrimineSize(int index)
+        {
+            switch (index)
+            {
+                case 1:
+                    _row = 7;
+                    _col = 8;
+
+                    break;
+                case 2:
+                    _row = 7;
+                    _col = 9;
+                    break;
+                case 3:
+                    _row = 7;
+                    _col = 10;
+                    break;
+                default:
+                    _row = 6;
+                    _col = 7;
+                    break;
+            }
+        }
+        /*
         public RoomForm()
         {
             InitializeComponent();
@@ -82,7 +114,7 @@ namespace The_Box_v0._1.Forms
             InitializeAxisValues();
             pieces = new List<Game>();
         }
-
+        */
 
         protected void SetColorForBrush()
         {
@@ -91,37 +123,9 @@ namespace The_Box_v0._1.Forms
             _elipsBrush = new SolidBrush(Color.FromArgb(39, 39, 58));
         }
 
-        protected void InitializeAxisValues()
-        {
-            _xEnd = this.Width - 50;
-            _yEnd = this.Height-50;
-            _xStart = 0;
-            _yStart = 0;
-            _width = _xEnd - _xStart;
-            _height = _yEnd - _yStart;
-            _rec = new RectangleF(_xStart, _yStart, _width, _height);
-            _gabX = (_width - ((_width / (_col + 3)) * _col)) / (_col);
-            _elipsWidth = (_width / (_col + 3));
-            _gabY = (_height - ((_height / (_row + 3)) * _row)) / (_row);
-            _elipsHight = (_height / (_row + 3));
-        }
+        
 
-        protected void DrawElipses()
-        {
-            InitializeAxisValues();
-            Graphics graphics = this.CreateGraphics();
-            for (int i = 0; i < _row; i++)
-            {
-                for (int j = 0; j < _col; j++)
-                {
-                    xCoor = (float)(0.5 * _gabX + _xStart + (_gabX + _elipsWidth) * j);
-                    yCoor = (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i);
-                    //graphics.FillEllipse(_elipsBrush, (float)(0.5 *_gabX + _xStart + (_gabX+_elipsWidth) * j), (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i), _elipsWidth, _elipsHight);
-                    graphics.FillEllipse(_elipsBrush, xCoor, yCoor, _elipsWidth, _elipsHight);
-
-                }
-            }
-        }
+        
         #region Make Form Movable
         // To Make Form Movable
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -140,12 +144,7 @@ namespace The_Box_v0._1.Forms
             Application.Exit();
             
         }
-        protected void DrawBoard()
-        {
-            InitializeAxisValues();
-            Graphics g = this.CreateGraphics();
-            g.FillRectangle(_brush, _rec);
-        }
+        
         private void OpenChildForm(Form childForm, object btnSender)
         {
             
@@ -168,9 +167,7 @@ namespace The_Box_v0._1.Forms
             else
             {
                 this.WindowState = FormWindowState.Normal;
-            }
-            
-            
+            }            
         }
 
         private void Minimize_Click(object sender, EventArgs e)
@@ -193,71 +190,7 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.Board(_row, _col), sender);
-            //BoardPanel.Visible = false;
-            game = new Game(_row, _col);
-        }
-
-        private void BoardPanel_Paint(object sender, PaintEventArgs e)
-        {
-            //game.drawBoard(e);
-            foreach (Game piece in pieces)
-            {
-                piece.redrawGamePiece(e.Graphics);
-            }
-        }
-
-        private void BoardPanel_MouseClick(object sender, MouseEventArgs e)
-        {
-            Color pcolor = new Color();
-            Game piece = new Game(e.X, e.Y, pcolor, xCoor, yCoor, _elipsWidth, _elipsHight);
-            BoardPanel.Visible = true;
-            Graphics f = this.BoardPanel.CreateGraphics();
-            //Graphics f = this.CreateGraphics();
-
-            pcolor = Color.Red;
-            pieces.Add(piece);
-            game.drawGamePiece(e, f);
-            if (game.player1)
-            {
-                pcolor = Color.Black;
-                pieces.Add(piece);
-            }
-            else
-            {
-                pcolor = Color.Red;
-                pieces.Add(piece);
-            }
-
-            
-            /*using (Graphics f = this.BoardPanel.CreateGraphics())
-            {
-                game.drawGamePiece(e, f);
-                if (game.player1)
-                {
-                    pcolor = Color.Black;
-                    pieces.Add(piece);
-                }
-                else
-                {
-                    pcolor = Color.Red;
-                    pieces.Add(piece);
-                }
-
-            }*/
-
-            if (game.WinningPlayer() == Color.Red)
-            {
-                MessageBox.Show("Red Player Wins", "Red Beat Black", MessageBoxButtons.OK);
-                game.Reset();
-                panel1.Invalidate();
-            }
-            else if (game.WinningPlayer() == Color.Black)
-            {
-                MessageBox.Show("Black Player Wins", "Black Beat Red", MessageBoxButtons.OK);
-                game.Reset();
-                panel1.Invalidate();
-            }
+            OpenChildForm(new Forms.BoardForm(_row, _col), sender);
         }
 
         private void QuitBtn_Click(object sender, EventArgs e)

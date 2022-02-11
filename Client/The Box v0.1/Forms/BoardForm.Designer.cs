@@ -1,6 +1,6 @@
 ﻿namespace The_Box_v0._1.Forms
 {
-    partial class Board
+    partial class BoardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,16 @@
         {
             this.SuspendLayout();
             // 
-            // Board
+            // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Board";
+            this.Name = "BoardForm";
             this.Text = "Board";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardForm_MouseClick);
+            this.Resize += new System.EventHandler(this.BoardForm_Resize);
             this.ResumeLayout(false);
 
         }

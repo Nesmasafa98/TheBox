@@ -17,7 +17,6 @@ namespace The_Box_v0._1
         int indexBoardSize;
         public int IndexBoardSize { get; set; }
         string roomName;
-        Room room;
         MainForm mainForm;
         User player;
         public Dialog()
@@ -60,10 +59,6 @@ namespace The_Box_v0._1
                 IndexBoardSize = 3;
             }
 
-            room = new Room(player, roomName, IndexBoardSize);
-            //PlayGame playGame = new PlayGame();
-            //playGame.Show();
-            //mainForm.Hide();
             this.Close();
         }
 

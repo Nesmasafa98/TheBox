@@ -124,3 +124,4 @@ C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj
 C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
 C:\Users\AboKhaled\source\repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.Board.resources
 C:\Users\AboKhaled\source\repos\ahmedsamy1234\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
+C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources

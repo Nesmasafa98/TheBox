@@ -263,8 +263,6 @@
             this.BoardPanel.Name = "BoardPanel";
             this.BoardPanel.Size = new System.Drawing.Size(917, 559);
             this.BoardPanel.TabIndex = 2;
-            this.BoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoardPanel_Paint);
-            this.BoardPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardPanel_MouseClick);
             // 
             // RoomForm
             // 
