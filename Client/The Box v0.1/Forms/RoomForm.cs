@@ -18,7 +18,7 @@ namespace The_Box_v0._1.Forms
         //Game game1 = new Game();
         //List of Games to save and redraw with
        protected List<Game> pieces;
-      
+        
       
        protected int _row;
        protected int _col;//862*435
@@ -43,12 +43,20 @@ namespace The_Box_v0._1.Forms
         MainForm mainForm;
         PlayForm playForm;
 
-        public RoomForm(int index)
+        public string RoomName
+        {
+            get;
+            set;
+        }
+
+        public RoomForm(int index, string rName)
         {
             InitializeComponent();
             SetColorForBrush();
             DetrimineSize(index);
             pieces = new List<Game>();
+            RoomName = rName;
+            LabelRoomName.Text = RoomName;
         }
         protected void DetrimineSize(int index)
         {

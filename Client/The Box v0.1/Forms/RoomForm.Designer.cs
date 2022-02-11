@@ -45,6 +45,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.QuitBtn = new System.Windows.Forms.Button();
             this.BoardPanel = new System.Windows.Forms.Panel();
+            this.LabelRoomName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,6 +54,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.LabelRoomName);
             this.panel1.Controls.Add(this.PlayBtn);
             this.panel1.Controls.Add(this.CloseAppbtn);
             this.panel1.Controls.Add(this.Minimize);
@@ -264,6 +266,15 @@
             this.BoardPanel.Size = new System.Drawing.Size(917, 559);
             this.BoardPanel.TabIndex = 2;
             // 
+            // LabelRoomName
+            // 
+            this.LabelRoomName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LabelRoomName.Location = new System.Drawing.Point(505, 72);
+            this.LabelRoomName.Name = "LabelRoomName";
+            this.LabelRoomName.Size = new System.Drawing.Size(81, 25);
+            this.LabelRoomName.TabIndex = 10;
+            this.LabelRoomName.Text = "label";
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,5 +318,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Panel BoardPanel;
         private System.Windows.Forms.Button PlayBtn;
+        private System.Windows.Forms.Label LabelRoomName;
     }
 }

@@ -41,8 +41,8 @@
             this.SettingBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.WelcPanel = new System.Windows.Forms.Panel();
-            this.MainPanel = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MainPanel = new System.Windows.Forms.Panel();
             this.HdrPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -58,10 +58,9 @@
             this.HdrPanel.Controls.Add(this.CloseFormbtn);
             this.HdrPanel.Controls.Add(this.boxLabel);
             this.HdrPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HdrPanel.Location = new System.Drawing.Point(253, 0);
-            this.HdrPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HdrPanel.Location = new System.Drawing.Point(190, 0);
             this.HdrPanel.Name = "HdrPanel";
-            this.HdrPanel.Size = new System.Drawing.Size(1167, 96);
+            this.HdrPanel.Size = new System.Drawing.Size(850, 78);
             this.HdrPanel.TabIndex = 1;
             this.HdrPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HdrPanel_MouseDown);
             // 
@@ -72,10 +71,9 @@
             this.CloseAppbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseAppbtn.Image = global::The_Box_v0._1.Properties.Resources.close__2_;
             this.CloseAppbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CloseAppbtn.Location = new System.Drawing.Point(1123, 4);
-            this.CloseAppbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CloseAppbtn.Location = new System.Drawing.Point(817, 3);
             this.CloseAppbtn.Name = "CloseAppbtn";
-            this.CloseAppbtn.Size = new System.Drawing.Size(37, 28);
+            this.CloseAppbtn.Size = new System.Drawing.Size(28, 23);
             this.CloseAppbtn.TabIndex = 5;
             this.CloseAppbtn.UseVisualStyleBackColor = true;
             this.CloseAppbtn.Click += new System.EventHandler(this.CloseAppbtn_Click);
@@ -87,10 +85,9 @@
             this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Minimize.Image = global::The_Box_v0._1.Properties.Resources.minus;
             this.Minimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Minimize.Location = new System.Drawing.Point(1032, 4);
-            this.Minimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Minimize.Location = new System.Drawing.Point(749, 3);
             this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(37, 28);
+            this.Minimize.Size = new System.Drawing.Size(28, 23);
             this.Minimize.TabIndex = 4;
             this.Minimize.UseVisualStyleBackColor = true;
             this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
@@ -102,10 +99,9 @@
             this.MaximizeAppbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MaximizeAppbtn.Image = global::The_Box_v0._1.Properties.Resources.fullscreen;
             this.MaximizeAppbtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.MaximizeAppbtn.Location = new System.Drawing.Point(1077, 4);
-            this.MaximizeAppbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeAppbtn.Location = new System.Drawing.Point(783, 3);
             this.MaximizeAppbtn.Name = "MaximizeAppbtn";
-            this.MaximizeAppbtn.Size = new System.Drawing.Size(37, 28);
+            this.MaximizeAppbtn.Size = new System.Drawing.Size(28, 23);
             this.MaximizeAppbtn.TabIndex = 3;
             this.MaximizeAppbtn.UseVisualStyleBackColor = true;
             this.MaximizeAppbtn.Click += new System.EventHandler(this.MaximizeAppbtn_Click);
@@ -115,10 +111,9 @@
             this.CloseFormbtn.FlatAppearance.BorderSize = 0;
             this.CloseFormbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseFormbtn.Image = global::The_Box_v0._1.Properties.Resources.close__1_;
-            this.CloseFormbtn.Location = new System.Drawing.Point(32, 36);
-            this.CloseFormbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CloseFormbtn.Location = new System.Drawing.Point(24, 29);
             this.CloseFormbtn.Name = "CloseFormbtn";
-            this.CloseFormbtn.Size = new System.Drawing.Size(35, 31);
+            this.CloseFormbtn.Size = new System.Drawing.Size(26, 25);
             this.CloseFormbtn.TabIndex = 2;
             this.CloseFormbtn.UseVisualStyleBackColor = true;
             this.CloseFormbtn.Click += new System.EventHandler(this.CloseFormbtn_Click);
@@ -130,10 +125,9 @@
             this.boxLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.boxLabel.Font = new System.Drawing.Font("Trebuchet MS", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.boxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
-            this.boxLabel.Location = new System.Drawing.Point(477, 11);
-            this.boxLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.boxLabel.Location = new System.Drawing.Point(346, 9);
             this.boxLabel.Name = "boxLabel";
-            this.boxLabel.Size = new System.Drawing.Size(256, 73);
+            this.boxLabel.Size = new System.Drawing.Size(204, 59);
             this.boxLabel.TabIndex = 1;
             this.boxLabel.Text = "The Box";
             // 
@@ -145,9 +139,8 @@
             this.panel1.Controls.Add(this.WelcPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(253, 738);
+            this.panel1.Size = new System.Drawing.Size(190, 600);
             this.panel1.TabIndex = 0;
             // 
             // LeftPanel
@@ -159,10 +152,9 @@
             this.LeftPanel.Controls.Add(this.PlayBtn);
             this.LeftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
-            this.LeftPanel.Location = new System.Drawing.Point(0, 96);
-            this.LeftPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LeftPanel.Location = new System.Drawing.Point(0, 78);
             this.LeftPanel.Name = "LeftPanel";
-            this.LeftPanel.Size = new System.Drawing.Size(253, 642);
+            this.LeftPanel.Size = new System.Drawing.Size(190, 522);
             this.LeftPanel.TabIndex = 1;
             // 
             // SignoutBtn
@@ -174,11 +166,10 @@
             this.SignoutBtn.ForeColor = System.Drawing.Color.White;
             this.SignoutBtn.Image = global::The_Box_v0._1.Properties.Resources.logout;
             this.SignoutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SignoutBtn.Location = new System.Drawing.Point(0, 568);
-            this.SignoutBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SignoutBtn.Location = new System.Drawing.Point(0, 462);
             this.SignoutBtn.Name = "SignoutBtn";
-            this.SignoutBtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.SignoutBtn.Size = new System.Drawing.Size(253, 74);
+            this.SignoutBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.SignoutBtn.Size = new System.Drawing.Size(190, 60);
             this.SignoutBtn.TabIndex = 3;
             this.SignoutBtn.Text = "  SignOut";
             this.SignoutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -195,11 +186,10 @@
             this.AboutBtn.ForeColor = System.Drawing.Color.White;
             this.AboutBtn.Image = global::The_Box_v0._1.Properties.Resources.man;
             this.AboutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AboutBtn.Location = new System.Drawing.Point(0, 148);
-            this.AboutBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AboutBtn.Location = new System.Drawing.Point(0, 120);
             this.AboutBtn.Name = "AboutBtn";
-            this.AboutBtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.AboutBtn.Size = new System.Drawing.Size(253, 74);
+            this.AboutBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.AboutBtn.Size = new System.Drawing.Size(190, 60);
             this.AboutBtn.TabIndex = 2;
             this.AboutBtn.Text = "  AboutUs";
             this.AboutBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -216,11 +206,10 @@
             this.SettingBtn.ForeColor = System.Drawing.Color.White;
             this.SettingBtn.Image = global::The_Box_v0._1.Properties.Resources.settings__2_;
             this.SettingBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingBtn.Location = new System.Drawing.Point(0, 74);
-            this.SettingBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SettingBtn.Location = new System.Drawing.Point(0, 60);
             this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.SettingBtn.Size = new System.Drawing.Size(253, 74);
+            this.SettingBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.SettingBtn.Size = new System.Drawing.Size(190, 60);
             this.SettingBtn.TabIndex = 1;
             this.SettingBtn.Text = "  Account Settings";
             this.SettingBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -238,10 +227,9 @@
             this.PlayBtn.Image = global::The_Box_v0._1.Properties.Resources.video_console;
             this.PlayBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PlayBtn.Location = new System.Drawing.Point(0, 0);
-            this.PlayBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PlayBtn.Name = "PlayBtn";
-            this.PlayBtn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.PlayBtn.Size = new System.Drawing.Size(253, 74);
+            this.PlayBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.PlayBtn.Size = new System.Drawing.Size(190, 60);
             this.PlayBtn.TabIndex = 0;
             this.PlayBtn.Text = "  Play";
             this.PlayBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -256,10 +244,17 @@
             this.WelcPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.WelcPanel.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.WelcPanel.Location = new System.Drawing.Point(0, 0);
-            this.WelcPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.WelcPanel.Name = "WelcPanel";
-            this.WelcPanel.Size = new System.Drawing.Size(253, 96);
+            this.WelcPanel.Size = new System.Drawing.Size(190, 78);
             this.WelcPanel.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(20, 29);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(146, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // MainPanel
             // 
@@ -268,34 +263,25 @@
             this.MainPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MainPanel.CausesValidation = false;
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(253, 96);
-            this.MainPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MainPanel.Location = new System.Drawing.Point(190, 78);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1167, 642);
+            this.MainPanel.Size = new System.Drawing.Size(850, 522);
             this.MainPanel.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(27, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 22);
-            this.textBox1.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1420, 738);
+            this.ClientSize = new System.Drawing.Size(1040, 600);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.HdrPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1200, 738);
+            this.MinimumSize = new System.Drawing.Size(900, 590);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "7";
             this.HdrPanel.ResumeLayout(false);
             this.HdrPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
