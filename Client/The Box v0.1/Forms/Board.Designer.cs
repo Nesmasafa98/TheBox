@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Board";
             this.Text = "Board";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Board_MouseClick);
             this.ResumeLayout(false);
 
         }
