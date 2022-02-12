@@ -486,6 +486,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "PlayForm";
             this.Text = "Play";
+            this.Load += new System.EventHandler(this.PlayForm_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();

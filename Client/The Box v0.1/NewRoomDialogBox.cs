@@ -12,18 +12,22 @@ namespace The_Box_v0._1
 {
     public partial class Dialog : Form
     {
-        
+        //Forms.PlayForm playForm;
+        List<Forms.RoomForm> roomForms;
         public string BoardSize { get; set; }
         int indexBoardSize;
         public int IndexBoardSize { get; set; }
         string roomName;
         MainForm mainForm;
         User player;
-        public Dialog()
+        public Dialog(List <Forms.RoomForm> rForms)
         {
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
+            roomForms = new List<Forms.RoomForm>();
+            roomForms = rForms;
+            //playForm = pForm;
         }
         public Dialog(MainForm mainFrm, User pl)
         {
@@ -42,11 +46,14 @@ namespace The_Box_v0._1
                 roomName = value;
             }
         }
+
+
         private void Button1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             roomName = materialTextBox21.Text;
-            if(radioButton1.Checked)
+            
+            if (radioButton1.Checked)
             {
                 IndexBoardSize = 1;
             }
@@ -67,7 +74,27 @@ namespace The_Box_v0._1
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
-       
+        
+        private void MaterialTextBox21_TextChanged(object sender, EventArgs e)
+        {
+            int flag = 1;
+            for (int i = 0; i < roomForms.Count && flag ==1; i++)
+            {
+                if (materialTextBox21.Text == roomForms[i].RoomName)
+                {
+                    labelError.Visible = true;
+                    labelError.Text = "Invaled";
+                    button1.Enabled = false;
+                    flag = 0;
+                }
+                else
+                {
+                    labelError.Visible = false;
+                    labelError.Text = "";
+                    roomName = materialTextBox21.Text;
+                    button1.Enabled = true;
+                }
+            }
+        }
     }
 }

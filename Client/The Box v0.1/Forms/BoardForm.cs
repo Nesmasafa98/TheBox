@@ -45,15 +45,14 @@ namespace The_Box_v0._1.Forms
         int constant;
         int index;
 
-        public BoardForm(int  row , int col)
+        public BoardForm(int  row , int col, User user1, User user2)
         {
-            
             InitializeComponent();
             SetColorForBrush();
             InitializeAxisValues();
             _row = row; _col = col;
             pieceColor = Color.Red;
-            game = new Game(_row, _col);
+            game = new Game(_row, _col, user1, user2);
             pieces = new List<Game>();
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -126,21 +125,11 @@ namespace The_Box_v0._1.Forms
             constant = this.Width / _col;
             index = e.X / constant;
             Game piece = new Game(e.X, e.Y, pcolor, constant);
-
-            game.drawGamePiece(index, graphics, this);
-            if (game.player1)
+            
+            if(game.full[index]>=0)
             {
-                //_elipsBrush = new SolidBrush(pieceColor);
-                //MessageBox.Show("Player 1's Turn");
-                pcolor = Color.Blue;
-                pieces.Add(piece);
-            }
-            else
-            {
-                //_elipsBrush = new SolidBrush(pieceColor);
-                //MessageBox.Show("Player 1's Turn");
-                pcolor = Color.Red;
-                pieces.Add(piece);
+                game.drawGamePiece(index, graphics, this);
+                game.playerTurn();
             }
 
             if (game.WinningPlayer() == Color.Red)
@@ -151,7 +140,7 @@ namespace The_Box_v0._1.Forms
             }
             else if (game.WinningPlayer() == Color.Blue)
             {
-                MessageBox.Show("Black Player Wins", "Black Beat Red", MessageBoxButtons.OK);
+                MessageBox.Show("Blue Player Wins", "Black Beat Red", MessageBoxButtons.OK);
                 game.Reset();
                 Invalidate();
             }

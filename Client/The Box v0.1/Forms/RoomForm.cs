@@ -12,36 +12,20 @@ using System.Windows.Forms;
 namespace The_Box_v0._1.Forms
 {
     public partial class RoomForm : Form
-    {  
-       protected Game game;
-        //instance of Game
-        //Game game1 = new Game();
-        //List of Games to save and redraw with
-       protected List<Game> pieces;
-        
-      
-       protected int _row;
-       protected int _col;//862*435
-       protected Brush _brush;
-       protected Color _color;
-       protected Brush _elipsBrush;
-       protected RectangleF _rec;
-       protected float _width;
-       protected float _height;
-       protected float _xStart;
-       protected float _yStart;
-       protected float _xEnd;
-       protected float _yEnd;
-       protected float _gabX;
-       protected float _elipsWidth;
-       protected float _elipsHight;
-       protected float _gabY;
-       
-       protected float xCoor;
-       protected float yCoor;
-       protected int _index;
+    {
         MainForm mainForm;
         PlayForm playForm;
+
+        User owner;
+        User player;
+        List<User> watchers;
+
+        int _row;
+        int _col;
+
+        Brush _brush;
+        Color _color;
+        Brush _elipsBrush;
 
         public string RoomName
         {
@@ -49,15 +33,18 @@ namespace The_Box_v0._1.Forms
             set;
         }
 
-        public RoomForm(int index, string rName)
+        public RoomForm(int index, string rName, User user, MainForm mForm, PlayForm pForm)
         {
             InitializeComponent();
             SetColorForBrush();
             DetrimineSize(index);
-            pieces = new List<Game>();
             RoomName = rName;
             LabelRoomName.Text = RoomName;
+            mainForm = mForm;
+            playForm = pForm;
+            owner = user;
         }
+
         protected void DetrimineSize(int index)
         {
             switch (index)
@@ -81,48 +68,6 @@ namespace The_Box_v0._1.Forms
                     break;
             }
         }
-        /*
-        public RoomForm()
-        {
-            InitializeComponent();
-            SetColorForBrush();
-            _row = 6;
-            _col = 7;
-            InitializeAxisValues();
-
-        }
-        public RoomForm(int index , MainForm main , PlayForm play)
-        {
-            InitializeComponent();
-            SetColorForBrush();
-            mainForm= main;
-            playForm= play;
-            _index = index;
-            switch (index)
-            {
-                case 1:
-                    _row = 7;
-                    _col = 8;
-                    
-                    break;
-                case 2:
-                    _row = 7;
-                    _col = 9;
-                    break;
-                case 3:
-                    _row = 7;
-                    _col = 10;
-                    break;
-                default:
-                    _row = 6;
-                    _col = 7;
-                    break;
-            }
-            
-            InitializeAxisValues();
-            pieces = new List<Game>();
-        }
-        */
 
         protected void SetColorForBrush()
         {
@@ -130,9 +75,6 @@ namespace The_Box_v0._1.Forms
             _brush = new SolidBrush(_color);
             _elipsBrush = new SolidBrush(Color.FromArgb(39, 39, 58));
         }
-
-        
-
         
         #region Make Form Movable
         // To Make Form Movable
@@ -198,14 +140,22 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.BoardForm(_row, _col), sender);
+            OpenChildForm(new Forms.BoardForm(_row, _col, owner, player), sender);
+        }
+
+        public void AskforPlay(User user)
+        {
+            MessageBox.Show(user.UserName + " want to Play with you!", "Form Playing", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+            //player = user;
         }
 
         private void QuitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            this.Hide();
             mainForm.Show();
             playForm.Show();
+            Invalidate();
         }
     }
 }

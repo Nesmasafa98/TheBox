@@ -8,27 +8,27 @@ using System.Windows.Forms;
 
 namespace The_Box_v0._1
 {
-    //return
     public class Game
     {
-
         public bool player1;
         public bool player2;
         private Color pieceColor;
 
         public enum state { empty = 0, player1 = 1, player2 = 2 };
         public state[,] boardState;
-        List<int> full = new List<int>();
+        public List<int> full = new List<int>();
 
         //int X;        
         int row;
         int col;
+        User user1, user2;
 
-
-        public Game(int r, int c)
+        public Game(int r, int c, User u1, User u2)
         {
             player1 = true;
             player2 = false;
+            user1 = u1;
+            user2 = u2;
             row = r;
             col = c;
             pieceColor = Color.Red;
@@ -69,7 +69,7 @@ namespace The_Box_v0._1
         }
 
         //Method that changes the players turn and game piece color
-        private void playerTurn()
+        public void playerTurn()
         {
             player1 = !player1;
             player2 = !player2;
@@ -88,77 +88,26 @@ namespace The_Box_v0._1
 
         public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm)
         {
-            if (full[index] >= 0)
-            {
+            //if (full[index] >= 0)
+            //{
                 if (player1 && boardState[index, full[index]] == state.empty)
                 {
                     boardState[index, full[index]] = state.player1;
                     boardForm.DrawElipse(full[index], index, pieceColor);
                     full[index]--;
-                    playerTurn();
+                    //playerTurn();
                 }
                 else if (player2 && boardState[index, full[index]] == state.empty)
                 {
                     boardState[index, full[index]] = state.player2;
                     boardForm.DrawElipse(full[index], index, pieceColor);
                     full[index]--;
-                    playerTurn();
+                    //playerTurn();
                 }
-            }
+            //}
         }
 
-        //Method to redraw the pieces after maximization
-        /*
-        public void redrawGamePiece(Graphics f)
-        {
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(pieceColor);
-            int xlocal = (X / 100);
-
-            if (full[xlocal] >= 0)
-            {
-                if (player1)
-                {
-                    boardState[xlocal, full[xlocal]] = state.player1;
-                    f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
-
-                }
-                else if (player2)
-                {
-                    boardState[xlocal, full[xlocal]] = state.player2;
-                    f.FillEllipse(myBrush, xCoordinate, yCoordinate, elipsWidth, elipsHeight);
-                }
-            }
-        }
-        */
-        /*
-        public void drawBoard(PaintEventArgs e)
-        {
-            Pen line = new Pen(Color.Black);
-            int lineXi = 197, lineXf = this.BoardWidth;
-            int lineYi = 100, lineYf = this.BoardHeight;
-            System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-            //for (int startY = 197; startY <= BoardWidth; startY += 100)
-            for (float startY = 100; startY <= BoardWidth; startY += yCoordinate/(row-1))
-            {
-                e.Graphics.DrawLine(line, startY, lineYi, startY, lineYf);
-            }
-
-            //for (int startX = 100; startX <= BoardHeight; startX += 100)
-            for (float startX = 197; startX <= BoardHeight; startX += xCoordinate/(col-1))
-
-            {
-                e.Graphics.DrawLine(line, lineXi, startX, lineXf, startX);
-            }
-
-            for (float y = 100; y <= BoardHeight; y += yCoordinate / (row - 1))
-            {
-                for (float x = 197; x <= BoardWidth; x += xCoordinate / (col - 1))
-                {
-                    e.Graphics.FillEllipse(myBrush, new RectangleF(x, y, elipsWidth, elipsHeight));
-                }
-            }
-        }
-        */
+        
 
         public void Reset()
         {
@@ -252,7 +201,7 @@ namespace The_Box_v0._1
             if (RedPlayer)
                 return Color.Red;
             else if (BluePlayer)
-                return Color.Black;
+                return Color.Blue;
             else
                 return Color.Empty;
         }

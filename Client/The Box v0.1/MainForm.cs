@@ -117,7 +117,7 @@ namespace The_Box_v0._1
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.PlayForm(this),sender);
+            OpenChildForm(new Forms.PlayForm(this, player),sender);
 
         }
 

@@ -9,72 +9,72 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace The_Box_v0._1.Forms
 {
+    
     public partial class PlayForm : Form
     {
+        public static List<RoomForm> roomForms;
+        RoomForm roomForm;
         MainForm mainForm;
         string RoomName;
-        //ArrayList myAL;
-        RoomForm room1;
-        RoomForm room2;
-        RoomForm room3;
+        User user;
+        
 
-        List<RoomForm> myAL;
-
-        public PlayForm(MainForm mf)
+        public PlayForm(MainForm mf, User u)
         {
             InitializeComponent();
             mainForm = mf;
-            myAL = new List<RoomForm>();
-
-            room1 = new RoomForm(0, "Room 1");
-            room2 = new RoomForm(1, "Room 2");
-            room3 = new RoomForm(2, "Room 3");
-
-            myAL.Add(room1);
-            myAL.Add(room2);
-            myAL.Add(room3);
-            
-            for (int i = 0; i < myAL.Count; i++)
+            roomForms = new List<RoomForm>();
+            for (int i = 0; i < roomForms.Count; i++)
             {
-                listBox1.Items.Add(myAL[i].RoomName);
+                listBox1.Items.Add(roomForms[i].RoomName);
             }
+            user = u;
         }
         private void Button5_Click(object sender, EventArgs e)
         {
-            Dialog dlg = new Dialog();
+            Dialog dlg = new Dialog(roomForms);
             DialogResult dResult;
             dResult = dlg.ShowDialog();
             
             if (dResult == DialogResult.OK)
-            {
-                
-
-                //Forms.RoomForm boardForm = new RoomForm(dlg.IndexBoardSize, mainForm , this);
-                Forms.RoomForm boardForm = new RoomForm(dlg.IndexBoardSize, dlg.RoomName);
-                boardForm.Show();
+            {                
+                roomForm = new RoomForm(dlg.IndexBoardSize, dlg.RoomName, user, mainForm, this);
+                roomForms.Add(roomForm);
+                roomForm.Show();
                 this.Hide();
                 mainForm.Hide();
             }
+            listBox1.Items.Clear();
+            
+            for (int i = 0; i < roomForms.Count; i++)
+            {
+                listBox1.Items.Add(roomForms[i].RoomName);
+            }
+            
         }
 
         private void ListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
+            // add try and catch ti check it there are string 
             RoomName = listBox1.SelectedItem.ToString();
-            for(int i=0; i< myAL.Count; i++)
+            for(int i=0; i< roomForms.Count; i++)
             {
-                if (RoomName == myAL[i].RoomName)
+                if (RoomName == roomForms[i].RoomName)
                 {
-                    myAL[i].Show();
+                    roomForms[i].AskforPlay(user);
+                    roomForms[i].Show();
                     this.Hide();
                     mainForm.Hide();
                 }
 
             }
+        }
 
+        private void PlayForm_Load(object sender, EventArgs e)
+        {
+            Invalidate();
         }
     }
 }
