@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace The_Box_v0._1
 {
@@ -21,12 +22,17 @@ namespace The_Box_v0._1
         public int _row;
         public int _col;
 
+        public string player1Color = "red";
+        public string player2Color = "green";
 
         public int index;
 
         public Room(User owner, string Id, int index)
         {
             Player1 = owner;
+
+
+       //     Player1.color = "red";
             this.id = Id;
             //board = new Board(size);
             this.index = index;
@@ -36,8 +42,10 @@ namespace The_Box_v0._1
         public void PlayBtn(User player)
         {
             Player2 = player;
-            StartGame = true;
             game = new Game(_row, _col, Player1, Player2);
+         
+            StartGame = true;
+            
         }
         public void DetrimineSize(int index)
         {
@@ -99,6 +107,8 @@ namespace The_Box_v0._1
             return JsonConvert.DeserializeObject<Room>(s);
 
         }
+
+  
         public static Room ReceiveRoom(BinaryReader receiver)
         {
 

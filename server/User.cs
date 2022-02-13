@@ -22,6 +22,7 @@ namespace Connect_4
         public Room room;
         static public List<User> players = new List<User>();
 
+        public string color;
 
 
 

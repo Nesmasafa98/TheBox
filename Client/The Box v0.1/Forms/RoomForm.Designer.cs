@@ -70,6 +70,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1114, 100);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // LabelRoomName
@@ -318,7 +319,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Panel BoardPanel;
-        private System.Windows.Forms.Button PlayBtn;
+        public System.Windows.Forms.Button PlayBtn;
         private System.Windows.Forms.Label LabelRoomName;
     }
 }

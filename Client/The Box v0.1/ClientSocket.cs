@@ -246,8 +246,8 @@ namespace The_Box_v0._1
                     Console.WriteLine(streamReader.ReadString());
                         s = streamReader.ReadString();
                   //  MessageBox.Show("ana 3mlt recevie");
-                    Room ag = new Room(Myuser, "ahmed", 5);
-                    rooms.Add(ag);
+                //    Room ag = new Room(Myuser, "ahmed", 5);
+                 //   rooms.Add(ag);
                     while (s != "end")
                         {
 

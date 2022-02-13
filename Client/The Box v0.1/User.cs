@@ -14,6 +14,7 @@ namespace The_Box_v0._1
         public int Score;
         public bool IsRoomOwner;
         public bool IsPlayer;
+        public string color;
 
         //        public ClientSocket socketconfig;
         public Room room;

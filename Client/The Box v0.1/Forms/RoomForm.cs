@@ -149,6 +149,7 @@ namespace The_Box_v0._1.Forms
             MessageBox.Show(receiveRoom.StartGame.ToString());
 
             MessageBox.Show(receiveRoom.game.row.ToString());
+            //MessageBox.Show(receiveRoom.Player2.color);
 
             OpenChildForm(new Forms.BoardForm(logicalroom._row, logicalroom._col, owner, player), sender);
         }

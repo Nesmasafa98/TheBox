@@ -144,3 +144,22 @@ E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.dll
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.xml
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\The Box v0.1.exe.config
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\The Box v0.1.exe
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\The Box v0.1.pdb
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.dll
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.xml
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.AssemblyReference.cache
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.PlayForm.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Login.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.MainForm.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Dialog.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Properties.Resources.resources
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.GenerateResource.cache
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.CoreCompileInputs.cache
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.CopyComplete
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
+E:\projectsWorkspace\ConnectFour\TheBox-GuiLogic (1)\TheBox-GuiLogic\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb

@@ -19,6 +19,9 @@ namespace Connect_4
         static  public List<Room> avaibleRoom = new List<Room>();
         public int _row;
         public int _col;
+        public string player1Color="red";
+        public string player2Color = "green";
+
 
 
         public int index;
@@ -29,7 +32,7 @@ namespace Connect_4
             this.id = Id;
             //board = new Board(size);
             this.index = index;
-            Console.WriteLine("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" + index);
+           // Console.WriteLine("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" + index);
             DetrimineSize(index);
         }
 

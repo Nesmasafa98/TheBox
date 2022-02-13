@@ -74,11 +74,12 @@ namespace The_Box_v0._1.Forms
                 Console.WriteLine("shimaaaaaaaaaaaaaaa");
                 //Room CreatedRoom = new Room(user, dlg.RoomName, dlg.IndexBoardSize);
                 ClientSocket.SendRequest("create");
-                user.room = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize);
+                Room m = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize);
+                user.room = m;
                 roomForm = new RoomForm(user.room, mainForm, this);
-                //  roomForms.Add(roomForm);
-                //  MessageBox.Show(CreatedRoom.id);
-                MessageBox.Show(user.room.id);
+                //roomForms.Add(roomForm);
+                  MessageBox.Show("5la baaaaaaaaaalk");
+                MessageBox.Show(m.Player1.UserName);
                 roomForm.Show();
                 //this.Hide();
                 mainForm.Hide();
@@ -109,6 +110,7 @@ namespace The_Box_v0._1.Forms
                     user.room=ClientSocket.ResponseJoin(user, rooms[i].id);
                     roomForm = new RoomForm(user.room, mainForm, this);
                     roomForm.Show();
+                    roomForm.PlayBtn.Hide();
                     // lazem tt3dl           //    rooms[i].AskforPlay(user);
                     // lazem tt3dl              roomForms[i].Show();
                     this.Hide();
