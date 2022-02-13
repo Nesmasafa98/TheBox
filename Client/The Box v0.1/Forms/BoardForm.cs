@@ -124,7 +124,7 @@ namespace The_Box_v0._1.Forms
             Color pcolor = new Color();
             constant = this.Width / _col;
             index = e.X / constant;
-            Game piece = new Game(e.X, e.Y, pcolor, constant);
+           // Game piece = new Game(e.X, e.Y, pcolor);
             
             if(game.full[index]>=0)
             {
@@ -149,6 +149,11 @@ namespace The_Box_v0._1.Forms
         private void BoardForm_Resize(object sender, EventArgs e)
         {
             Invalidate();
+        }
+
+        private void BoardForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

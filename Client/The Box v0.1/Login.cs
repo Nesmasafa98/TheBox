@@ -40,9 +40,12 @@ namespace The_Box_v0._1
         ///
         
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   
             user1 = new User(materialTextBox22.Text);
+            ClientSocket.SendRequest("log");
+            ClientSocket.ResponseLog(user1);
             MainForm mainForm = new MainForm(this, user1);
+            MessageBox.Show("ana 3mlt recevie");
             mainForm.Show();
             this.Hide();
             

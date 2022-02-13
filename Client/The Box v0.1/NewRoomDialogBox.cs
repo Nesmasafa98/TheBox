@@ -13,19 +13,19 @@ namespace The_Box_v0._1
     public partial class Dialog : Form
     {
         //Forms.PlayForm playForm;
-        List<Forms.RoomForm> roomForms;
+        List<Room> roomForms;
         public string BoardSize { get; set; }
         int indexBoardSize;
         public int IndexBoardSize { get; set; }
         string roomName;
         MainForm mainForm;
         User player;
-        public Dialog(List <Forms.RoomForm> rForms)
+        public Dialog(List <Room> rForms)
         {
             InitializeComponent();
             this.Text = string.Empty;
             this.ControlBox = false;
-            roomForms = new List<Forms.RoomForm>();
+          //  roomForms = new List<Forms.RoomForm>();
             roomForms = rForms;
             //playForm = pForm;
         }
@@ -80,7 +80,7 @@ namespace The_Box_v0._1
             int flag = 1;
             for (int i = 0; i < roomForms.Count && flag ==1; i++)
             {
-                if (materialTextBox21.Text == roomForms[i].RoomName)
+                if (materialTextBox21.Text == roomForms[i].id)
                 {
                     labelError.Visible = true;
                     labelError.Text = "Invaled";
@@ -95,6 +95,11 @@ namespace The_Box_v0._1
                     button1.Enabled = true;
                 }
             }
+        }
+
+        private void Dialog_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

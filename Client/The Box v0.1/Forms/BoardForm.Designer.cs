@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "BoardForm";
             this.Text = "Board";
+            this.Load += new System.EventHandler(this.BoardForm_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BoardForm_MouseClick);
             this.Resize += new System.EventHandler(this.BoardForm_Resize);
             this.ResumeLayout(false);

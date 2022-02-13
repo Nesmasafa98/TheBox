@@ -20,12 +20,12 @@ namespace The_Box_v0._1.Forms
         User player;
         List<User> watchers;
 
-        int _row;
-        int _col;
-
+     
+        
         Brush _brush;
         Color _color;
         Brush _elipsBrush;
+        Room logicalroom; 
 
         public string RoomName
         {
@@ -33,41 +33,42 @@ namespace The_Box_v0._1.Forms
             set;
         }
 
-        public RoomForm(int index, string rName, User user, MainForm mForm, PlayForm pForm)
+        public RoomForm(Room room, MainForm mForm, PlayForm pForm)
         {
             InitializeComponent();
             SetColorForBrush();
-            DetrimineSize(index);
-            RoomName = rName;
+            logicalroom = room;
+            logicalroom.DetrimineSize(room.index);
+            RoomName = room.id;
             LabelRoomName.Text = RoomName;
             mainForm = mForm;
             playForm = pForm;
-            owner = user;
+            owner = room.Player1;
         }
 
-        protected void DetrimineSize(int index)
-        {
-            switch (index)
-            {
-                case 1:
-                    _row = 7;
-                    _col = 8;
+        //protected void DetrimineSize(int index)
+        //{
+        //    switch (index)
+        //    {
+        //        case 1:
+        //            _row = 7;
+        //            _col = 8;
 
-                    break;
-                case 2:
-                    _row = 7;
-                    _col = 9;
-                    break;
-                case 3:
-                    _row = 7;
-                    _col = 10;
-                    break;
-                default:
-                    _row = 6;
-                    _col = 7;
-                    break;
-            }
-        }
+        //            break;
+        //        case 2:
+        //            _row = 7;
+        //            _col = 9;
+        //            break;
+        //        case 3:
+        //            _row = 7;
+        //            _col = 10;
+        //            break;
+        //        default:
+        //            _row = 6;
+        //            _col = 7;
+        //            break;
+        //    }
+        //}
 
         protected void SetColorForBrush()
         {
@@ -140,7 +141,16 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Forms.BoardForm(_row, _col, owner, player), sender);
+            ClientSocket.SendRequest("play");
+            Room receiveRoom= ClientSocket.Responseplay(logicalroom.id);
+            MessageBox.Show(receiveRoom.id);
+            MessageBox.Show(receiveRoom.Player1.username);
+            MessageBox.Show(receiveRoom.Player2.username);
+            MessageBox.Show(receiveRoom.StartGame.ToString());
+
+            MessageBox.Show(receiveRoom.game.row.ToString());
+
+            OpenChildForm(new Forms.BoardForm(logicalroom._row, logicalroom._col, owner, player), sender);
         }
 
         public void AskforPlay(User user)
@@ -156,6 +166,11 @@ namespace The_Box_v0._1.Forms
             mainForm.Show();
             playForm.Show();
             Invalidate();
+        }
+
+        private void BoardPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

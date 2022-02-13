@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +21,8 @@ namespace The_Box_v0._1
         public List<int> full = new List<int>();
 
         //int X;        
-        int row;
-        int col;
+      public  int row;
+        public int col;
         User user1, user2;
 
         public Game(int r, int c, User u1, User u2)
@@ -46,27 +48,7 @@ namespace The_Box_v0._1
             }
         }
 
-        public Game(int x, int y, Color pcolor, int constant)
-        {
-            //state STATE = new state();
-            if (pcolor == Color.Red)
-            {
-                player1 = true;
-                player2 = false;
-                pieceColor = Color.Red;
-                //STATE = state.player1;
-            }
-            else if (pcolor == Color.Blue)
-            {
-                player2 = true;
-                player1 = false;
-                pieceColor = Color.Blue;
-            }
-
-            //boardState[x / constant, y / constant] = STATE;
-            //X = x / constant;
-
-        }
+ 
 
         //Method that changes the players turn and game piece color
         public void playerTurn()
@@ -126,7 +108,21 @@ namespace The_Box_v0._1
                 }
             }
         }
+        public static void SendGame(Game game, BinaryWriter binaryWriter)
+        {
 
+            string strJson = JsonConvert.SerializeObject(game);
+
+            binaryWriter.Write(strJson);
+        }
+
+
+        public static Game Receiver(BinaryReader br)
+        {
+
+            return JsonConvert.DeserializeObject<Game>(br.ReadString());
+
+        }
 
         public Color WinningPlayer()
         {

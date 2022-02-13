@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +10,13 @@ namespace The_Box_v0._1
 {
     public class User
     {
-        string username;
-        int Score;
-        bool IsRoomOwner;
-        bool IsPlayer;
+        public string username;
+        public int Score;
+        public bool IsRoomOwner;
+        public bool IsPlayer;
 
+        //        public ClientSocket socketconfig;
+        public Room room;
         public string UserName
         {
             get
@@ -28,6 +32,22 @@ namespace The_Box_v0._1
         public User(string name)
         {
             UserName = name;
+        }
+
+        public static void SendPlayer(User player, BinaryWriter binaryWriter)
+        {
+
+            string strJson = JsonConvert.SerializeObject(player);
+
+            binaryWriter.Write(strJson);
+        }
+
+
+        public static User Receiver(string s)
+        {
+
+            return JsonConvert.DeserializeObject<User>(s);
+
         }
     }
 }

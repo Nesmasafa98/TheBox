@@ -86,6 +86,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(235, 450);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // groupBox10
             // 
@@ -231,6 +232,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(565, 450);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // button5
             // 
@@ -265,6 +267,7 @@
             this.groupBox1.Size = new System.Drawing.Size(549, 173);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // listBox1
             // 
@@ -275,6 +278,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(127, 114);
             this.listBox1.TabIndex = 4;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListBox1_MouseDoubleClick);
             // 
             // groupBox4
