@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,25 +16,25 @@ namespace The_Box_v0._1.Forms
     {
         MainForm mainForm;
         PlayForm playForm;
-
+        private Thread myThread;
         User owner;
         User player;
         List<User> watchers;
 
-     
+        
         
         Brush _brush;
         Color _color;
         Brush _elipsBrush;
-        Room logicalroom; 
-
+        Room logicalroom;
+        User ordinaryUser;
         public string RoomName
         {
             get;
             set;
         }
 
-        public RoomForm(Room room, MainForm mForm, PlayForm pForm)
+        public RoomForm(User myuser ,Room room, MainForm mForm, PlayForm pForm)
         {
             InitializeComponent();
             SetColorForBrush();
@@ -42,9 +43,14 @@ namespace The_Box_v0._1.Forms
             RoomName = room.id;
             LabelRoomName.Text = RoomName;
             mainForm = mForm;
+            ordinaryUser = myuser; 
             playForm = pForm;
+          //  myThread = new Thread(new ThreadStart(MyThreadMethod));
+         //   myThread.Start();
             owner = room.Player1;
         }
+  
+   
 
         //protected void DetrimineSize(int index)
         //{
@@ -151,7 +157,7 @@ namespace The_Box_v0._1.Forms
             MessageBox.Show(receiveRoom.game.row.ToString());
             //MessageBox.Show(receiveRoom.Player2.color);
 
-            OpenChildForm(new Forms.BoardForm(logicalroom._row, logicalroom._col, owner, player), sender);
+            OpenChildForm(new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this), sender);
         }
 
         public void AskforPlay(User user)
@@ -165,6 +171,7 @@ namespace The_Box_v0._1.Forms
             //this.Close();
             this.Hide();
             mainForm.Show();
+            playForm.allowTimer();
             playForm.Show();
             Invalidate();
         }

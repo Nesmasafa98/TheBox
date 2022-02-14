@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Client"
+    "\\Client",
+    "\\Client\\The Box v0.1",
+    "\\Client\\The Box v0.1\\Forms",
+    "\\server"
   ],
-  "SelectedNode": "\\Client\\The Box v0.1.sln",
+  "SelectedNode": "\\Client\\The Box v0.1\\Forms\\PlayForm.Designer.cs",
   "PreviewInSolutionExplorer": false
 }

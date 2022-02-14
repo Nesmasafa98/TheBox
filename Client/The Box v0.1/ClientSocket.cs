@@ -18,7 +18,7 @@ namespace The_Box_v0._1
     {
         static NetworkStream networkStream;
         static TcpClient Socket;
-        static int port=5001;
+        static int port=5002;
         static BinaryWriter streamWriter;
         static BinaryReader streamReader;
         static TcpClient ny;
@@ -96,7 +96,7 @@ namespace The_Box_v0._1
             String s = streamReader.ReadString();
             if (s == "showplayer")
             {
-                MessageBox.Show("ana Da5lt players ");
+               // MessageBox.Show("ana Da5lt players ");
                 //  Console.WriteLine("ana Da5lt join ");
 
                 Console.WriteLine(streamReader.ReadString());
@@ -128,7 +128,7 @@ namespace The_Box_v0._1
             String s = streamReader.ReadString();
             if (s == "showRooms")
             {
-                MessageBox.Show("ana Da5lt rooms ");
+                //MessageBox.Show("ana Da5lt rooms ");
 
                 Console.WriteLine("ana Da5lt join ");
 

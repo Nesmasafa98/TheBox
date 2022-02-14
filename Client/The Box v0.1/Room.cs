@@ -32,7 +32,7 @@ namespace The_Box_v0._1
             Player1 = owner;
 
 
-       //     Player1.color = "red";
+            //     Player1.color = "red";
             this.id = Id;
             //board = new Board(size);
             this.index = index;
@@ -42,10 +42,10 @@ namespace The_Box_v0._1
         public void PlayBtn(User player)
         {
             Player2 = player;
-            game = new Game(_row, _col, Player1, Player2);
-         
+            game = new Game(_row, _col, Player1, Player2, player1Color, player2Color);
+
             StartGame = true;
-            
+
         }
         public void DetrimineSize(int index)
         {
@@ -78,7 +78,7 @@ namespace The_Box_v0._1
         {
 
             string strJson = JsonConvert.SerializeObject(room);
-            
+
             binaryWriter.Write(strJson);
             binaryWriter.Write(JsonConvert.SerializeObject(room.Player1));
             binaryWriter.Write(JsonConvert.SerializeObject(room.Player2));
@@ -108,7 +108,7 @@ namespace The_Box_v0._1
 
         }
 
-  
+
         public static Room ReceiveRoom(BinaryReader receiver)
         {
 

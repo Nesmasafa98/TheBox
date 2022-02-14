@@ -38,3 +38,33 @@ E:\projectsWorkspace\connect4logic\server\obj\Debug\Connect 4.csproj.CoreCompile
 E:\projectsWorkspace\connect4logic\server\obj\Debug\Connect 4.csproj.CopyComplete
 E:\projectsWorkspace\connect4logic\server\obj\Debug\Connect 4.exe
 E:\projectsWorkspace\connect4logic\server\obj\Debug\Connect 4.pdb
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe.config
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\bin\Debug\Connect 4.pdb
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\obj\Debug\Connect 4.csprojAssemblyReference.cache
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CopyComplete
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\obj\Debug\Connect 4.exe
+C:\Users\Gnrl-30\Desktop\Nesma\TheBox-GuiLogic\TheBox-GuiLogic\server\obj\Debug\Connect 4.pdb
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe.config
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.pdb
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.AssemblyReference.cache
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CopyComplete
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.exe
+C:\Users\LEGION\Downloads\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.pdb
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe.config
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.exe
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Connect 4.pdb
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.csproj.CopyComplete
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.exe
+C:\Users\LENOVO\Downloads\TheBox-GuiLogic-20220213T193638Z-001-20220214T001450Z-001\TheBox-GuiLogic-20220213T193638Z-001\TheBox-GuiLogic\server\obj\Debug\Connect 4.pdb
