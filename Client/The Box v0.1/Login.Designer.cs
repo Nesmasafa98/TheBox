@@ -30,9 +30,12 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.materialTextBox22 = new MaterialSkin.Controls.MaterialTextBox2();
             this.HeadLoginPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.HeadLoginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,35 +69,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // materialTextBox22
-            // 
-            this.materialTextBox22.AnimateReadOnly = false;
-            this.materialTextBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox22.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox22.Depth = 0;
-            this.materialTextBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox22.HideSelection = true;
-            this.materialTextBox22.LeadingIcon = null;
-            this.materialTextBox22.Location = new System.Drawing.Point(40, 191);
-            this.materialTextBox22.MaxLength = 32767;
-            this.materialTextBox22.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox22.Name = "materialTextBox22";
-            this.materialTextBox22.PasswordChar = '\0';
-            this.materialTextBox22.PrefixSuffixText = null;
-            this.materialTextBox22.ReadOnly = false;
-            this.materialTextBox22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox22.SelectedText = "";
-            this.materialTextBox22.SelectionLength = 0;
-            this.materialTextBox22.SelectionStart = 0;
-            this.materialTextBox22.ShortcutsEnabled = true;
-            this.materialTextBox22.Size = new System.Drawing.Size(250, 48);
-            this.materialTextBox22.TabIndex = 3;
-            this.materialTextBox22.TabStop = false;
-            this.materialTextBox22.Text = "User Name";
-            this.materialTextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox22.TrailingIcon = global::The_Box_v0._1.Properties.Resources.identification;
-            this.materialTextBox22.UseSystemPasswordChar = false;
-            // 
             // HeadLoginPanel
             // 
             this.HeadLoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
@@ -115,9 +89,50 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
             this.label1.Location = new System.Drawing.Point(83, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 43);
+            this.label1.Size = new System.Drawing.Size(179, 43);
             this.label1.TabIndex = 0;
-            this.label1.Text = "The Box";
+            this.label1.Text = "Connect 4";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(65, 188);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 25);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "User Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.Teal;
+            this.textBox1.Location = new System.Drawing.Point(63, 215);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 20);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(63, 236);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(160, 19);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "This username already exists";
+            this.label3.Visible = false;
+            // 
+            // label4
+            // 
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(65, 258);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 19);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Username is required";
+            this.label4.Visible = false;
             // 
             // Login
             // 
@@ -125,17 +140,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(315, 438);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.materialTextBox22);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.HeadLoginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.HeadLoginPanel.ResumeLayout(false);
             this.HeadLoginPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,9 +163,12 @@
 
         private System.Windows.Forms.Panel HeadLoginPanel;
         private System.Windows.Forms.Button button1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox22;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

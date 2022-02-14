@@ -45,20 +45,40 @@ namespace The_Box_v0._1.Forms
         int constant;
         int index;
 
-        public BoardForm(int  row , int col, User user1, User user2)
+        PlayForm playForm;
+        RoomForm roomForm;
+
+        public BoardForm(User Creator,Game game, PlayForm pForm, RoomForm rForm)
         {
+
             InitializeComponent();
             SetColorForBrush();
             InitializeAxisValues();
-            _row = row; _col = col;
+            this.game = game;
+            this.game.creatorUser = Creator;
+            
+            MessageBox.Show("Ya samy " + true);
+            if (Creator.username == this.game.user1.username)
+            {
+
+                MessageBox.Show("Ya samy " + true);
+            }
+            _row = game.row; _col = game.col;
             pieceColor = Color.Red;
-            game = new Game(_row, _col, user1, user2);
-            pieces = new List<Game>();
+        //    game = new Game(_row, _col, user1, user2);
+          //  pieces = new List<Game>();
+            playForm = pForm;
+            roomForm = rForm;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
             DrawBoard();
             DrawElipses();
+            drawallpieces();
+           // Console.Write("samy");
+            
+            
+         //   MessageBox.Show("ana Hena ya samy");
         }
         protected override void OnResize(EventArgs e)
         {
@@ -122,27 +142,54 @@ namespace The_Box_v0._1.Forms
         private void BoardForm_MouseClick(object sender, MouseEventArgs e)
         {
             Color pcolor = new Color();
+            
             constant = this.Width / _col;
             index = e.X / constant;
            // Game piece = new Game(e.X, e.Y, pcolor);
             
             if(game.full[index]>=0)
             {
+              drawallpieces();
                 game.drawGamePiece(index, graphics, this);
                 game.playerTurn();
             }
 
             if (game.WinningPlayer() == Color.Red)
             {
-                MessageBox.Show("Red Player Wins", "Red Beat Black", MessageBoxButtons.OK);
-                game.Reset();
-                Invalidate();
+                MessageBox.Show("Red Player Wins,  Beats blue");
+                MessageBox.Show("Hard Luck blue");
+              //  ChooseToResetOrNot();
             }
             else if (game.WinningPlayer() == Color.Blue)
             {
-                MessageBox.Show("Blue Player Wins", "Black Beat Red", MessageBoxButtons.OK);
-                game.Reset();
-                Invalidate();
+                MessageBox.Show("Blue Player Wins", "Blue Beat Red");
+                MessageBox.Show("Hard Luck red");
+                //ChooseToResetOrNot();
+            }
+        }
+        public void drawallpieces()
+        {
+
+            for (int i = 0; i < game.col; i++)
+            {
+                for (int j = 0; j < game.row; j++)
+                {
+                    if (game.boardState[i, j] == Game.state.player1)
+                    {
+                        //DrawElipse(i, j, game.pieceColor1Plater1);
+                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
+
+                    }
+                    if ((game.boardState[i, j] == Game.state.player2))
+                    {
+                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
+
+                        //   DrawElipse(i, j, game.pieceColor1Plater2);
+                    }
+                    else
+
+                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
+                }
             }
         }
 
@@ -155,5 +202,38 @@ namespace The_Box_v0._1.Forms
         {
 
         }
+        //public void choosetoresetornot()
+        //{
+        //    dialogresult resultp1 = messagebox.show("do you want to play again?", "repeat game", messageboxbuttons.yesno, messageboxicon.question);
+        //    dialogresult resultp2 = messagebox.show("do you want to play again?", "repeat game", messageboxbuttons.yesno, messageboxicon.question);
+        //    if (resultp1 == dialogresult.yes && resultp2 == dialogresult.yes)
+        //    {
+        //        game.reset();
+        //        invalidate();
+        //    }
+        //    else if (resultp1 == dialogresult.no && resultp2 == dialogresult.no)
+        //    {
+        //        for (int i = 0; i < playform.roomforms.count(); i++)
+        //        {
+        //            if (roomform.roomname == playform.roomforms[i].roomname)
+        //            {
+        //                playform.listbox1.items.remove(playform.roomforms[i].roomname);
+        //                playform.roomforms.remove(playform.roomforms[i]);
+        //            }
+        //        }
+        //        this.hide();
+        //        playform.mainform.show();
+        //        playform.show();
+        //        invalidate();
+        //    }
+        //    else if (resultp1 == dialogresult.yes && resultp2 == dialogresult.no)
+        //    {
+
+        //    }
+        //    else if (resultp1 == dialogresult.no && resultp2 == dialogresult.yes)
+        //    {
+
+        //    }
+        //}
     }
 }

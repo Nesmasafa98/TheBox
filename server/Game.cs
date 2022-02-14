@@ -14,18 +14,20 @@ namespace Connect_4
     {
         public bool player1;
         public bool player2;
-        private Color pieceColor;
-
+        public Color pieceColor1Plater1;
+        public Color pieceColor1Plater2;
+        public User creatorUser;
         public enum state { empty = 0, player1 = 1, player2 = 2 };
         public state[,] boardState;
         public List<int> full = new List<int>();
 
         //int X;        
         public int row;
-       public  int col;
-        User user1, user2;
+        public int col;
+        public User user1, user2;
 
-        public Game(int r, int c, User u1, User u2)
+
+        public Game(int r, int c, User u1, User u2, string player1Color, string player2Color)
         {
             player1 = true;
             player2 = false;
@@ -33,7 +35,8 @@ namespace Connect_4
             user2 = u2;
             row = r;
             col = c;
-            pieceColor = Color.Red;
+            pieceColor1Plater1 = Color.Red;
+            pieceColor1Plater2 = Color.Green;
             boardState = new state[col, row];
             for (int i = 0; i < col; i++)
             {
@@ -48,27 +51,6 @@ namespace Connect_4
             }
         }
 
-        public Game(int x, int y, Color pcolor)
-        {
-            //state STATE = new state();
-            if (pcolor == Color.Red)
-            {
-                player1 = true;
-                player2 = false;
-                pieceColor = Color.Red;
-                //STATE = state.player1;
-            }
-            else if (pcolor == Color.Blue)
-            {
-                player2 = true;
-                player1 = false;
-                pieceColor = Color.Blue;
-            }
-
-            //boardState[x / constant, y / constant] = STATE;
-            //X = x / constant;
-
-        }
 
         //Method that changes the players turn and game piece color
         public void playerTurn()
@@ -77,25 +59,25 @@ namespace Connect_4
             player2 = !player2;
             if (player1)
             {
-                pieceColor = Color.Red;
+                //  pieceColor = Color.Red;
             }
             else
             {
-                pieceColor = Color.Blue;
+                //    pieceColor = Color.Blue;
             }
         }
 
         //Method to draw the individual game pieces
         // Draws red piece if player 1 and black piece if player 2
 
-       
-        
+
+
 
         public void Reset()
         {
             player1 = true;
             player2 = false;
-            pieceColor = Color.Red;
+            //  pieceColor = Color.Red;
             for (int i = 0; i < col; i++)
             {
                 full[i] = row - 1;
@@ -107,6 +89,24 @@ namespace Connect_4
                     boardState[i, j] = state.empty;
                 }
             }
+        }
+
+
+
+
+
+        public static void sendState(state[,] state, BinaryWriter binaryWriter)
+        {
+            string strJson = JsonConvert.SerializeObject(state);
+
+            binaryWriter.Write(strJson);
+
+        }
+        public static state[,] ReceiveState(BinaryReader br)
+        {
+
+            return JsonConvert.DeserializeObject<state[,]>(br.ReadString());
+
         }
         public static void SendGame(Game game, BinaryWriter binaryWriter)
         {
@@ -123,6 +123,7 @@ namespace Connect_4
             return JsonConvert.DeserializeObject<Game>(br.ReadString());
 
         }
+
 
         public Color WinningPlayer()
         {
