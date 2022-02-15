@@ -35,7 +35,7 @@ namespace The_Box_v0._1
             random = new Random();
             CloseFormbtn.Visible = false;
             player = newUser;
-            textBox1.Text = newUser.UserName;
+            Player_Name.Text = newUser.UserName;
         }
 
 

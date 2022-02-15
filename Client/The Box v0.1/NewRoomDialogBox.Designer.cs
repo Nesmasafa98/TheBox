@@ -33,12 +33,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.materialTextBox21 = new MaterialSkin.Controls.MaterialTextBox2();
             this.label2 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.labelError = new System.Windows.Forms.Label();
+            this.Room_Name = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,9 +60,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.label3.Location = new System.Drawing.Point(124, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 59);
+            this.label3.Size = new System.Drawing.Size(249, 59);
             this.label3.TabIndex = 0;
-            this.label3.Text = "The Box";
+            this.label3.Text = "Connect 4";
             // 
             // button1
             // 
@@ -102,36 +102,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Room Name :";
             // 
-            // materialTextBox21
-            // 
-            this.materialTextBox21.AnimateReadOnly = false;
-            this.materialTextBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.materialTextBox21.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.materialTextBox21.Depth = 0;
-            this.materialTextBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBox21.HideSelection = true;
-            this.materialTextBox21.LeadingIcon = null;
-            this.materialTextBox21.Location = new System.Drawing.Point(143, 110);
-            this.materialTextBox21.MaxLength = 32767;
-            this.materialTextBox21.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBox21.Name = "materialTextBox21";
-            this.materialTextBox21.PasswordChar = '\0';
-            this.materialTextBox21.PrefixSuffixText = null;
-            this.materialTextBox21.ReadOnly = false;
-            this.materialTextBox21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.materialTextBox21.SelectedText = "";
-            this.materialTextBox21.SelectionLength = 0;
-            this.materialTextBox21.SelectionStart = 0;
-            this.materialTextBox21.ShortcutsEnabled = true;
-            this.materialTextBox21.Size = new System.Drawing.Size(250, 48);
-            this.materialTextBox21.TabIndex = 6;
-            this.materialTextBox21.TabStop = false;
-            this.materialTextBox21.Text = "Room Name";
-            this.materialTextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.materialTextBox21.TrailingIcon = null;
-            this.materialTextBox21.UseSystemPasswordChar = false;
-            this.materialTextBox21.TextChanged += new System.EventHandler(this.MaterialTextBox21_TextChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -147,7 +117,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(197, 186);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(48, 17);
+            this.radioButton1.Size = new System.Drawing.Size(49, 17);
             this.radioButton1.TabIndex = 8;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "8 x 7";
@@ -158,7 +128,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(197, 210);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 17);
+            this.radioButton2.Size = new System.Drawing.Size(49, 17);
             this.radioButton2.TabIndex = 9;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "9 x 7";
@@ -169,7 +139,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(197, 234);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(54, 17);
+            this.radioButton3.Size = new System.Drawing.Size(55, 17);
             this.radioButton3.TabIndex = 10;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "10 x 7";
@@ -186,25 +156,36 @@
             this.labelError.Text = "label";
             this.labelError.Visible = false;
             // 
+            // Room_Name
+            // 
+            this.Room_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.Room_Name.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.Room_Name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
+            this.Room_Name.Location = new System.Drawing.Point(143, 114);
+            this.Room_Name.Multiline = true;
+            this.Room_Name.Name = "Room_Name";
+            this.Room_Name.Size = new System.Drawing.Size(150, 40);
+            this.Room_Name.TabIndex = 11;
+            // 
             // Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(483, 362);
+            this.Controls.Add(this.Room_Name);
             this.Controls.Add(this.labelError);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.materialTextBox21);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Name = "Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewRoomDialogBox";
+            this.Text = "New Room";
             this.Load += new System.EventHandler(this.Dialog_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -219,12 +200,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private MaterialSkin.Controls.MaterialTextBox2 materialTextBox21;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.TextBox Room_Name;
     }
 }

@@ -67,10 +67,10 @@ namespace The_Box_v0._1.Forms
             InitializeComponent();
             SetColorForBrush();
             InitializeAxisValues();
-            rForm.Player1Username.Text = game.user1.username;
-            rForm.Player2Username.Text = game.user2.username;
-            rForm.Player1Color.Text = game.pieceColor1Plater1.ToString();
-            rForm.Player2Color.Text = game.pieceColor1Plater2.ToString();
+            rForm.Player1_Name.Text = game.user1.username;
+            rForm.Player2_Name.Text = game.user2.username;
+            rForm.Player1_Color.Text = game.pieceColor1Plater1.ToString();
+            rForm.Player2_Color.Text = game.pieceColor1Plater2.ToString();
             
            
             this.game = game;

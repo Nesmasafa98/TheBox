@@ -1,6 +1,6 @@
 ﻿namespace The_Box_v0._1.Forms
 {
-    partial class RoomForm
+    partial class WatchersForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,65 +29,51 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.Player1_Color = new System.Windows.Forms.Label();
             this.Player2_Color = new System.Windows.Forms.Label();
             this.Player2_Name = new System.Windows.Forms.Label();
+            this.Player1_Color = new System.Windows.Forms.Label();
             this.Player1_Name = new System.Windows.Forms.Label();
-            this.Player2_Color_label = new System.Windows.Forms.Label();
-            this.Player1_Color_label = new System.Windows.Forms.Label();
-            this.Player2_Name_label = new System.Windows.Forms.Label();
-            this.Player1_Name_label = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.LabelRoomName = new System.Windows.Forms.Label();
             this.CloseAppbtn = new System.Windows.Forms.Button();
             this.Minimize = new System.Windows.Forms.Button();
             this.MaximizeAppbtn = new System.Windows.Forms.Button();
-            this.Player2 = new System.Windows.Forms.PictureBox();
-            this.Player1 = new System.Windows.Forms.PictureBox();
-            this.PlayBtn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.QuitBtn = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BoardPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ExitBtn = new System.Windows.Forms.Button();
+            this.QuitBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Player1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.Player1_Color);
             this.panel1.Controls.Add(this.Player2_Color);
             this.panel1.Controls.Add(this.Player2_Name);
+            this.panel1.Controls.Add(this.Player1_Color);
             this.panel1.Controls.Add(this.Player1_Name);
-            this.panel1.Controls.Add(this.Player2_Color_label);
-            this.panel1.Controls.Add(this.Player1_Color_label);
-            this.panel1.Controls.Add(this.Player2_Name_label);
-            this.panel1.Controls.Add(this.Player1_Name_label);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.LabelRoomName);
             this.panel1.Controls.Add(this.CloseAppbtn);
             this.panel1.Controls.Add(this.Minimize);
             this.panel1.Controls.Add(this.MaximizeAppbtn);
-            this.panel1.Controls.Add(this.Player2);
-            this.panel1.Controls.Add(this.Player1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1114, 100);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // Player1_Color
-            // 
-            this.Player1_Color.AutoSize = true;
-            this.Player1_Color.Font = new System.Drawing.Font("Trebuchet MS", 10F);
-            this.Player1_Color.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.Player1_Color.Location = new System.Drawing.Point(187, 59);
-            this.Player1_Color.Name = "Player1_Color";
-            this.Player1_Color.Size = new System.Drawing.Size(89, 18);
-            this.Player1_Color.TabIndex = 19;
-            this.Player1_Color.Text = "Player1 Color";
+            this.panel1.TabIndex = 1;
             // 
             // Player2_Color
             // 
@@ -111,6 +97,17 @@
             this.Player2_Name.TabIndex = 17;
             this.Player2_Name.Text = "Player2 Name";
             // 
+            // Player1_Color
+            // 
+            this.Player1_Color.AutoSize = true;
+            this.Player1_Color.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.Player1_Color.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.Player1_Color.Location = new System.Drawing.Point(187, 59);
+            this.Player1_Color.Name = "Player1_Color";
+            this.Player1_Color.Size = new System.Drawing.Size(89, 18);
+            this.Player1_Color.TabIndex = 16;
+            this.Player1_Color.Text = "Player1 Color";
+            // 
             // Player1_Name
             // 
             this.Player1_Name.AutoSize = true;
@@ -119,52 +116,53 @@
             this.Player1_Name.Location = new System.Drawing.Point(187, 32);
             this.Player1_Name.Name = "Player1_Name";
             this.Player1_Name.Size = new System.Drawing.Size(92, 18);
-            this.Player1_Name.TabIndex = 16;
+            this.Player1_Name.TabIndex = 15;
             this.Player1_Name.Text = "Player1 Name";
             // 
-            // Player2_Color_label
+            // label3
             // 
-            this.Player2_Color_label.AutoSize = true;
-            this.Player2_Color_label.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.Player2_Color_label.ForeColor = System.Drawing.Color.White;
-            this.Player2_Color_label.Location = new System.Drawing.Point(779, 55);
-            this.Player2_Color_label.Name = "Player2_Color_label";
-            this.Player2_Color_label.Size = new System.Drawing.Size(59, 22);
-            this.Player2_Color_label.TabIndex = 15;
-            this.Player2_Color_label.Text = "Color :";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(779, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 22);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Color :";
             // 
-            // Player1_Color_label
+            // label4
             // 
-            this.Player1_Color_label.AutoSize = true;
-            this.Player1_Color_label.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.Player1_Color_label.ForeColor = System.Drawing.Color.White;
-            this.Player1_Color_label.Location = new System.Drawing.Point(108, 55);
-            this.Player1_Color_label.Name = "Player1_Color_label";
-            this.Player1_Color_label.Size = new System.Drawing.Size(59, 22);
-            this.Player1_Color_label.TabIndex = 14;
-            this.Player1_Color_label.Text = "Color :";
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(779, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 22);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Player2 :";
             // 
-            // Player2_Name_label
+            // label2
             // 
-            this.Player2_Name_label.AutoSize = true;
-            this.Player2_Name_label.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.Player2_Name_label.ForeColor = System.Drawing.Color.White;
-            this.Player2_Name_label.Location = new System.Drawing.Point(779, 26);
-            this.Player2_Name_label.Name = "Player2_Name_label";
-            this.Player2_Name_label.Size = new System.Drawing.Size(78, 22);
-            this.Player2_Name_label.TabIndex = 13;
-            this.Player2_Name_label.Text = "Player 2 :";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(108, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 22);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Color :";
             // 
-            // Player1_Name_label
+            // label1
             // 
-            this.Player1_Name_label.AutoSize = true;
-            this.Player1_Name_label.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.Player1_Name_label.ForeColor = System.Drawing.Color.White;
-            this.Player1_Name_label.Location = new System.Drawing.Point(108, 26);
-            this.Player1_Name_label.Name = "Player1_Name_label";
-            this.Player1_Name_label.Size = new System.Drawing.Size(73, 22);
-            this.Player1_Name_label.TabIndex = 12;
-            this.Player1_Name_label.Text = "Player1 :";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(108, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 22);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Player1 :";
             // 
             // LabelRoomName
             // 
@@ -217,67 +215,59 @@
             this.MaximizeAppbtn.UseVisualStyleBackColor = true;
             this.MaximizeAppbtn.Click += new System.EventHandler(this.MaximizeAppbtn_Click);
             // 
-            // Player2
+            // pictureBox2
             // 
-            this.Player2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Player2.Image = global::The_Box_v0._1.Properties.Resources.american_football_player__1_;
-            this.Player2.Location = new System.Drawing.Point(684, 13);
-            this.Player2.Name = "Player2";
-            this.Player2.Size = new System.Drawing.Size(64, 64);
-            this.Player2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Player2.TabIndex = 3;
-            this.Player2.TabStop = false;
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox2.Image = global::The_Box_v0._1.Properties.Resources.american_football_player__1_;
+            this.pictureBox2.Location = new System.Drawing.Point(684, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 3;
+            this.pictureBox2.TabStop = false;
             // 
-            // Player1
+            // pictureBox1
             // 
-            this.Player1.Image = global::The_Box_v0._1.Properties.Resources.american_football_player__1_;
-            this.Player1.Location = new System.Drawing.Point(30, 13);
-            this.Player1.Name = "Player1";
-            this.Player1.Size = new System.Drawing.Size(64, 64);
-            this.Player1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Player1.TabIndex = 0;
-            this.Player1.TabStop = false;
+            this.pictureBox1.Image = global::The_Box_v0._1.Properties.Resources.american_football_player__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(30, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
-            // PlayBtn
+            // BoardPanel
             // 
-            this.PlayBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.PlayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PlayBtn.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.PlayBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
-            this.PlayBtn.Location = new System.Drawing.Point(30, 176);
-            this.PlayBtn.Name = "PlayBtn";
-            this.PlayBtn.Size = new System.Drawing.Size(119, 37);
-            this.PlayBtn.TabIndex = 9;
-            this.PlayBtn.Text = "Play";
-            this.PlayBtn.UseVisualStyleBackColor = false;
-            this.PlayBtn.Click += new System.EventHandler(this.PlayBtn_Click);
+            this.BoardPanel.Location = new System.Drawing.Point(197, 100);
+            this.BoardPanel.Name = "BoardPanel";
+            this.BoardPanel.Size = new System.Drawing.Size(916, 559);
+            this.BoardPanel.TabIndex = 3;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.ExitBtn);
             this.panel2.Controls.Add(this.QuitBtn);
-            this.panel2.Controls.Add(this.PlayBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 100);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 562);
-            this.panel2.TabIndex = 1;
+            this.panel2.TabIndex = 4;
             // 
-            // button1
+            // ExitBtn
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
-            this.button1.Location = new System.Drawing.Point(30, 308);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 33);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExitBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
+            this.ExitBtn.Location = new System.Drawing.Point(30, 308);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(119, 33);
+            this.ExitBtn.TabIndex = 4;
+            this.ExitBtn.Text = "Exit";
+            this.ExitBtn.UseVisualStyleBackColor = false;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // QuitBtn
             // 
@@ -295,32 +285,23 @@
             this.QuitBtn.UseVisualStyleBackColor = false;
             this.QuitBtn.Click += new System.EventHandler(this.QuitBtn_Click);
             // 
-            // BoardPanel
-            // 
-            this.BoardPanel.Location = new System.Drawing.Point(197, 100);
-            this.BoardPanel.Name = "BoardPanel";
-            this.BoardPanel.Size = new System.Drawing.Size(917, 562);
-            this.BoardPanel.TabIndex = 2;
-            this.BoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoardPanel_Paint);
-            // 
-            // RoomForm
+            // WatchersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(1114, 662);
-            this.Controls.Add(this.BoardPanel);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.BoardPanel);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "RoomForm";
+            this.Name = "WatchersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BoardForm";
-            this.Resize += new System.EventHandler(this.BoardForm_Resize);
+            this.Text = "WatchersForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Player2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Player1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -329,24 +310,23 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox Player1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button QuitBtn;
-        private System.Windows.Forms.PictureBox Player2;
+        private System.Windows.Forms.Label Player2_Color;
+        private System.Windows.Forms.Label Player2_Name;
+        private System.Windows.Forms.Label Player1_Color;
+        private System.Windows.Forms.Label Player1_Name;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LabelRoomName;
         private System.Windows.Forms.Button CloseAppbtn;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button MaximizeAppbtn;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel BoardPanel;
-        public System.Windows.Forms.Button PlayBtn;
-        private System.Windows.Forms.Label LabelRoomName;
-        private System.Windows.Forms.Label Player2_Color_label;
-        private System.Windows.Forms.Label Player1_Color_label;
-        private System.Windows.Forms.Label Player2_Name_label;
-        private System.Windows.Forms.Label Player1_Name_label;
-        public System.Windows.Forms.Label Player1_Name;
-        public System.Windows.Forms.Label Player1_Color;
-        public System.Windows.Forms.Label Player2_Color;
-        public System.Windows.Forms.Label Player2_Name;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button QuitBtn;
     }
 }

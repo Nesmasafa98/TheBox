@@ -51,7 +51,7 @@ namespace The_Box_v0._1
         private void Button1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            roomName = materialTextBox21.Text;
+            roomName = Room_Name.Text;
             
             if (radioButton1.Checked)
             {
@@ -80,7 +80,7 @@ namespace The_Box_v0._1
             int flag = 1;
             for (int i = 0; i < roomForms.Count && flag ==1; i++)
             {
-                if (materialTextBox21.Text == roomForms[i].id)
+                if (Room_Name.Text == roomForms[i].id)
                 {
                     labelError.Visible = true;
                     labelError.Text = "Invaled";
@@ -91,7 +91,7 @@ namespace The_Box_v0._1
                 {
                     labelError.Visible = false;
                     labelError.Text = "";
-                    roomName = materialTextBox21.Text;
+                    roomName = Room_Name.Text;
                     button1.Enabled = true;
                 }
             }

@@ -43,7 +43,7 @@ namespace The_Box_v0._1
         
         private void button1_Click(object sender, EventArgs e)
         {   
-            user1 = new User(textBox1.Text);
+            user1 = new User(User_Name.Text);
             //allUsers.Add(user1);
             ClientSocket.SendRequest("log");
             ClientSocket.ResponseLog(user1);
@@ -63,27 +63,27 @@ namespace The_Box_v0._1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             bool b = true;
-            if(textBox1.Text.Length == 0)
+            if(User_Name.Text.Length == 0)
             {
                 label4.Visible = true;
-                button1.Enabled = false;
+                Log_In_Button.Enabled = false;
             }
-            else if(textBox1.Text.Length > 0)
+            else if(User_Name.Text.Length > 0)
             {
                 label4.Visible = false;
-                button1.Enabled = true;
+                Log_In_Button.Enabled = true;
                 for (int i = 0; i < allUsers.Count() && b; i++)
                 {
-                    if (textBox1.Text == allUsers[i].UserName)
+                    if (User_Name.Text == allUsers[i].UserName)
                     {
                         label3.Visible = true;
-                        button1.Enabled = false;
+                        Log_In_Button.Enabled = false;
                         b = false;
                     }
                     else
                     {
                         label3.Visible = false;
-                        button1.Enabled = true;
+                        Log_In_Button.Enabled = true;
                         b = true;
                     }
                 }               

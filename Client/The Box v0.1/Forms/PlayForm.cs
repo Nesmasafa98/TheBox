@@ -82,11 +82,11 @@ namespace The_Box_v0._1.Forms
                 //this.Hide();
                 mainForm.Hide();
             }
-            listBox1.Items.Clear();
+            Available_Rooms_listBox.Items.Clear();
 
             for (int i = 0; i < Room.rooms.Count; i++)
             {
-                listBox1.Items.Add(Room.rooms[i].id);
+                Available_Rooms_listBox.Items.Add(Room.rooms[i].id);
             }
 
         }
@@ -102,7 +102,7 @@ namespace The_Box_v0._1.Forms
         private void ListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // add try and catch ti check it there are string 
-            RoomName = listBox1.SelectedItem.ToString();
+            RoomName = Available_Rooms_listBox.SelectedItem.ToString();
 
            
                     //MessageBox.Show("ana da5lt hena ya saamy");
@@ -133,10 +133,10 @@ namespace The_Box_v0._1.Forms
                 ClientSocket.SendRequest("showRooms");
                 ClientSocket.ResponseShowRooms(Room.rooms);
 
-                listBox1.Items.Clear();
+                Available_Rooms_listBox.Items.Clear();
                 for (int i = 0; i < Room.rooms.Count; i++)
                 {
-                    listBox1.Items.Add(Room.rooms[i].id);
+                    Available_Rooms_listBox.Items.Add(Room.rooms[i].id);
                 }
             
         }
@@ -147,11 +147,11 @@ namespace The_Box_v0._1.Forms
             ClientSocket.SendRequest("showplayer");
             ClientSocket.ResponseShowplayer(avaibleplayerS);
 
-            listBox3.Items.Clear();
+            Online_Players_listBox.Items.Clear();
             for (int i = 0; i < avaibleplayerS.Count; i++)
             {
                 // MessageBox.Show(avaibleplayerS[i].username);
-                listBox3.Items.Add(avaibleplayerS[i].username);
+                Online_Players_listBox.Items.Add(avaibleplayerS[i].username);
             }
 
         }

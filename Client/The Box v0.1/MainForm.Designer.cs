@@ -38,10 +38,9 @@
             this.LeftPanel = new System.Windows.Forms.Panel();
             this.SignoutBtn = new System.Windows.Forms.Button();
             this.AboutBtn = new System.Windows.Forms.Button();
-            this.SettingBtn = new System.Windows.Forms.Button();
             this.PlayBtn = new System.Windows.Forms.Button();
             this.WelcPanel = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Player_Name = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.HdrPanel.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -127,9 +126,9 @@
             this.boxLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
             this.boxLabel.Location = new System.Drawing.Point(346, 9);
             this.boxLabel.Name = "boxLabel";
-            this.boxLabel.Size = new System.Drawing.Size(204, 59);
+            this.boxLabel.Size = new System.Drawing.Size(249, 59);
             this.boxLabel.TabIndex = 1;
-            this.boxLabel.Text = "The Box";
+            this.boxLabel.Text = "Connect 4";
             // 
             // panel1
             // 
@@ -148,7 +147,6 @@
             this.LeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
             this.LeftPanel.Controls.Add(this.SignoutBtn);
             this.LeftPanel.Controls.Add(this.AboutBtn);
-            this.LeftPanel.Controls.Add(this.SettingBtn);
             this.LeftPanel.Controls.Add(this.PlayBtn);
             this.LeftPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
@@ -186,7 +184,7 @@
             this.AboutBtn.ForeColor = System.Drawing.Color.White;
             this.AboutBtn.Image = global::The_Box_v0._1.Properties.Resources.man;
             this.AboutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.AboutBtn.Location = new System.Drawing.Point(0, 120);
+            this.AboutBtn.Location = new System.Drawing.Point(0, 60);
             this.AboutBtn.Name = "AboutBtn";
             this.AboutBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
             this.AboutBtn.Size = new System.Drawing.Size(190, 60);
@@ -196,26 +194,6 @@
             this.AboutBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.AboutBtn.UseVisualStyleBackColor = true;
             this.AboutBtn.Click += new System.EventHandler(this.AboutBtn_Click);
-            // 
-            // SettingBtn
-            // 
-            this.SettingBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SettingBtn.FlatAppearance.BorderSize = 0;
-            this.SettingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingBtn.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingBtn.ForeColor = System.Drawing.Color.White;
-            this.SettingBtn.Image = global::The_Box_v0._1.Properties.Resources.settings__2_;
-            this.SettingBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingBtn.Location = new System.Drawing.Point(0, 60);
-            this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.SettingBtn.Size = new System.Drawing.Size(190, 60);
-            this.SettingBtn.TabIndex = 1;
-            this.SettingBtn.Text = "  Account Settings";
-            this.SettingBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SettingBtn.UseVisualStyleBackColor = true;
-            this.SettingBtn.Click += new System.EventHandler(this.SettingBtn_Click);
             // 
             // PlayBtn
             // 
@@ -240,7 +218,7 @@
             // WelcPanel
             // 
             this.WelcPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.WelcPanel.Controls.Add(this.textBox1);
+            this.WelcPanel.Controls.Add(this.Player_Name);
             this.WelcPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.WelcPanel.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.WelcPanel.Location = new System.Drawing.Point(0, 0);
@@ -248,13 +226,15 @@
             this.WelcPanel.Size = new System.Drawing.Size(190, 78);
             this.WelcPanel.TabIndex = 0;
             // 
-            // textBox1
+            // Player_Name
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 29);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 0;
+            this.Player_Name.AutoSize = true;
+            this.Player_Name.Font = new System.Drawing.Font("Trebuchet MS", 20F);
+            this.Player_Name.Location = new System.Drawing.Point(12, 22);
+            this.Player_Name.Name = "Player_Name";
+            this.Player_Name.Size = new System.Drawing.Size(167, 35);
+            this.Player_Name.TabIndex = 1;
+            this.Player_Name.Text = "Player Name";
             // 
             // MainPanel
             // 
@@ -301,12 +281,11 @@
         private System.Windows.Forms.Button PlayBtn;
         private System.Windows.Forms.Button SignoutBtn;
         private System.Windows.Forms.Button AboutBtn;
-        private System.Windows.Forms.Button SettingBtn;
         private System.Windows.Forms.Label boxLabel;
         private System.Windows.Forms.Button CloseFormbtn;
         private System.Windows.Forms.Button MaximizeAppbtn;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button CloseAppbtn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label Player_Name;
     }
 }
