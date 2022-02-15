@@ -25,7 +25,7 @@ namespace The_Box_v0._1
         //int X;        
         public int row;
         public int col;
-       public  User user1, user2;
+        public User user1, user2;
 
 
         public Game(int r, int c, User u1, User u2, string player1Color, string player2Color)
@@ -52,20 +52,13 @@ namespace The_Box_v0._1
             }
         }
 
-  
+
         //Method that changes the players turn and game piece color
         public void playerTurn()
         {
             player1 = !player1;
             player2 = !player2;
-            if (player1)
-            {
-                //  pieceColor = Color.Red;
-            }
-            else
-            {
-                //    pieceColor = Color.Blue;
-            }
+
         }
 
         //Method to draw the individual game pieces
@@ -124,24 +117,27 @@ namespace The_Box_v0._1
 
         }
 
-        public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm)
+        public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm,Color type,state newState)
         {
             //if (full[index] >= 0)
             //{
-            if (player1 && boardState[index, full[index]] == state.empty)
+            if (boardState[index, full[index]] == state.empty)
             {
-                boardState[index, full[index]] = state.player1;
-                boardForm.DrawElipse(full[index], index, pieceColor1Plater1);
+                boardState[index, full[index]] = newState;
+                boardForm.DrawElipse(full[index], index, type);
                 full[index]--;
                 //playerTurn();
+
+              
             }
-            else if (player2 && boardState[index, full[index]] == state.empty)
-            {
-                boardState[index, full[index]] = state.player2;
-                boardForm.DrawElipse(full[index], index, pieceColor1Plater2);
-                full[index]--;
-                //playerTurn();
-            }
+           
+            //else if (player2 && boardState[index, full[index]] == state.empty)
+            //{
+            //    boardState[index, full[index]] = state.player2;
+            //    boardForm.DrawElipse(full[index], index, pieceColor1Plater2);
+            //    full[index]--;
+            //    playerTurn();
+            //}
             //}
         }
         public Color WinningPlayer()

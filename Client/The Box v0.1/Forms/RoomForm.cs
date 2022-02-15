@@ -48,6 +48,7 @@ namespace The_Box_v0._1.Forms
           //  myThread = new Thread(new ThreadStart(MyThreadMethod));
          //   myThread.Start();
             owner = room.Player1;
+          
         }
   
    
@@ -102,7 +103,7 @@ namespace The_Box_v0._1.Forms
             
         }
         
-        private void OpenChildForm(Form childForm, object btnSender)
+        public void OpenChildForm(Form childForm, object btnSender)
         {
             
             childForm.TopLevel = false;
@@ -149,12 +150,7 @@ namespace The_Box_v0._1.Forms
         {
             ClientSocket.SendRequest("play");
             Room receiveRoom= ClientSocket.Responseplay(logicalroom.id);
-            MessageBox.Show(receiveRoom.id);
-            MessageBox.Show(receiveRoom.Player1.username);
-            MessageBox.Show(receiveRoom.Player2.username);
-            MessageBox.Show(receiveRoom.StartGame.ToString());
-
-            MessageBox.Show(receiveRoom.game.row.ToString());
+            User.CurrentRoom = receiveRoom;
             //MessageBox.Show(receiveRoom.Player2.color);
 
             OpenChildForm(new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this), sender);
@@ -180,5 +176,17 @@ namespace The_Box_v0._1.Forms
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Player1Username_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
+

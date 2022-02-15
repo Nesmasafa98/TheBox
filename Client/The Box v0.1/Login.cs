@@ -25,6 +25,7 @@ namespace The_Box_v0._1
         {
             InitializeComponent();
             allUsers = new List<User>();
+           Room.rooms  = new List<Room>();
         }
 
         // Make Form Movable

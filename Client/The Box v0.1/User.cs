@@ -13,6 +13,7 @@ namespace The_Box_v0._1
         public string username;
         public int Score;
         public bool IsRoomOwner;
+        public static Room CurrentRoom;
         public bool IsPlayer;
         public string color;
 

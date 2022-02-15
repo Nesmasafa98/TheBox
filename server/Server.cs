@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using System.Collections;
+using static Connect_4.Game;
 
 namespace Connect_4
 {
@@ -18,9 +19,13 @@ namespace Connect_4
         TcpListener server;
         //List<Room> avaibleRoom = new List<Room>();
         ArrayList players = new ArrayList();
+       // static Game laststate;
 
 
-
+        static int row;
+        static int col;
+       static Boolean flag = false;
+        static Game temp;
         public Server(int PortNum, int numOFClient)
         {
             server = new TcpListener(IPAddress.Parse("127.0.0.1"), PortNum);
@@ -70,11 +75,11 @@ namespace Connect_4
                         streamWriter.Flush();
                         Console.WriteLine("helooooo");
 
-                        if (theString=="log")
+                        if (theString == "log")
                         {
                             streamWriter.Write("log");
                             User.players.Add((User.Receiver(streamReader)));
-                                
+
 
                         }
 
@@ -97,8 +102,60 @@ namespace Connect_4
 
 
                         }
-                        if (theString == "showRooms")
+
+                        if (theString == "ConfigPlayer1")
                         {
+                            streamWriter.Write("ConfigPlayer1");
+                            string id = streamReader.ReadString();
+                            Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
+                            roomState.game = Game.Receiver(streamReader);
+                            Console.WriteLine("Change Turn");
+                            //streamReader.ReadString();
+                            roomState.game.playerTurn();
+                            while (true)
+                            {
+
+                                while (roomState.game.player1 == false) ;
+                                Console.WriteLine("Send player 1");
+
+                                Game.SendGame(roomState.game, streamWriter);
+                                Console.WriteLine("Send recive  1");
+                                roomState.game = Game.Receiver(streamReader);
+
+                                roomState.game.playerTurn();
+
+                            }
+                        }
+                        if (theString == "ConfigPlayer2")
+                        {
+                            streamWriter.Write("ConfigPlayer2");
+
+                            string id = streamReader.ReadString();
+                            Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
+
+                            while (true)
+                            {
+                                while (roomState.game.player2 == false) ;
+                                Console.WriteLine("Send  player 2");
+                                Game.SendGame(roomState.game, streamWriter);
+
+                                roomState.game = Game.Receiver(streamReader);
+                                Console.WriteLine("reciving  player 2");
+
+                                roomState.game.playerTurn();
+
+
+
+                            }
+
+
+                        }
+
+
+                            if (theString == "showRooms")
+                        {
+
+
 
 
                             streamWriter.Write("showRooms");
@@ -123,15 +180,14 @@ namespace Connect_4
 
                             
                             while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame == false) ;
+                            Room.avaibleRoom[Room.FindindexOfRoom(id)].roomIsFull = true;
 
+                            row = Room.avaibleRoom[Room.FindindexOfRoom(id)].game.row;
+                            col= Room.avaibleRoom[Room.FindindexOfRoom(id)].game.col;
+                           temp = Room.avaibleRoom[Room.FindindexOfRoom(id)].game;
                             Room.DeepSend(Room.avaibleRoom[Room.FindindexOfRoom(id)],streamWriter);
                             //   Room currentRoom = Room.avaibleRoom[Room.FindindexOfRoom(id)];
                             Console.WriteLine("Send  player player1");
-
-                            //  string strJson = JsonConvert.SerializeObject(Room.avaibleRoom[Room.FindindexOfRoom(id)]);
-                          //  Room.avaibleRoom[Room.FindindexOfRoom(id)].game = Game.Receiver(streamReader);
-                            //Console.WriteLine("Change Turn");
-                            //streamReader.ReadString();
 
 
                         }
@@ -245,21 +301,5 @@ namespace Connect_4
         }
 
 
-        public void SendServerInfo(BinaryWriter BR, BinaryReader BRR)
-        {
-            {
-                string strJson = JsonConvert.SerializeObject(new ABC());
-                int server = 4;
-                BR.Write(strJson);
-                BR.Write(server);
-                strJson = BRR.ReadString();
-                Console.WriteLine(strJson);
-
-                User deptObj = JsonConvert.DeserializeObject<User>(strJson);
-                Console.WriteLine("Name Id: {0}", deptObj.username);
-
-            }
-
-        }
-    }
+          }
 }

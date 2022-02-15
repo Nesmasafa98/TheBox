@@ -18,10 +18,11 @@ namespace The_Box_v0._1
         //public Board board;
         public bool StartGame = false;
         public Game game;
-        static public List<Room> avaibleRoom = new List<Room>();
+        public static List<Room> rooms;
+        
         public int _row;
         public int _col;
-
+        public bool roomIsFull = false;
         public string player1Color = "red";
         public string player2Color = "green";
 
@@ -106,6 +107,21 @@ namespace The_Box_v0._1
 
             return JsonConvert.DeserializeObject<Room>(s);
 
+        }
+
+        public static Room FindRoomInListOfRoom(string roomName)
+        {
+
+            for (int i = 0; i < rooms.Count; i++)
+            {
+
+                if (roomName == rooms[i].id)
+                {
+
+                    return rooms[i];
+                }
+            }
+            return null;
         }
 
 

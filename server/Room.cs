@@ -13,35 +13,37 @@ namespace Connect_4
         public User Player1;
         public User Player2;
         public User[] Watchers;
-        public Board board;
+        //public Board board;
         public bool StartGame = false;
         public Game game;
-        static  public List<Room> avaibleRoom = new List<Room>();
+       static public List<Room> avaibleRoom = new List<Room>();
         public int _row;
         public int _col;
-        public string player1Color="red";
+        public bool roomIsFull = false;
+        public string player1Color = "red";
         public string player2Color = "green";
-
-
 
         public int index;
 
         public Room(User owner, string Id, int index)
         {
             Player1 = owner;
+
+
+            //     Player1.color = "red";
             this.id = Id;
             //board = new Board(size);
             this.index = index;
-           // Console.WriteLine("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" + index);
             DetrimineSize(index);
         }
 
         public void PlayBtn(User player)
         {
             Player2 = player;
-            game = new Game(_row, _col, Player1, Player2);
+            game = new Game(_row, _col, Player1, Player2, player1Color, player2Color);
 
             StartGame = true;
+
         }
         public void DetrimineSize(int index)
         {

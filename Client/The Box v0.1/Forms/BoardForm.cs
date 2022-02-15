@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +30,8 @@ namespace The_Box_v0._1.Forms
         protected int _col;//862*435
         protected Brush _brush;
         protected Color _color;
+        private object threadLock = new object();
+
         protected Brush _elipsBrush;
         protected RectangleF _rec;
         protected float _width;
@@ -40,33 +47,61 @@ namespace The_Box_v0._1.Forms
 
         protected float xCoor;
         protected float yCoor;
+        // public Game.state[,] mystate;
         protected int _index;
-
+        User Creator;
         int constant;
         int index;
 
         PlayForm playForm;
         RoomForm roomForm;
 
-        public BoardForm(User Creator,Game game, PlayForm pForm, RoomForm rForm)
+        public BoardForm(User Creator, Game game, PlayForm pForm, RoomForm rForm)
         {
 
             InitializeComponent();
             SetColorForBrush();
             InitializeAxisValues();
+            rForm.Player1Username.Text = game.user1.username;
+            rForm.Player2Username.Text = game.user2.username;
+            rForm.Player1Color.Text = game.pieceColor1Plater1.ToString();
+            rForm.Player2Color.Text = game.pieceColor1Plater2.ToString();
+
+
             this.game = game;
-            this.game.creatorUser = Creator;
-            
-            MessageBox.Show("Ya samy " + true);
+            this.Creator = Creator;
+            //   this.mystate = game.boardState;
+            //essageBox.Show("Ya samy " + true);
+
+            Thread receiverloopThread = new Thread(() => Receiverloop());
+
+
+
+            _row = game.row; _col = game.col;
+
+            pieceColor = Color.Red;
+
+
+
             if (Creator.username == this.game.user1.username)
             {
+                //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
-                MessageBox.Show("Ya samy " + true);
+
+                ClientSocket.SendRequest("ConfigPlayer1");
+                ClientSocket.StateConfigPlayer1();
+                
+
             }
-            _row = game.row; _col = game.col;
-            pieceColor = Color.Red;
-        //    game = new Game(_row, _col, user1, user2);
-          //  pieces = new List<Game>();
+            else
+            {
+                ClientSocket.SendRequest("ConfigPlayer2");
+                ClientSocket.StateConfigPlayer2();
+            }
+
+            receiverloopThread.Start();
+
+
             playForm = pForm;
             roomForm = rForm;
         }
@@ -74,12 +109,44 @@ namespace The_Box_v0._1.Forms
         {
             DrawBoard();
             DrawElipses();
-            drawallpieces();
-           // Console.Write("samy");
-            
-            
-         //   MessageBox.Show("ana Hena ya samy");
+
+
         }
+
+        private void Receiverloop()
+        {
+            while (true)
+            {
+
+
+
+                if (Creator.username == this.game.user1.username)
+                {
+                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+                    game = Game.Receiver(ClientSocket.streamReader);
+
+                    DrawElipsesThrowGame(game.boardState);
+
+
+
+                }
+
+                else
+                {
+                    game = Game.Receiver(ClientSocket.streamReader);
+                    DrawElipsesThrowGame(game.boardState);
+                }
+            }
+
+
+
+
+
+
+
+        }
+
         protected override void OnResize(EventArgs e)
         {
             Invalidate();
@@ -136,29 +203,81 @@ namespace The_Box_v0._1.Forms
             yCoor = (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i);
             graphics.FillEllipse(_elipsBrush, xCoor, yCoor, _elipsWidth, _elipsHight);
         }
-        
+        public void DrawElipsesThrowGame(Game.state[,] boardState)
+        {
+            Color color2;
 
-        
+            InitializeAxisValues();
+            graphics = this.CreateGraphics();
+
+            lock (threadLock)
+            {
+                for (int i = 0; i < _row; i++)
+                {
+                    for (int j = 0; j < _col; j++)
+                    {
+                        color2 = Color.FromArgb(39, 39, 58);
+                        if (boardState[j, i] == Game.state.player1)
+                        {
+                            color2 = game.pieceColor1Plater1;
+                        }
+                        else
+                        if (boardState[j, i] == Game.state.player2)
+                        {
+                            color2 = game.pieceColor1Plater2;
+                        }
+                        DrawElipse(i, j, color2);
+                    }
+                }
+            }
+        }
+
+
+
         private void BoardForm_MouseClick(object sender, MouseEventArgs e)
         {
-            Color pcolor = new Color();
-            
+
             constant = this.Width / _col;
             index = e.X / constant;
-           // Game piece = new Game(e.X, e.Y, pcolor);
-            
-            if(game.full[index]>=0)
+            // Game piece = new Game(e.X, e.Y, pcolor);
+
+            if (game.full[index] >= 0)
             {
-              drawallpieces();
-                game.drawGamePiece(index, graphics, this);
-                game.playerTurn();
+
+
+
+
+
+                if (Creator.username == this.game.user1.username)
+                {
+                    lock (threadLock)
+                    {
+                        game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+
+                        Game.SendGame(game, ClientSocket.streamWriter);
+                    }
+
+                }
+                else
+                {
+                    lock (threadLock)
+                    {
+                        game.drawGamePiece(index, graphics, this, Color.Green, Game.state.player2);
+
+                        Game.SendGame(game, ClientSocket.streamWriter);
+
+                    }
+                }
+                DrawElipsesThrowGame(game.boardState);
             }
+
 
             if (game.WinningPlayer() == Color.Red)
             {
                 MessageBox.Show("Red Player Wins,  Beats blue");
                 MessageBox.Show("Hard Luck blue");
-              //  ChooseToResetOrNot();
+                //  ChooseToResetOrNot();
             }
             else if (game.WinningPlayer() == Color.Blue)
             {
@@ -167,28 +286,25 @@ namespace The_Box_v0._1.Forms
                 //ChooseToResetOrNot();
             }
         }
-        public void drawallpieces()
+        public void drawallpieces(Game.state[,] mystate)
         {
 
-            for (int i = 0; i < game.col; i++)
+            for (int i = 0; i < game.row; i++)
             {
-                for (int j = 0; j < game.row; j++)
+                for (int j = 0; j < game.col; j++)
                 {
-                    if (game.boardState[i, j] == Game.state.player1)
+                    if (mystate[j, i] == Game.state.player1)
                     {
-                        //DrawElipse(i, j, game.pieceColor1Plater1);
-                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
+                        DrawElipse(j, i, game.pieceColor1Plater1);
 
                     }
-                    if ((game.boardState[i, j] == Game.state.player2))
+                    if ((mystate[j, i] == Game.state.player2))
                     {
-                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
+                        //DrawElipse(i, j, Color.FromArgb(39, 39, 58));
 
-                        //   DrawElipse(i, j, game.pieceColor1Plater2);
+                        DrawElipse(j, i, game.pieceColor1Plater2);
                     }
-                    else
 
-                        DrawElipse(i, j, Color.FromArgb(39, 39, 58));
                 }
             }
         }
@@ -198,42 +314,14 @@ namespace The_Box_v0._1.Forms
             Invalidate();
         }
 
+
+
+
+
         private void BoardForm_Load(object sender, EventArgs e)
         {
 
         }
-        //public void choosetoresetornot()
-        //{
-        //    dialogresult resultp1 = messagebox.show("do you want to play again?", "repeat game", messageboxbuttons.yesno, messageboxicon.question);
-        //    dialogresult resultp2 = messagebox.show("do you want to play again?", "repeat game", messageboxbuttons.yesno, messageboxicon.question);
-        //    if (resultp1 == dialogresult.yes && resultp2 == dialogresult.yes)
-        //    {
-        //        game.reset();
-        //        invalidate();
-        //    }
-        //    else if (resultp1 == dialogresult.no && resultp2 == dialogresult.no)
-        //    {
-        //        for (int i = 0; i < playform.roomforms.count(); i++)
-        //        {
-        //            if (roomform.roomname == playform.roomforms[i].roomname)
-        //            {
-        //                playform.listbox1.items.remove(playform.roomforms[i].roomname);
-        //                playform.roomforms.remove(playform.roomforms[i]);
-        //            }
-        //        }
-        //        this.hide();
-        //        playform.mainform.show();
-        //        playform.show();
-        //        invalidate();
-        //    }
-        //    else if (resultp1 == dialogresult.yes && resultp2 == dialogresult.no)
-        //    {
 
-        //    }
-        //    else if (resultp1 == dialogresult.no && resultp2 == dialogresult.yes)
-        //    {
-
-        //    }
-        //}
     }
 }

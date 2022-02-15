@@ -70,7 +70,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1114, 100);
             this.panel1.TabIndex = 0;
-           
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // LabelRoomName
@@ -84,7 +84,7 @@
             // 
             // PlayBtn
             // 
-            this.PlayBtn.Location = new System.Drawing.Point(508, 36);
+            this.PlayBtn.Location = new System.Drawing.Point(508, 37);
             this.PlayBtn.Name = "PlayBtn";
             this.PlayBtn.Size = new System.Drawing.Size(75, 23);
             this.PlayBtn.TabIndex = 9;
@@ -190,6 +190,7 @@
             this.Player1Username.Size = new System.Drawing.Size(73, 24);
             this.Player1Username.TabIndex = 1;
             this.Player1Username.Text = "Player1";
+            this.Player1Username.Click += new System.EventHandler(this.Player1Username_Click);
             // 
             // pictureBox1
             // 
@@ -306,13 +307,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label Player1Username;
+        public System.Windows.Forms.Label Player1Username;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button QuitBtn;
-        private System.Windows.Forms.Label Player2Color;
-        private System.Windows.Forms.Label Player2Username;
+        public System.Windows.Forms.Label Player2Color;
+        public System.Windows.Forms.Label Player2Username;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label Player1Color;
+        public System.Windows.Forms.Label Player1Color;
         private System.Windows.Forms.Button CloseAppbtn;
         private System.Windows.Forms.Button Minimize;
         private System.Windows.Forms.Button MaximizeAppbtn;

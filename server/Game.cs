@@ -70,7 +70,28 @@ namespace Connect_4
         //Method to draw the individual game pieces
         // Draws red piece if player 1 and black piece if player 2
 
+        public static Boolean IsStateChanged(state[,] oldState, state[,] current, int row, int col)
+        {
+            //Boolean changed = false;
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < row; j++)
+                {
+                    if (current[i, j] != oldState[i, j])
+                    {
+                        Console.Write(current[i, j]);
+                        return true;
+                    }
 
+                }
+                Console.WriteLine();
+
+
+            }
+            Console.WriteLine();
+
+            return false;
+        }
 
 
         public void Reset()

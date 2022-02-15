@@ -25,10 +25,9 @@ namespace The_Box_v0._1.Forms
         public MainForm mainForm;
         string RoomName;
         User user;
-        public static List<Room> rooms;
+      //  public static List<Room> rooms;
         public static List<User> avaibleplayerS;
 
-        ClientSocket myclient;
         
 
 
@@ -39,15 +38,12 @@ namespace The_Box_v0._1.Forms
             mainForm = mf;
             //     roomForms = new List<RoomForm>();
             avaibleplayerS = new List<User>();
-            rooms = new List<Room>();
+            
             user = u;
             Control.CheckForIllegalCrossThreadCalls = false;
-            //MessageBox.Show("ana 3mlt recevie");
             renderAvailableRooms();
             renderAvailableUsers();
-            //ClientSocket.SendRequest("showplayer");
-            //ClientSocket.ResponseShowplayer(avaibleplayerS);
-            MessageBox.Show(rooms.Count.ToString());
+
 
             //for (int i = 0; i < avaibleplayerS.Count; i++)
             //{
@@ -60,14 +56,12 @@ namespace The_Box_v0._1.Forms
             //}
 
             mytimer = new System.Threading.Timer(clientThread, null, 0, 5000);
-            //myTimer.Elapsed += new ElapsedEventHandler(DisplayTimeEvent);
-            //myTimer.Interval = 3000; // 1000 ms is one second
-            //  myTimer.Start();
+
 
         }
         private void Button5_Click(object sender, EventArgs e)
         {
-            Dialog dlg = new Dialog(rooms);
+            Dialog dlg = new Dialog(Room.rooms);
             DialogResult dResult;
             dResult = dlg.ShowDialog();
 
@@ -76,25 +70,23 @@ namespace The_Box_v0._1.Forms
             {
 
                 //   roomForm = new RoomForm(dlg.IndexBoardSize, dlg.RoomName, user, mainForm, this);
-                Console.WriteLine("shimaaaaaaaaaaaaaaa");
+
                 //Room CreatedRoom = new Room(user, dlg.RoomName, dlg.IndexBoardSize);
                 disallowTimer();
                 ClientSocket.SendRequest("create");
                 Room m = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize);
                 user.room = m;
                 roomForm = new RoomForm(user,user.room, mainForm, this);
-                //roomForms.Add(roomForm);
-                  MessageBox.Show("5la baaaaaaaaaalk");
-                //MessageBox.Show(m.Player1.UserName);
+
                 roomForm.Show();
                 //this.Hide();
                 mainForm.Hide();
             }
             listBox1.Items.Clear();
 
-            for (int i = 0; i < rooms.Count; i++)
+            for (int i = 0; i < Room.rooms.Count; i++)
             {
-                listBox1.Items.Add(rooms[i].id);
+                listBox1.Items.Add(Room.rooms[i].id);
             }
 
         }
@@ -111,42 +103,40 @@ namespace The_Box_v0._1.Forms
         {
             // add try and catch ti check it there are string 
             RoomName = listBox1.SelectedItem.ToString();
-            for(int i=0; i< rooms.Count; i++)
-            {
-               
-                if (RoomName == rooms[i].id)
-                {
-                    
-                    MessageBox.Show("ana da5lt hena ya saamy");
-                    MessageBox.Show("allah");
+
+           
+                    //MessageBox.Show("ana da5lt hena ya saamy");
+                    //MessageBox.Show("allah");
                     disallowTimer();
                     ClientSocket.SendRequest("join");
                    
-                    user.room=ClientSocket.ResponseJoin(user, rooms[i].id);
+                    user.room=ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
+            User.CurrentRoom = user.room;
+                   // System.Threading.Thread.Sleep(10000);
                     roomForm = new RoomForm(user,user.room, mainForm, this);
                     roomForm.Show();
+                    roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm), sender);
 
                     roomForm.PlayBtn.Hide();
-                    // lazem tt3dl           //    rooms[i].AskforPlay(user);
-                    // lazem tt3dl              roomForms[i].Show();
-                    this.Hide();
-                    mainForm.Hide();
-                }
 
-            }
+                  //  this.Hide();
+                    mainForm.Hide();
+                
+
+            
         }
 
         public void renderAvailableRooms()
         {
             
-                rooms.Clear();
+                Room.rooms.Clear();
                 ClientSocket.SendRequest("showRooms");
-                ClientSocket.ResponseShowRooms(rooms);
+                ClientSocket.ResponseShowRooms(Room.rooms);
 
                 listBox1.Items.Clear();
-                for (int i = 0; i < rooms.Count; i++)
+                for (int i = 0; i < Room.rooms.Count; i++)
                 {
-                    listBox1.Items.Add(rooms[i].id);
+                    listBox1.Items.Add(Room.rooms[i].id);
                 }
             
         }
@@ -180,21 +170,7 @@ namespace The_Box_v0._1.Forms
             mytimer = new System.Threading.Timer(clientThread, null, 0, 5000);
         }
 
-        public void ClientThread()
-        {
 
-            //while (true)
-            //{
-            //    ClientSocket.SendRequest("reloadRooms");
-
-                
-            //        ClientSocket.ResponseShowRooms(rooms);
-            //        renderAvailableRooms();
-                
-            //}
-
-
-        }
 
         public static void DisplayTimeEvent(object source, ElapsedEventArgs e)
         {
@@ -212,6 +188,21 @@ namespace The_Box_v0._1.Forms
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
 
         }
     }
