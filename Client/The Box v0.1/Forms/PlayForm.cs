@@ -42,6 +42,7 @@ namespace The_Box_v0._1.Forms
             user = u;
             Control.CheckForIllegalCrossThreadCalls = false;
             renderAvailableRooms();
+            renderFullRooms();
             renderAvailableUsers();
 
 
@@ -94,6 +95,7 @@ namespace The_Box_v0._1.Forms
         {
             
             renderAvailableRooms();
+            renderFullRooms();
             renderAvailableUsers();
             
             //MessageBox.Show(rooms.Count.ToString());
@@ -102,27 +104,29 @@ namespace The_Box_v0._1.Forms
         private void ListBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // add try and catch ti check it there are string 
-            RoomName = Available_Rooms_listBox.SelectedItem.ToString();
+            if (Available_Rooms_listBox.SelectedItem != null)
+            {
+                RoomName = Available_Rooms_listBox.SelectedItem.ToString();
 
-           
-                    //MessageBox.Show("ana da5lt hena ya saamy");
-                    //MessageBox.Show("allah");
-                    disallowTimer();
-                    ClientSocket.SendRequest("join");
-                   
-                    user.room=ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
-            User.CurrentRoom = user.room;
-                   // System.Threading.Thread.Sleep(10000);
-                    roomForm = new RoomForm(user,user.room, mainForm, this);
-                    roomForm.Show();
-                    roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm), sender);
 
-                    roomForm.PlayBtn.Hide();
+                //MessageBox.Show("ana da5lt hena ya saamy");
+                //MessageBox.Show("allah");
+                disallowTimer();
+                ClientSocket.SendRequest("join");
 
-                  //  this.Hide();
-                    mainForm.Hide();
-                
+                user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
+                User.CurrentRoom = user.room;
+                // System.Threading.Thread.Sleep(10000);
+                roomForm = new RoomForm(user, user.room, mainForm, this);
+                roomForm.Show();
+                roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm), sender);
 
+                roomForm.PlayBtn.Hide();
+
+                //  this.Hide();
+                mainForm.Hide();
+
+            }
             
         }
 
@@ -138,7 +142,39 @@ namespace The_Box_v0._1.Forms
                 {
                     Available_Rooms_listBox.Items.Add(Room.rooms[i].id);
                 }
-            
+                checkFullRooms(Room.rooms);
+        }
+
+        public void renderFullRooms()
+        {
+
+            Full_Rooms_listBox.Items.Clear();
+            for (int i = 0; i < Room.fullRooms.Count; i++)
+            {
+                Full_Rooms_listBox.Items.Add(Room.fullRooms[i].id);
+            }
+            Room.fullRooms.Clear();
+        }
+
+        public void checkFullRooms(List<Room> rooms)
+        {
+            for (int i = 0; i < rooms.Count; i++)
+            {
+                if (rooms[i].roomIsFull)
+                {
+                    Room.fullRooms.Add(rooms[i]);
+
+                    for (int j = 0; j < Available_Rooms_listBox.Items.Count; j++)
+                    {
+
+                        if (Available_Rooms_listBox.Items[j].ToString() == rooms[i].id)
+                        {
+                            Available_Rooms_listBox.Items.RemoveAt(j);
+                        }
+                    }
+
+                }
+            }
         }
         public void renderAvailableUsers()
         {
@@ -204,6 +240,16 @@ namespace The_Box_v0._1.Forms
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Full_Rooms_listBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (Full_Rooms_listBox.SelectedItem != null)
+            {
+                RoomName = Full_Rooms_listBox.SelectedItem.ToString();
+
+                //watchers code here
+            }
         }
     }
 }

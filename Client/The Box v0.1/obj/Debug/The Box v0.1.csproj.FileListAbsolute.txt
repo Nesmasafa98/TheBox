@@ -241,3 +241,23 @@ C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The 
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.WatchersForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe.config
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.pdb
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csprojAssemblyReference.cache
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.PlayForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.WatchersForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Login.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.MainForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Dialog.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Properties.Resources.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.GenerateResource.cache
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.CoreCompileInputs.cache
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.CopyComplete
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb

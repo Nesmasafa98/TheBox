@@ -19,7 +19,7 @@ namespace The_Box_v0._1
         public bool StartGame = false;
         public Game game;
         public static List<Room> rooms;
-        
+        public static List<Room> fullRooms = new List<Room>();
         public int _row;
         public int _col;
         public bool roomIsFull = false;

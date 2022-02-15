@@ -72,3 +72,13 @@ C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\server\obj\
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\server\obj\Debug\Connect 4.exe
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\server\obj\Debug\Connect 4.pdb
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\bin\Debug\Connect 4.exe.config
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\bin\Debug\Connect 4.exe
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\bin\Debug\Connect 4.pdb
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\obj\Debug\Connect 4.csprojAssemblyReference.cache
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\obj\Debug\Connect 4.csproj.CoreCompileInputs.cache
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\obj\Debug\Connect 4.csproj.CopyComplete
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\obj\Debug\Connect 4.exe
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\server\obj\Debug\Connect 4.pdb
