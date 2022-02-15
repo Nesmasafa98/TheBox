@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static The_Box_v0._1.Game;
 
 namespace The_Box_v0._1.Forms
 {
@@ -52,9 +53,13 @@ namespace The_Box_v0._1.Forms
         User Creator;
         int constant;
         int index;
+        int turnplayer1=1;
+        int firstTime = 0;
 
         PlayForm playForm;
         RoomForm roomForm;
+        state[,] temp;
+        Thread receiverloopThread;
 
         public BoardForm(User Creator, Game game, PlayForm pForm, RoomForm rForm)
         {
@@ -66,14 +71,15 @@ namespace The_Box_v0._1.Forms
             rForm.Player2Username.Text = game.user2.username;
             rForm.Player1Color.Text = game.pieceColor1Plater1.ToString();
             rForm.Player2Color.Text = game.pieceColor1Plater2.ToString();
-
-
+            
+           
             this.game = game;
+           // temp = game.boardState;
             this.Creator = Creator;
             //   this.mystate = game.boardState;
             //essageBox.Show("Ya samy " + true);
 
-            Thread receiverloopThread = new Thread(() => Receiverloop());
+            receiverloopThread = new Thread(() => Receiverloop());
 
 
 
@@ -97,6 +103,8 @@ namespace The_Box_v0._1.Forms
             {
                 ClientSocket.SendRequest("ConfigPlayer2");
                 ClientSocket.StateConfigPlayer2();
+                temp = game.boardState;
+              
             }
 
             receiverloopThread.Start();
@@ -123,12 +131,11 @@ namespace The_Box_v0._1.Forms
                 if (Creator.username == this.game.user1.username)
                 {
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
-
-                    game = Game.Receiver(ClientSocket.streamReader);
-
-                    DrawElipsesThrowGame(game.boardState);
-
-
+           
+                        game = Game.Receiver(ClientSocket.streamReader);
+                    
+                        DrawElipsesThrowGame(game.boardState);
+                    
 
                 }
 
@@ -136,6 +143,7 @@ namespace The_Box_v0._1.Forms
                 {
                     game = Game.Receiver(ClientSocket.streamReader);
                     DrawElipsesThrowGame(game.boardState);
+
                 }
             }
 
@@ -232,7 +240,29 @@ namespace The_Box_v0._1.Forms
             }
         }
 
+        public  Boolean IsStateChanged(state[,] oldState, state[,] current, int row, int col)
+        {
+            if (oldState == null)               
+                return true;
 
+            //Boolean changed = false;
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < row; j++)
+                {
+                    if (current[i, j] != oldState[i, j])
+                    {
+                        Console.Write(current[i, j]);
+                        return true;
+                    }
+
+                }
+
+            }
+       
+
+            return false;
+        }
 
         private void BoardForm_MouseClick(object sender, MouseEventArgs e)
         {
@@ -240,34 +270,41 @@ namespace The_Box_v0._1.Forms
             constant = this.Width / _col;
             index = e.X / constant;
             // Game piece = new Game(e.X, e.Y, pcolor);
-
+            
             if (game.full[index] >= 0)
             {
 
 
 
 
-
+                
                 if (Creator.username == this.game.user1.username)
                 {
-                    lock (threadLock)
+
+                    if (IsStateChanged(temp, game.boardState, game.row, game.col))
                     {
                         game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
+              
+                            Game.SendGame(game, ClientSocket.streamWriter);
+                        temp = game.boardState;    
+                        
 
-                        Game.SendGame(game, ClientSocket.streamWriter);
                     }
 
                 }
                 else
                 {
-                    lock (threadLock)
+                    if (IsStateChanged(temp, game.boardState, game.row, game.col))
                     {
+
                         game.drawGamePiece(index, graphics, this, Color.Green, Game.state.player2);
 
                         Game.SendGame(game, ClientSocket.streamWriter);
-
+                        temp = game.boardState;
                     }
+                        
+                    
                 }
                 DrawElipsesThrowGame(game.boardState);
             }
@@ -312,7 +349,7 @@ namespace The_Box_v0._1.Forms
         private void BoardForm_Resize(object sender, EventArgs e)
         {
             Invalidate();
-        }
+        } 
 
 
 

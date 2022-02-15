@@ -114,7 +114,7 @@ namespace The_Box_v0._1
 
             for (int i = 0; i < rooms.Count; i++)
             {
-
+                MessageBox.Show(rooms[i].roomIsFull.ToString());
                 if (roomName == rooms[i].id)
                 {
 

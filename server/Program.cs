@@ -10,7 +10,7 @@ namespace Connect_4
     {
         static void Main(string[] args)
         {
-            new Server(5002, 10);
+            Server.SingletonServer(5002,10)
         }
     }
 }

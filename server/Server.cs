@@ -19,14 +19,15 @@ namespace Connect_4
         TcpListener server;
         //List<Room> avaibleRoom = new List<Room>();
         ArrayList players = new ArrayList();
-       // static Game laststate;
+        // static Game laststate;
+        private static readonly object locker = new object();
 
-
+        int port;
         static int row;
         static int col;
        static Boolean flag = false;
         static Game temp;
-        public Server(int PortNum, int numOFClient)
+        private Server(int PortNum, int numOFClient)
         {
             server = new TcpListener(IPAddress.Parse("127.0.0.1"), PortNum);
             // server2 = new TcpListener(IPAddress.Parse("127.0.0.1"), 5000);
@@ -46,7 +47,26 @@ namespace Connect_4
             }
 
         }
-        void Listeners()
+
+       
+    private static Server instance = null;
+        public static Server SingletonServer( int port , int  numofClients)
+        {
+            
+           
+                lock (locker)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Server(port, numofClients);
+                        }
+                        return instance;
+                    }
+            
+        }
+    
+
+    void Listeners()
         {
 
             Socket socketForClient = server.AcceptSocket();
