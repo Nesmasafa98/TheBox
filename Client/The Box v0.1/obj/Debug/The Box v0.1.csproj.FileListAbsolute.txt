@@ -240,3 +240,4 @@ C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The 
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.CopyComplete
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
 C:\Users\LENOVO\Downloads\New folder-20220215T175029Z-001\New folder\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb
+E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.WatchersForm.resources

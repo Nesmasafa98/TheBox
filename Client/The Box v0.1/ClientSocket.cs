@@ -56,6 +56,20 @@ namespace The_Box_v0._1
 
         }
 
+
+        public static Boolean ResponsecheckIfisInList(string UserName)
+        {
+            String s = streamReader.ReadString();
+            if (s == "IfisInList")
+            {
+                streamWriter.Write(UserName);
+              return  streamReader.ReadBoolean();
+            }
+            return false;
+
+
+        }
+
         public static void StateConfigPlayer1()
         {   // sync with server that it will go in player 1 loop
             String s = streamReader.ReadString();

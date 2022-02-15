@@ -63,30 +63,34 @@ namespace The_Box_v0._1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             bool b = true;
+
+       
             if(User_Name.Text.Length == 0)
             {
                 label4.Visible = true;
                 Log_In_Button.Enabled = false;
             }
+
             else if(User_Name.Text.Length > 0)
             {
                 label4.Visible = false;
                 Log_In_Button.Enabled = true;
-                for (int i = 0; i < allUsers.Count() && b; i++)
+                ClientSocket.SendRequest("IfisInList");
+
+                if (ClientSocket.ResponsecheckIfisInList(User_Name.Text))
                 {
-                    if (User_Name.Text == allUsers[i].UserName)
-                    {
-                        label3.Visible = true;
-                        Log_In_Button.Enabled = false;
-                        b = false;
-                    }
-                    else
-                    {
-                        label3.Visible = false;
-                        Log_In_Button.Enabled = true;
-                        b = true;
-                    }
-                }               
+
+                    label3.Visible = true;
+                    Log_In_Button.Enabled = false;
+                }else
+
+                {
+
+                    label3.Visible = false;
+                    Log_In_Button.Enabled = true;
+                }
+
+             
             }           
         }
 

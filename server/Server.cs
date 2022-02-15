@@ -103,6 +103,38 @@ namespace Connect_4
 
                         }
 
+                        if (theString == "IfisInList")
+                        {
+                            int flag = 0;
+                            streamWriter.Write("IfisInList");
+                            string UserName = streamReader.ReadString();
+                            for (int i = 0; i < User.players.Count; i++)
+
+                            {
+                                if (User.players[i].username==UserName)
+                                {
+                                    Boolean x = true;
+                                    streamWriter.Write(x);
+                                    flag = 1;
+                                    break;
+                                
+                                }
+
+                                
+                            }
+                            if(flag==0)
+                            {
+                                Boolean x = false;
+                                streamWriter.Write(x);
+                                }
+
+
+                        }
+
+
+
+
+
                         if (theString == "showplayer")
                         {
 
