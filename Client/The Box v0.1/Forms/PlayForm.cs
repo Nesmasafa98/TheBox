@@ -119,7 +119,7 @@ namespace The_Box_v0._1.Forms
                 // System.Threading.Thread.Sleep(10000);
                 roomForm = new RoomForm(user, user.room, mainForm, this);
                 roomForm.Show();
-                roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm), sender);
+                roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm,false), sender);
 
                 roomForm.PlayBtn.Hide();
 
@@ -240,6 +240,30 @@ namespace The_Box_v0._1.Forms
         private void button9_Click(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void Join_Button_Click(object sender, EventArgs e)
+        {
+            RoomName = Full_Rooms_listBox.SelectedItem.ToString();
+
+            ClientSocket.SendRequest("Watch");
+            Room RecievedRoom = ClientSocket.ResponseWatch(RoomName);
+            //     user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
+            //  User.CurrentRoom = user.room;
+            // System.Threading.Thread.Sleep(10000);
+
+            disallowTimer();
+            roomForm = new RoomForm(user, RecievedRoom, mainForm, this);
+            roomForm.Show();
+            user.room = RecievedRoom;
+            roomForm.OpenChildForm(new Forms.BoardForm(user, RecievedRoom.game, this, roomForm, true), sender);
+
+            roomForm.PlayBtn.Hide();
+
+            //  this.Hide();
+            mainForm.Hide();
+
         }
 
         private void Full_Rooms_listBox_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -250,6 +274,11 @@ namespace The_Box_v0._1.Forms
 
                 //watchers code here
             }
+        }
+
+        private void Full_Rooms_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

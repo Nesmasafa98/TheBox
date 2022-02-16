@@ -155,6 +155,16 @@ namespace Connect_4
 
                         }
 
+                        if (theString == "Watch")
+
+                        {
+                            streamWriter.Write("Watch");
+                            string id = streamReader.ReadString();
+                            Room.SendRoom(Room.avaibleRoom[Room.FindindexOfRoom(id)],streamWriter);
+
+                        }
+
+
                         if (theString == "ConfigPlayer1")
                         {
                             streamWriter.Write("ConfigPlayer1");

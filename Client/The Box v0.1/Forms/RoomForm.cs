@@ -153,7 +153,7 @@ namespace The_Box_v0._1.Forms
             User.CurrentRoom = receiveRoom;
             //MessageBox.Show(receiveRoom.Player2.color);
 
-            OpenChildForm(new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this), sender);
+            OpenChildForm(new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this,false), sender);
         }
 
         public void AskforPlay(User user)

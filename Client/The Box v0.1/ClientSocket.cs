@@ -121,6 +121,21 @@ namespace The_Box_v0._1
             }
             return null;
         }
+
+
+        public static Room ResponseWatch(string id)
+        {       //receive room when player to request join in loop
+            String s = streamReader.ReadString();
+            if (s == "Watch")
+            {
+
+                streamWriter.Write(id);
+
+                return Room.ReceiveRoom(streamReader);
+                //   Console.WriteLine("I receive room!");
+            }
+            return null;
+        }
         public static void ResponseLog(User user)
         {
                 //log in Game

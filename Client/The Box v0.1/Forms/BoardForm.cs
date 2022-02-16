@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static The_Box_v0._1.Game;
 
+
 namespace The_Box_v0._1.Forms
 {
     public partial class BoardForm : Form
@@ -26,7 +27,7 @@ namespace The_Box_v0._1.Forms
         protected List<Game> pieces;
         Graphics graphics;
         private Color pieceColor;
-
+        bool Iswatcher;
         protected int _row;
         protected int _col;//862*435
         protected Brush _brush;
@@ -39,6 +40,7 @@ namespace The_Box_v0._1.Forms
         protected float _height;
         protected float _xStart;
         protected float _yStart;
+      
         protected float _xEnd;
         protected float _yEnd;
         protected float _gabX;
@@ -53,15 +55,21 @@ namespace The_Box_v0._1.Forms
         User Creator;
         int constant;
         int index;
+        Room WatcherRoom;
         int turnplayer1=1;
         int firstTime = 0;
+        bool ThereIsAWinner;
+
+        System.Threading.Timer watcherTimer;
 
         PlayForm playForm;
         RoomForm roomForm;
+
         state[,] temp;
         Thread receiverloopThread;
-
-        public BoardForm(User Creator, Game game, PlayForm pForm, RoomForm rForm)
+        Thread checkWinner;
+      
+        public BoardForm(User Creator, Game game, PlayForm pForm, RoomForm rForm,bool Iswatcher)
         {
 
             InitializeComponent();
@@ -71,52 +79,101 @@ namespace The_Box_v0._1.Forms
             rForm.Player2_Name.Text = game.user2.username;
             rForm.Player1_Color.Text = game.pieceColor1Plater1.ToString();
             rForm.Player2_Color.Text = game.pieceColor1Plater2.ToString();
-            
-           
+            Control.CheckForIllegalCrossThreadCalls = false;
+            ThereIsAWinner = false;
+            _row = game.row; _col = game.col;
             this.game = game;
            // temp = game.boardState;
             this.Creator = Creator;
             //   this.mystate = game.boardState;
             //essageBox.Show("Ya samy " + true);
+            this.Iswatcher = Iswatcher;
+            playForm = pForm;
+            roomForm = rForm;
+            pieceColor = Color.Red; 
 
             receiverloopThread = new Thread(() => Receiverloop());
 
 
+            checkWinner = new Thread(() => CheckWhoIsWin());
 
-            _row = game.row; _col = game.col;
-
-            pieceColor = Color.Red;
-
-
-
-            if (Creator.username == this.game.user1.username)
+            if (Iswatcher)
             {
-                //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
-
-
-                ClientSocket.SendRequest("ConfigPlayer1");
-                ClientSocket.StateConfigPlayer1();
-                
-
+                watcherTimer = new System.Threading.Timer(WatcherFunction, null, 0, 1000);
             }
-            else
+       
+          
+
+
+            if (!Iswatcher)
             {
-                ClientSocket.SendRequest("ConfigPlayer2");
-                ClientSocket.StateConfigPlayer2();
-                temp = game.boardState;
-              
+                if (Creator.username == this.game.user1.username)
+                {
+                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+
+                    ClientSocket.SendRequest("ConfigPlayer1");
+                    ClientSocket.StateConfigPlayer1();
+
+
+                }
+                else
+                {
+                    ClientSocket.SendRequest("ConfigPlayer2");
+                    ClientSocket.StateConfigPlayer2();
+                    temp = game.boardState;
+
+                }
+
+                receiverloopThread.Start();
+                checkWinner.Start();
             }
 
-            receiverloopThread.Start();
-
-
-            playForm = pForm;
-            roomForm = rForm;
+       
         }
+
+        public void CheckWhoIsWin()
+        {
+            while (!ThereIsAWinner)
+            {
+                Thread.Sleep(1000);
+                if (game.WinningPlayer() == "player1")
+                {
+                    MessageBox.Show("Red Player Wins,  Beats blue");
+                    ThereIsAWinner = true;
+                    MessageBox.Show("Hard Luck blue");
+                    //  ChooseToResetOrNot();
+                }
+                else if (game.WinningPlayer() == "player2")
+                {
+                    ThereIsAWinner = true;
+                    MessageBox.Show("Blue Player Wins", "Blue Beat Red");
+                    MessageBox.Show("Hard Luck red");
+                    //ChooseToResetOrNot();
+                }
+            }
+
+        }
+            public void WatcherFunction(object o)
+        {
+
+            ClientSocket.SendRequest("Watch");
+
+            WatcherRoom = ClientSocket.ResponseWatch(
+                 Creator.room.id);
+
+            game = WatcherRoom.game;
+
+            DrawElipsesThrowGame(WatcherRoom.game.boardState);
+
+        }
+
+
         protected override void OnPaint(PaintEventArgs e)
         {
             DrawBoard();
             DrawElipses();
+
 
 
         }
@@ -149,8 +206,7 @@ namespace The_Box_v0._1.Forms
 
 
 
-
-
+           
 
 
         }
@@ -209,32 +265,41 @@ namespace The_Box_v0._1.Forms
             _elipsBrush = new SolidBrush(color);
             xCoor = (float)(0.5 * _gabX + _xStart + (_gabX + _elipsWidth) * j);
             yCoor = (float)(0.5 * _gabY + _yStart + (_gabY + _elipsHight) * i);
-            graphics.FillEllipse(_elipsBrush, xCoor, yCoor, _elipsWidth, _elipsHight);
+
+            lock (threadLock)
+            {
+                graphics.FillEllipse(_elipsBrush, xCoor, yCoor, _elipsWidth, _elipsHight);
+            }
         }
+
+
+
+
         public void DrawElipsesThrowGame(Game.state[,] boardState)
         {
             Color color2;
 
             InitializeAxisValues();
             graphics = this.CreateGraphics();
-
-            lock (threadLock)
             {
-                for (int i = 0; i < _row; i++)
+                
                 {
-                    for (int j = 0; j < _col; j++)
+                    for (int i = 0; i < _row; i++)
                     {
-                        color2 = Color.FromArgb(39, 39, 58);
-                        if (boardState[j, i] == Game.state.player1)
+                        for (int j = 0; j < _col; j++)
                         {
-                            color2 = game.pieceColor1Plater1;
+                            color2 = Color.FromArgb(39, 39, 58);
+                            if (boardState[j, i] == Game.state.player1)
+                            {
+                                color2 = game.pieceColor1Plater1;
+                            }
+                            else
+                            if (boardState[j, i] == Game.state.player2)
+                            {
+                                color2 = game.pieceColor1Plater2;
+                            }
+                            DrawElipse(i, j, color2);
                         }
-                        else
-                        if (boardState[j, i] == Game.state.player2)
-                        {
-                            color2 = game.pieceColor1Plater2;
-                        }
-                        DrawElipse(i, j, color2);
                     }
                 }
             }
@@ -310,13 +375,13 @@ namespace The_Box_v0._1.Forms
             }
 
 
-            if (game.WinningPlayer() == Color.Red)
+            if (game.WinningPlayer() == "player1")
             {
                 MessageBox.Show("Red Player Wins,  Beats blue");
                 MessageBox.Show("Hard Luck blue");
                 //  ChooseToResetOrNot();
             }
-            else if (game.WinningPlayer() == Color.Blue)
+            else if (game.WinningPlayer() == "player2")
             {
                 MessageBox.Show("Blue Player Wins", "Blue Beat Red");
                 MessageBox.Show("Hard Luck red");
