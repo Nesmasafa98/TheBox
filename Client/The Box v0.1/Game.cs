@@ -36,8 +36,8 @@ namespace The_Box_v0._1
             user2 = u2;
             row = r;
             col = c;
-            pieceColor1Plater1 = Color.Red;
-            pieceColor1Plater2 = Color.Green;
+            //pieceColor1Plater1 = Color.Red;
+            //pieceColor1Plater2 = Color.Green;
             boardState = new state[col, row];
             for (int i = 0; i < col; i++)
             {

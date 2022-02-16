@@ -262,3 +262,5 @@ C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.exe
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.pdb
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.ImageForm.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.ColorDialog.resources
+C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.ImageForm.resources

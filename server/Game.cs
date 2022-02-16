@@ -14,7 +14,7 @@ namespace Connect_4
     {
         public bool player1;
         public bool player2;
-        public Color pieceColor1Plater1;
+        public Color pieceColor1Plater1 { set; get; }
         public Color pieceColor1Plater2;
         public User creatorUser;
         public enum state { empty = 0, player1 = 1, player2 = 2 };
@@ -27,7 +27,7 @@ namespace Connect_4
         public User user1, user2;
 
 
-        public Game(int r, int c, User u1, User u2, string player1Color, string player2Color)
+        public Game(int r, int c, User u1, User u2)
         {
             player1 = true;
             player2 = false;
@@ -35,7 +35,7 @@ namespace Connect_4
             user2 = u2;
             row = r;
             col = c;
-            pieceColor1Plater1 = Color.Red;
+            //pieceColor1Plater1 = Color.FromName(player1Color);
             pieceColor1Plater2 = Color.Green;
             boardState = new state[col, row];
             for (int i = 0; i < col; i++)

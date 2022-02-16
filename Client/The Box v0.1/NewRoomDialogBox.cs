@@ -15,6 +15,7 @@ namespace The_Box_v0._1
         //Forms.PlayForm playForm;
         List<Room> roomForms;
         public string BoardSize { get; set; }
+        public string P1Color { get; set; }
         int indexBoardSize;
         public int IndexBoardSize { get; set; }
         string roomName;
@@ -27,6 +28,7 @@ namespace The_Box_v0._1
             this.ControlBox = false;
           //  roomForms = new List<Forms.RoomForm>();
             roomForms = rForms;
+            radioButton6.Checked = true;
             //playForm = pForm;
         }
         public Dialog(MainForm mainFrm, User pl)
@@ -65,7 +67,7 @@ namespace The_Box_v0._1
             {
                 IndexBoardSize = 3;
             }
-
+            DetermineColor();
             this.Close();
         }
 
@@ -73,6 +75,26 @@ namespace The_Box_v0._1
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        public void DetermineColor()
+        {
+            if (radioButton6.Checked)
+            {
+                P1Color = radioButton6.Text;
+            }
+            else if (radioButton5.Checked)
+            {
+                P1Color = radioButton5.Text;
+            }
+            else if (radioButton4.Checked)
+            {
+                P1Color = radioButton4.Text;
+            }
+            else if (radioButton7.Checked)
+            {
+                P1Color = radioButton7.Text;
+            }
         }
         
         private void MaterialTextBox21_TextChanged(object sender, EventArgs e)
@@ -97,9 +119,6 @@ namespace The_Box_v0._1
             }
         }
 
-        private void Dialog_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

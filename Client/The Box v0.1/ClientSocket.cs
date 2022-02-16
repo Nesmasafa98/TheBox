@@ -102,7 +102,7 @@ namespace The_Box_v0._1
             }
             return null;
         }
-        public static Room ResponseJoin(User Myuser, string id)
+        public static Room ResponseJoin(User Myuser, string id, string p2Color)
         {       //receive room when player to request join in loop
             String s = streamReader.ReadString();
             if (s == "join")
@@ -115,6 +115,7 @@ namespace The_Box_v0._1
                 Console.WriteLine("Enter Id of Room");
                 //    String Idroom = Console.ReadLine();
                 streamWriter.Write(id);
+                streamWriter.Write(p2Color);
 
                 return Room.ReceiveRoom(streamReader);
                 //   Console.WriteLine("I receive room!");
@@ -210,7 +211,7 @@ namespace The_Box_v0._1
 
         }
 
-        public static Room ResponseCreate(User player1, string id, int index)
+        public static Room ResponseCreate(User player1, string id, int index, string p1color)
         {   // receiving owner and id and size of board you want
             // index will reflect with size specific in Room 
             String s = streamReader.ReadString();
@@ -222,6 +223,7 @@ namespace The_Box_v0._1
                 streamWriter.Write(id);
 
                 streamWriter.Write(index.ToString());
+                streamWriter.Write(p1color);
 
 
                 return Room.ReceiveRoom(streamReader);

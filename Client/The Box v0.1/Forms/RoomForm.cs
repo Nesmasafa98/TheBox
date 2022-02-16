@@ -42,6 +42,8 @@ namespace The_Box_v0._1.Forms
             logicalroom.DetrimineSize(room.index);
             RoomName = room.id;
             LabelRoomName.Text = RoomName;
+            Player1_Name.Text = myuser.username;
+            Player1_Color.Text = room.player1Color;
             mainForm = mForm;
             ordinaryUser = myuser; 
             playForm = pForm;

@@ -19,7 +19,7 @@ namespace The_Box_v0._1.Forms
 {
     public partial class BoardForm : Form
     {
-
+        System.Threading.Timer PlayerTimer;
         protected Game game;
         //instance of Game
         //Game game1 = new Game();
@@ -127,9 +127,10 @@ namespace The_Box_v0._1.Forms
 
                 receiverloopThread.Start();
                 checkWinner.Start();
+                PlayerTimer = new System.Threading.Timer(PlayerThread, null, 0, 300000);
             }
 
-       
+            
         }
 
         public void CheckWhoIsWin()
@@ -348,7 +349,7 @@ namespace The_Box_v0._1.Forms
 
                     if (IsStateChanged(temp, game.boardState, game.row, game.col))
                     {
-                        game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+                        game.drawGamePiece(index, graphics, this, game.pieceColor1Plater1, Game.state.player1);
 
               
                             Game.SendGame(game, ClientSocket.streamWriter);
@@ -414,9 +415,13 @@ namespace The_Box_v0._1.Forms
         private void BoardForm_Resize(object sender, EventArgs e)
         {
             Invalidate();
-        } 
+        }
 
 
+        public void PlayerThread(object o)
+        {
+            MessageBox.Show("Hi Timer");
+        }
 
 
 

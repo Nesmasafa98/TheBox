@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,12 @@ namespace Connect_4
         public int _row;
         public int _col;
         public bool roomIsFull = false;
-        public string player1Color = "red";
-        public string player2Color = "green";
+        public string player1Color ;
+        public string player2Color ;
 
         public int index;
 
-        public Room(User owner, string Id, int index)
+        public Room(User owner, string Id, int index, string p1color)
         {
             Player1 = owner;
 
@@ -35,12 +36,16 @@ namespace Connect_4
             //board = new Board(size);
             this.index = index;
             DetrimineSize(index);
+            player1Color = p1color;
         }
 
         public void PlayBtn(User player)
         {
             Player2 = player;
-            game = new Game(_row, _col, Player1, Player2, player1Color, player2Color);
+            Console.WriteLine(player1Color + "Game");
+            game = new Game(_row, _col, Player1, Player2);
+            game.pieceColor1Plater1 = Color.FromName(player1Color);
+            game.pieceColor1Plater2 = Color.FromName(player2Color);
 
             StartGame = true;
 
@@ -135,7 +140,7 @@ namespace Connect_4
         }
     
 
-    public static void  addSecoondPlayTORoom(String roomId, BinaryWriter streamWriter,User player2)
+    public static void  addSecoondPlayTORoom(String roomId, BinaryWriter streamWriter,User player2, string p2Color)
         {
 
             int i = 0;
@@ -144,8 +149,9 @@ namespace Connect_4
                 if (avaibleRoom[i].id == roomId)
 
                 {
+                    avaibleRoom[i].player2Color = p2Color;
                     avaibleRoom[i].PlayBtn(player2);
-
+                    
 
                     string strJson = JsonConvert.SerializeObject(avaibleRoom[i]);
                     streamWriter.Write(strJson);

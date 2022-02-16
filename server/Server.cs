@@ -170,6 +170,7 @@ namespace Connect_4
                             streamWriter.Write("ConfigPlayer1");
                             string id = streamReader.ReadString();
                             Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
+                            Console.WriteLine(roomState.player1Color);
                             roomState.game = Game.Receiver(streamReader);
                             Console.WriteLine("Change Turn");
                             //streamReader.ReadString();
@@ -263,8 +264,12 @@ namespace Connect_4
 
                             User player1 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
                             string id = streamReader.ReadString();
-                            Room.avaibleRoom.Add(new Room(player1, id, int.Parse(streamReader.ReadString())));
+                            int index = int.Parse(streamReader.ReadString());
+                            string p1color = streamReader.ReadString();
+                            Room room = new Room(player1, id, index, p1color);
+                            Room.avaibleRoom.Add(room);
                             Console.Write(" i create a room ");
+                            Console.Write(room.player1Color);
 
                             //  Room.FindindexOfRoom(id);
 
@@ -314,7 +319,8 @@ namespace Connect_4
                             Console.WriteLine("AnaBreceive");
                             User player2 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
                             string roomId = streamReader.ReadString();
-                            Room.addSecoondPlayTORoom(roomId, streamWriter, player2);
+                            string p2Color = streamReader.ReadString();
+                            Room.addSecoondPlayTORoom(roomId, streamWriter, player2, p2Color);
 
                             
 

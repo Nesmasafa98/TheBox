@@ -75,7 +75,7 @@ namespace The_Box_v0._1.Forms
                 //Room CreatedRoom = new Room(user, dlg.RoomName, dlg.IndexBoardSize);
                 disallowTimer();
                 ClientSocket.SendRequest("create");
-                Room m = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize);
+                Room m = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize, dlg.P1Color);
                 user.room = m;
                 roomForm = new RoomForm(user,user.room, mainForm, this);
 
@@ -107,25 +107,30 @@ namespace The_Box_v0._1.Forms
             if (Available_Rooms_listBox.SelectedItem != null)
             {
                 RoomName = Available_Rooms_listBox.SelectedItem.ToString();
+                ColorDialog dlg = new ColorDialog();
+                DialogResult dResult;
+                dResult = dlg.ShowDialog();
 
+                if (dResult == DialogResult.OK)
+                {
+                    //MessageBox.Show("ana da5lt hena ya saamy");
+                    //MessageBox.Show("allah");
+                    disallowTimer();
+                    ClientSocket.SendRequest("join");
 
-                //MessageBox.Show("ana da5lt hena ya saamy");
-                //MessageBox.Show("allah");
-                disallowTimer();
-                ClientSocket.SendRequest("join");
+                    user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id, dlg.P2Color);
+                    User.CurrentRoom = user.room;
+                    // System.Threading.Thread.Sleep(10000);
+                    roomForm = new RoomForm(user, user.room, mainForm, this);
+                    roomForm.Show();
+                    roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm, false), sender);
 
-                user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
-                User.CurrentRoom = user.room;
-                // System.Threading.Thread.Sleep(10000);
-                roomForm = new RoomForm(user, user.room, mainForm, this);
-                roomForm.Show();
-                roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm,false), sender);
+                    roomForm.PlayBtn.Hide();
 
-                roomForm.PlayBtn.Hide();
+                    //  this.Hide();
+                    mainForm.Hide();
 
-                //  this.Hide();
-                mainForm.Hide();
-
+                }
             }
             
         }
