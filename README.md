@@ -17,6 +17,42 @@ and pick a color for their coin to start playing.
 ## Design Patterns
 - Memento
 - Singleton
+## Protocols
+
+| Request | Response | Details |
+| --- | --- | --- |
+| log | ResponseLog |
+Player logs into the game, the server then receives that player
+ |
+| showplayer | ResponseShowPlayer |
+Once the player logs in, the server responds with the online players list
+ |
+| showrooms | ResponseShowRooms |
+Once the player logs in, the server responds with the online rooms list
+ |
+| end | - |
+Specifies the end of list of rooms or players in server
+ |
+| create | ResponseCreate |
+When a room is created, the player who created the room, id(room name), index(Size of board) are sent to the server to create the room, then server responds with the room created and player1 is assigned to that room
+ |
+| join | ResponseJoin |
+Player 2 requests to join a room, server responds with the joined room and is redirects the player
+ |
+| play | ResponsePlay |
+Player Sends the room ID to the server, then the server responds with the room where the game is created
+ |
+| ConfigPlayer1 | - |
+Server waits for player 1 to play
+ |
+| ConfigPlayer2 | - |
+Server waits for player 2 to play |
+|
+ReceiveState
+ | ResponseRecieveState | Receives the state of board |
+|
+Exit
+ | - | Player is disconnected from server |
 ## Features
 ### Client
 - Request user creation.
