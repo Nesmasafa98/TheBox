@@ -207,7 +207,7 @@ namespace The_Box_v0._1.Forms
             }
             Game.SendGame(game, ClientSocket.streamWriter);
 
-            MessageBox.Show("ana Bara el while ");
+            
 
 
 

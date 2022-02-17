@@ -13,10 +13,10 @@ namespace The_Box_v0._1.Forms
     public partial class ColorDialog : Form
     {
         public string P2Color { set; get; }
-        public ColorDialog()
+        public ColorDialog(string p1Color)
         {
             InitializeComponent();
-            radioButton6.Checked = true;
+            RemoveColor(p1Color);
         }
 
         public void DetermineColor()
@@ -39,6 +39,33 @@ namespace The_Box_v0._1.Forms
             }
         }
 
+        public void RemoveColor(string p1Color)
+        {
+            if (radioButton6.Text == p1Color)
+            {
+                radioButton6.Enabled = false;
+                radioButton5.Checked = true;
+
+            }
+            else if (radioButton5.Text == p1Color)
+            {
+                radioButton5.Enabled = false;
+                radioButton6.Checked = true;
+
+            }
+            else if (radioButton7.Text == p1Color)
+            {
+                radioButton7.Enabled = false;
+                radioButton6.Checked = true;
+
+            }
+            else if (radioButton4.Text == p1Color)
+            {
+                radioButton4.Enabled = false;
+                radioButton6.Checked = true;
+
+            }
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;

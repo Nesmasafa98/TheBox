@@ -38,10 +38,10 @@ namespace Connect_4
             server.Start();
             // server2.Start();
             //avaibleRoom.Add(new Room(new User("ahmed"), "ahmed", "tarek"));
-            Console.WriteLine("************This is Server now ************");
+           
 
             Console.WriteLine("************This is Server program************" + PortNum);
-            Console.WriteLine("Hoe many clients are going to connect to this server?:");
+           
             int numberOfClientsYouNeedToConnect = numOFClient;
             for (int i = 0; i < numberOfClientsYouNeedToConnect; i++)
             {
@@ -96,7 +96,7 @@ namespace Connect_4
                         theString = streamReader.ReadString();
                         Console.WriteLine("value of Received is :" + theString);
                         streamWriter.Flush();
-                        Console.WriteLine("helooooo");
+                        
 
                         if (theString == "log")
                         {

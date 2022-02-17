@@ -107,14 +107,15 @@ namespace The_Box_v0._1.Forms
             if (Available_Rooms_listBox.SelectedItem != null)
             {
                 RoomName = Available_Rooms_listBox.SelectedItem.ToString();
-                ColorDialog dlg = new ColorDialog();
+                string p1Color = getP1Color();
+                
+                ColorDialog dlg = new ColorDialog(p1Color);
                 DialogResult dResult;
                 dResult = dlg.ShowDialog();
 
                 if (dResult == DialogResult.OK)
                 {
-                    //MessageBox.Show("ana da5lt hena ya saamy");
-                    //MessageBox.Show("allah");
+              
                     disallowTimer();
                     ClientSocket.SendRequest("join");
 
@@ -135,6 +136,18 @@ namespace The_Box_v0._1.Forms
             
         }
 
+        public string getP1Color()
+        {
+            for (int i = 0; i < Room.rooms.Count; i++)
+            {
+                if (Room.rooms[i].id == RoomName)
+                {
+                    string p1Color = Room.rooms[i].player1Color;
+                    return p1Color;
+                }
+            }
+            return "none";
+        }
         public void renderAvailableRooms()
         {
             

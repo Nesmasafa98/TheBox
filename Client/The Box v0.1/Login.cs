@@ -48,7 +48,6 @@ namespace The_Box_v0._1
             ClientSocket.SendRequest("log");
             ClientSocket.ResponseLog(user1);
             MainForm mainForm = new MainForm(this, user1);
-            MessageBox.Show("ana 3mlt recevie");
             mainForm.Show();
             this.Hide();
             
