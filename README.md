@@ -17,6 +17,7 @@ and pick a color for their coin to start playing.
 ## Design Patterns
 - Memento
 - Singleton
+- [Classes Design UML and Sequence Diagram](https://app.diagrams.net/#G1R-aCJOE3QRefbgPOe4FvvqD7ookj1vLj).
 ## Protocols
 
 |Request|Response|Details|
