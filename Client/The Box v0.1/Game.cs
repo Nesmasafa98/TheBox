@@ -117,6 +117,10 @@ namespace The_Box_v0._1
 
         }
 
+
+
+    
+
         public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm,Color type,state newState)
         {
             //if (full[index] >= 0)
@@ -140,6 +144,9 @@ namespace The_Box_v0._1
             //}
             //}
         }
+
+ 
+
         public String WinningPlayer()
         {
             bool  Playerone= false;
@@ -159,6 +166,7 @@ namespace The_Box_v0._1
                     }
                 }
             }
+
 
             //horizontal win
             for (int j = 0; j < boardState.GetLength(1) - 3; j++)

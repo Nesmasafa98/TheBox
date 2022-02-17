@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Connect_4
 {
@@ -25,6 +26,7 @@ namespace Connect_4
         public int row;
         public int col;
         public User user1, user2;
+        //   public bool Iswinner=false;
 
 
         public Game(int r, int c, User u1, User u2)
@@ -33,6 +35,7 @@ namespace Connect_4
             player2 = false;
             user1 = u1;
             user2 = u2;
+
             row = r;
             col = c;
             //pieceColor1Plater1 = Color.FromName(player1Color);
@@ -145,11 +148,25 @@ namespace Connect_4
 
         }
 
-
-        public Color WinningPlayer()
+        public bool Iswinner()
         {
-            bool RedPlayer = false;
-            bool BluePlayer = false;
+            if (WinningPlayer()== "NoWinner!")
+            {
+              //  MessageBox.Show(WinningPlayer().ToString());
+
+                return false;
+            }
+            else
+
+                return true;
+
+
+        }
+
+        public String WinningPlayer()
+        {
+            bool Playerone = false;
+            bool playertwo = false;
             //vertical win
             for (int i = 0; i < boardState.GetLength(0) - 3; i++)
             {
@@ -157,14 +174,15 @@ namespace Connect_4
                 {
                     if (boardState[i, j] == state.player1 && boardState[i + 1, j] == state.player1 && boardState[i + 2, j] == state.player1 && boardState[i + 3, j] == state.player1)
                     {
-                        RedPlayer = true;
+                        Playerone = true;
                     }
                     if (boardState[i, j] == state.player2 && boardState[i + 1, j] == state.player2 && boardState[i + 2, j] == state.player2 && boardState[i + 3, j] == state.player2)
                     {
-                        BluePlayer = true;
+                        playertwo = true;
                     }
                 }
             }
+
 
             //horizontal win
             for (int j = 0; j < boardState.GetLength(1) - 3; j++)
@@ -173,11 +191,11 @@ namespace Connect_4
                 {
                     if (boardState[i, j] == state.player1 && boardState[i, j + 1] == state.player1 && boardState[i, j + 2] == state.player1 && this.boardState[i, j + 3] == state.player1)
                     {
-                        RedPlayer = true;
+                        Playerone = true;
                     }
                     else if (boardState[i, j] == state.player2 && boardState[i, j + 1] == state.player2 && boardState[i, j + 2] == state.player2 && this.boardState[i, j + 3] == state.player2)
                     {
-                        BluePlayer = true;
+                        playertwo = true;
                     }
                 }
             }
@@ -190,11 +208,11 @@ namespace Connect_4
                 {
                     if (boardState[i, j] == state.player1 && this.boardState[i - 1, j + 1] == state.player1 && boardState[i - 2, j + 2] == state.player1 && boardState[i - 3, j + 3] == state.player1)
                     {
-                        RedPlayer = true;
+                        Playerone = true;
                     }
                     else if (boardState[i, j] == state.player2 && this.boardState[i - 1, j + 1] == state.player2 && boardState[i - 2, j + 2] == state.player2 && boardState[i - 3, j + 3] == state.player2)
                     {
-                        BluePlayer = true;
+                        playertwo = true;
                     }
                 }
             }
@@ -206,22 +224,22 @@ namespace Connect_4
                 {
                     if (boardState[i, j] == state.player1 && boardState[i - 1, j - 1] == state.player1 && boardState[i - 2, j - 2] == state.player1 && boardState[i - 3, j - 3] == state.player1)
                     {
-                        RedPlayer = true;
+                        Playerone = true;
                     }
                     if (boardState[i, j] == state.player2 && boardState[i - 1, j - 1] == state.player2 && boardState[i - 2, j - 2] == state.player2 && boardState[i - 3, j - 3] == state.player2)
                     {
-                        BluePlayer = true;
+                        playertwo = true;
                     }
 
                 }
             }
 
-            if (RedPlayer)
-                return Color.Red;
-            else if (BluePlayer)
-                return Color.Blue;
+            if (Playerone)
+                return "player1";
+            else if (playertwo)
+                return "player2";
             else
-                return Color.Empty;
+                return "NoWinner!";
         }
     }
-}
+    }

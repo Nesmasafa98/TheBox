@@ -144,7 +144,6 @@ namespace The_Box_v0._1
 
             if (s == "log")
             {
-                MessageBox.Show("ana Da5lt ellog ");
                 User.SendPlayer(user, streamWriter);
 
 

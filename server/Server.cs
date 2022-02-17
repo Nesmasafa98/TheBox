@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections;
 using static Connect_4.Game;
+using System.Windows.Forms;
 
 namespace Connect_4
 {
@@ -27,6 +28,8 @@ namespace Connect_4
         static int col;
        static Boolean flag = false;
         static Game temp;
+        bool isWinner = false;
+
         private Server(int PortNum, int numOFClient)
         {
             server = new TcpListener(IPAddress.Parse("127.0.0.1"), PortNum);
@@ -182,7 +185,17 @@ namespace Connect_4
                                 Console.WriteLine("Send player 1");
 
                                 Game.SendGame(roomState.game, streamWriter);
+                                bool Iswinner = roomState.game.Iswinner();
+                                streamWriter.Write(Iswinner);
+
+                                if (Iswinner)
+                                {
+                                    Console.WriteLine("anaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                            //        MessageBox.Show("Ana");
+                                    break;
+                                }
                                 Console.WriteLine("Send recive  1");
+
                                 roomState.game = Game.Receiver(streamReader);
 
                                 roomState.game.playerTurn();
@@ -198,10 +211,19 @@ namespace Connect_4
 
                             while (true)
                             {
+                                Console.WriteLine("seconddddddddddddddddddd");
                                 while (roomState.game.player2 == false) ;
                                 Console.WriteLine("Send  player 2");
                                 Game.SendGame(roomState.game, streamWriter);
+                                bool Iswinner =roomState.game.Iswinner();
+                                streamWriter.Write(Iswinner);
 
+                                if (Iswinner)
+                                {
+                                    MessageBox.Show("Ana2");
+
+                                    break;
+                                }
                                 roomState.game = Game.Receiver(streamReader);
                                 Console.WriteLine("reciving  player 2");
 

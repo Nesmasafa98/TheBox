@@ -59,9 +59,9 @@ namespace The_Box_v0._1.Forms
         int turnplayer1=1;
         int firstTime = 0;
         bool ThereIsAWinner;
-
+        bool Iswinner=false;
         System.Threading.Timer watcherTimer;
-
+        bool thereIsWinner=false;
         PlayForm playForm;
         RoomForm roomForm;
 
@@ -85,8 +85,7 @@ namespace The_Box_v0._1.Forms
             this.game = game;
            // temp = game.boardState;
             this.Creator = Creator;
-            //   this.mystate = game.boardState;
-            //essageBox.Show("Ya samy " + true);
+
             this.Iswatcher = Iswatcher;
             playForm = pForm;
             roomForm = rForm;
@@ -179,9 +178,10 @@ namespace The_Box_v0._1.Forms
 
         }
 
+
         private void Receiverloop()
         {
-            while (true)
+            while (!thereIsWinner)
             {
 
 
@@ -193,7 +193,7 @@ namespace The_Box_v0._1.Forms
                         game = Game.Receiver(ClientSocket.streamReader);
                     
                         DrawElipsesThrowGame(game.boardState);
-                    
+                    thereIsWinner= ClientSocket.streamReader.ReadBoolean();
 
                 }
 
@@ -201,15 +201,22 @@ namespace The_Box_v0._1.Forms
                 {
                     game = Game.Receiver(ClientSocket.streamReader);
                     DrawElipsesThrowGame(game.boardState);
+                   thereIsWinner= ClientSocket.streamReader.ReadBoolean();
 
                 }
             }
+            Game.SendGame(game, ClientSocket.streamWriter);
+
+            MessageBox.Show("ana Bara el while ");
 
 
 
-           
 
 
+
+
+            ClientSocket.SendRequest("log");
+            ClientSocket.ResponseLog(Creator);
         }
 
         protected override void OnResize(EventArgs e)
@@ -420,7 +427,7 @@ namespace The_Box_v0._1.Forms
 
         public void PlayerThread(object o)
         {
-            MessageBox.Show("Hi Timer");
+         //   MessageBox.Show("Hi Timer");
         }
 
 
