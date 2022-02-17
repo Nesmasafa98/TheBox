@@ -45,3 +45,13 @@ and pick a color for their coin to start playing.
 - Navigate to Play.
 - Double click on the shown room.
 - The first client press play button.
+## Screenshots
+![This is an image](https://user-images.githubusercontent.com/72733603/154560183-03f95fc2-1c25-4619-9f88-99533a44e91a.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154560238-28a248f2-e598-45ac-93dd-56b0e656b8b6.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154561254-2912764e-790a-4c79-8d09-c81b15cde0c8.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154561303-b0772944-ea17-48fe-9b6a-c2ea9c499c1e.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154560353-41b5be0b-4925-4a97-9678-db5e21d181db.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154560375-59a33145-6c5a-4ffc-aa5a-0df0b8ab9358.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154560384-b1a17b61-9836-49f8-9895-24924f5a68c4.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154560384-b1a17b61-9836-49f8-9895-24924f5a68c4.png)
+![This is an image](https://user-images.githubusercontent.com/72733603/154561367-1fc63011-cf55-4b21-9635-6952d223e018.png)
