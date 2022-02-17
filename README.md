@@ -19,40 +19,19 @@ and pick a color for their coin to start playing.
 - Singleton
 ## Protocols
 
-| Request | Response | Details |
-| --- | --- | --- |
-| log | ResponseLog |
-Player logs into the game, the server then receives that player
- |
-| showplayer | ResponseShowPlayer |
-Once the player logs in, the server responds with the online players list
- |
-| showrooms | ResponseShowRooms |
-Once the player logs in, the server responds with the online rooms list
- |
-| end | - |
-Specifies the end of list of rooms or players in server
- |
-| create | ResponseCreate |
-When a room is created, the player who created the room, id(room name), index(Size of board) are sent to the server to create the room, then server responds with the room created and player1 is assigned to that room
- |
-| join | ResponseJoin |
-Player 2 requests to join a room, server responds with the joined room and is redirects the player
- |
-| play | ResponsePlay |
-Player Sends the room ID to the server, then the server responds with the room where the game is created
- |
-| ConfigPlayer1 | - |
-Server waits for player 1 to play
- |
-| ConfigPlayer2 | - |
-Server waits for player 2 to play |
-|
-ReceiveState
- | ResponseRecieveState | Receives the state of board |
-|
-Exit
- | - | Player is disconnected from server |
+|Request|Response|Details|
+| :-: | :-: | :-: |
+|log|ResponseLog|<p></p><p>Player logs into the game, the server then receives that player</p><p></p>|
+|showplayer|ResponseShowPlayer|<p></p><p>Once the player logs in, the server responds with the online players list</p><p></p>|
+|showrooms|ResponseShowRooms|<p></p><p>Once the player logs in, the server responds with the online rooms list</p><p></p>|
+|end|-|<p></p><p>Specifies the end of list of rooms or players in server</p><p></p>|
+|create|ResponseCreate|<p></p><p>When a room is created, the player who created the room, id(room name), index(Size of board) are sent to the server to create the room, then server responds with the room created and player1 is assigned to that room</p><p></p>|
+|join|ResponseJoin|<p></p><p>Player 2 requests to join a room, server responds with the joined room and is redirects the player</p><p></p>|
+|play|ResponsePlay|<p></p><p>Player Sends the room ID to the server, then the server responds with the room where the game is created</p><p></p>|
+|ConfigPlayer1|-|<p></p><p>Server waits for player 1 to play </p><p></p>|
+|ConfigPlayer2|-|<p></p><p>Server waits for player 2 to play</p><p> </p>|
+|<p></p><p>ReceiveState</p><p></p>|ResponseRecieveState|Receives the state of board |
+|<p></p><p>Exit</p><p></p>|-|Player is disconnected from server|
 ## Features
 ### Client
 - Request user creation.
