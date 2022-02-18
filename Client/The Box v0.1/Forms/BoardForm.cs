@@ -20,7 +20,7 @@ namespace The_Box_v0._1.Forms
     public partial class BoardForm : Form
     {
         System.Threading.Timer PlayerTimer;
-        protected Game game;
+        public Game game;
         //instance of Game
         //Game game1 = new Game();
         //List of Games to save and redraw with
@@ -65,7 +65,7 @@ namespace The_Box_v0._1.Forms
         PlayForm playForm;
         RoomForm roomForm;
 
-        state[,] temp;
+        public static state[,] temp;
         Thread receiverloopThread;
         Thread checkWinner;
       
@@ -100,36 +100,13 @@ namespace The_Box_v0._1.Forms
             {
                 watcherTimer = new System.Threading.Timer(WatcherFunction, null, 0, 1000);
             }
-       
-          
 
 
-            if (!Iswatcher)
-            {
-                if (Creator.username == this.game.user1.username)
-                {
-                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+            GameReceiveingConfigration(Iswatcher, game, Creator ,receiverloopThread, checkWinner, PlayerTimer);
 
 
-                    ClientSocket.SendRequest("ConfigPlayer1");
-                    ClientSocket.StateConfigPlayer1();
 
-
-                }
-                else
-                {
-                    ClientSocket.SendRequest("ConfigPlayer2");
-                    ClientSocket.StateConfigPlayer2();
-                    temp = game.boardState;
-
-                }
-
-                receiverloopThread.Start();
-                checkWinner.Start();
-                PlayerTimer = new System.Threading.Timer(PlayerThread, null, 0, 300000);
-            }
-
-            
         }
 
         public void CheckWhoIsWin()
@@ -206,14 +183,6 @@ namespace The_Box_v0._1.Forms
                 }
             }
             Game.SendGame(game, ClientSocket.streamWriter);
-
-            
-
-
-
-
-
-
 
             ClientSocket.SendRequest("log");
             ClientSocket.ResponseLog(Creator);
@@ -375,6 +344,8 @@ namespace The_Box_v0._1.Forms
 
                         Game.SendGame(game, ClientSocket.streamWriter);
                         temp = game.boardState;
+
+
                     }
                         
                     
@@ -425,10 +396,6 @@ namespace The_Box_v0._1.Forms
         }
 
 
-        public void PlayerThread(object o)
-        {
-         //   MessageBox.Show("Hi Timer");
-        }
 
 
 

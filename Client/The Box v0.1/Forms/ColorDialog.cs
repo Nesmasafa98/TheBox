@@ -78,5 +78,10 @@ namespace The_Box_v0._1.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void ColorDialog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

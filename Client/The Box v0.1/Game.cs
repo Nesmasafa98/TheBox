@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -119,9 +120,9 @@ namespace The_Box_v0._1
 
 
 
-    
 
-        public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm,Color type,state newState)
+
+        public void drawGamePiece(int index, Graphics graphics, Forms.BoardForm boardForm, Color type, state newState)
         {
             //if (full[index] >= 0)
             //{
@@ -132,9 +133,9 @@ namespace The_Box_v0._1
                 full[index]--;
                 //playerTurn();
 
-              
+
             }
-           
+
             //else if (player2 && boardState[index, full[index]] == state.empty)
             //{
             //    boardState[index, full[index]] = state.player2;
@@ -145,7 +146,57 @@ namespace The_Box_v0._1
             //}
         }
 
- 
+        System.Threading.Timer PlayerTimer;
+        public static void GameReceiveingConfigration(bool Iswatcher,Game game,User Creator,Thread receiverloopThread,Thread checkWinner, System.Threading.Timer PlayerTimer)
+        {
+
+
+            if (!Iswatcher)
+            {
+                if (Creator.username == game.user1.username)
+                {
+                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+
+                    ClientSocket.SendRequest("ConfigPlayer1");
+                    ClientSocket.StateConfigPlayer1();
+
+
+                }
+                else
+                {
+                    ClientSocket.SendRequest("ConfigPlayer2");
+                    ClientSocket.StateConfigPlayer2();
+                    Forms.BoardForm.temp = game.boardState;
+                   
+                }
+
+                receiverloopThread.Start();
+                checkWinner.Start();
+                PlayerTimer = new System.Threading.Timer(PlayerThread, null, 0, 300000);
+            }
+
+
+
+        }
+
+
+
+        //==== will change it 
+
+        public static void PlayerThread(object o)
+        {
+            //   MessageBox.Show("Hi Timer");
+        }
+
+        // will change it 
+
+        /// <summary>
+        /// =
+        /// </summary>
+        /// <param name="o"></param>
+
+
 
         public String WinningPlayer()
         {

@@ -48,6 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.QuitBtn = new System.Windows.Forms.Button();
             this.BoardPanel = new System.Windows.Forms.Panel();
+            this.Reset = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Player2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Player1)).BeginInit();
@@ -254,6 +255,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Reset);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.QuitBtn);
             this.panel2.Controls.Add(this.PlayBtn);
@@ -303,6 +305,20 @@
             this.BoardPanel.TabIndex = 2;
             this.BoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.BoardPanel_Paint);
             // 
+            // Reset
+            // 
+            this.Reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.Reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Reset.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.Reset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(82)))));
+            this.Reset.Location = new System.Drawing.Point(30, 121);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(119, 37);
+            this.Reset.TabIndex = 10;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = false;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
             // RoomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,5 +364,6 @@
         public System.Windows.Forms.Label Player1_Color;
         public System.Windows.Forms.Label Player2_Color;
         public System.Windows.Forms.Label Player2_Name;
+        public System.Windows.Forms.Button Reset;
     }
 }

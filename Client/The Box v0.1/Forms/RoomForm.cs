@@ -20,6 +20,7 @@ namespace The_Box_v0._1.Forms
         User owner;
         User player;
         List<User> watchers;
+        Forms.BoardForm boardform;
 
         
         
@@ -154,8 +155,8 @@ namespace The_Box_v0._1.Forms
             Room receiveRoom= ClientSocket.Responseplay(logicalroom.id);
             User.CurrentRoom = receiveRoom;
             //MessageBox.Show(receiveRoom.Player2.color);
-
-            OpenChildForm(new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this,false), sender);
+            Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this, false);
+            OpenChildForm(form, sender);
         }
 
         public void AskforPlay(User user)
@@ -187,6 +188,16 @@ namespace The_Box_v0._1.Forms
         private void Player1Username_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            ClientSocket.SendRequest("Reset");
+            if (boardform.game.user1.username== ordinaryUser.username)
+            {
+
+
+            }
         }
     }
 }

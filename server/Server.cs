@@ -178,20 +178,25 @@ namespace Connect_4
                             Console.WriteLine("Change Turn");
                             //streamReader.ReadString();
                             roomState.game.playerTurn();
-                            while (true)
+                            bool Iswinner = roomState.game.Iswinner(); 
+                            while (!Iswinner)
                             {
 
                                 while (roomState.game.player1 == false) ;
                                 Console.WriteLine("Send player 1");
 
                                 Game.SendGame(roomState.game, streamWriter);
-                                bool Iswinner = roomState.game.Iswinner();
+                                Iswinner = roomState.game.Iswinner();
                                 streamWriter.Write(Iswinner);
 
                                 if (Iswinner)
                                 {
-                                    Console.WriteLine("anaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                            //        MessageBox.Show("Ana");
+                                    Console.WriteLine("111111111111111111111111111111");
+                                    roomState.game.playerTurn();
+
+                                    //        MessageBox.Show("Ana");
+
+
                                     break;
                                 }
                                 Console.WriteLine("Send recive  1");
@@ -201,6 +206,8 @@ namespace Connect_4
                                 roomState.game.playerTurn();
 
                             }
+
+
                         }
                         if (theString == "ConfigPlayer2")
                         {
@@ -208,19 +215,20 @@ namespace Connect_4
 
                             string id = streamReader.ReadString();
                             Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
+                            bool Iswinner = roomState.game.Iswinner();
 
-                            while (true)
+                            while (!Iswinner)
                             {
-                                Console.WriteLine("seconddddddddddddddddddd");
                                 while (roomState.game.player2 == false) ;
                                 Console.WriteLine("Send  player 2");
                                 Game.SendGame(roomState.game, streamWriter);
-                                bool Iswinner =roomState.game.Iswinner();
+                                 Iswinner =roomState.game.Iswinner();
                                 streamWriter.Write(Iswinner);
 
                                 if (Iswinner)
                                 {
-                                 //   MessageBox.Show("Ana2");
+                                    Console.WriteLine("222222222222222222222222222222222");
+                                    roomState.game.playerTurn();
 
                                     break;
                                 }
@@ -232,6 +240,7 @@ namespace Connect_4
 
 
                             }
+
 
 
                         }

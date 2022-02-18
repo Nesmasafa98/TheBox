@@ -17,12 +17,12 @@ namespace The_Box_v0._1
 {
     class ClientSocket
     {
-        static NetworkStream networkStream;
+     public   static NetworkStream networkStream;
         static int port = 5002;
         public static BinaryWriter streamWriter;
         public static BinaryReader streamReader;
 
-        static TcpClient ny;
+        static public  TcpClient ny;
         static ClientSocket()
         {
             ny = new TcpClient();
