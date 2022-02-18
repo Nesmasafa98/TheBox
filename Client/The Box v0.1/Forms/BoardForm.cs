@@ -56,8 +56,7 @@ namespace The_Box_v0._1.Forms
         int constant;
         int index;
         Room WatcherRoom;
-        int turnplayer1=1;
-        int firstTime = 0;
+
         bool ThereIsAWinner;
         bool Iswinner=false;
         System.Threading.Timer watcherTimer;
@@ -65,7 +64,7 @@ namespace The_Box_v0._1.Forms
         PlayForm playForm;
         RoomForm roomForm;
 
-        public static state[,] temp;
+//        public static state[,] temp;
         Thread receiverloopThread;
         Thread checkWinner;
       
@@ -75,13 +74,13 @@ namespace The_Box_v0._1.Forms
             InitializeComponent();
             SetColorForBrush();
             InitializeAxisValues();
-            rForm.Player1_Name.Text = game.user1.username;
-            rForm.Player2_Name.Text = game.user2.username;
-            rForm.Player1_Color.Text = game.pieceColor1Plater1.ToString();
-            rForm.Player2_Color.Text = game.pieceColor1Plater2.ToString();
+            rForm.Player1_Name.Text = game.User1.Username;
+            rForm.Player2_Name.Text = game.User2.Username;
+            rForm.Player1_Color.Text = game.PieceColor1Plater1.ToString();
+            rForm.Player2_Color.Text = game.PieceColor1Plater2.ToString();
             Control.CheckForIllegalCrossThreadCalls = false;
             ThereIsAWinner = false;
-            _row = game.row; _col = game.col;
+            _row = game.Row; _col = game.Col;
             this.game = game;
            // temp = game.boardState;
             this.Creator = Creator;
@@ -137,11 +136,11 @@ namespace The_Box_v0._1.Forms
             ClientSocket.SendRequest("Watch");
 
             WatcherRoom = ClientSocket.ResponseWatch(
-                 Creator.room.id);
+                 Creator.Room.Id);
 
-            game = WatcherRoom.game;
+            game = WatcherRoom.Game;
 
-            DrawElipsesThrowGame(WatcherRoom.game.boardState);
+            DrawElipsesThrowGame(WatcherRoom.Game.BoardState);
 
         }
 
@@ -163,13 +162,13 @@ namespace The_Box_v0._1.Forms
 
 
 
-                if (Creator.username == this.game.user1.username)
+                if (Creator.Username == this.game.User1.Username)
                 {
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
            
                         game = Game.Receiver(ClientSocket.streamReader);
                     
-                        DrawElipsesThrowGame(game.boardState);
+                        DrawElipsesThrowGame(game.BoardState);
                     thereIsWinner= ClientSocket.streamReader.ReadBoolean();
 
                 }
@@ -177,7 +176,7 @@ namespace The_Box_v0._1.Forms
                 else
                 {
                     game = Game.Receiver(ClientSocket.streamReader);
-                    DrawElipsesThrowGame(game.boardState);
+                    DrawElipsesThrowGame(game.BoardState);
                    thereIsWinner= ClientSocket.streamReader.ReadBoolean();
 
                 }
@@ -268,12 +267,12 @@ namespace The_Box_v0._1.Forms
                             color2 = Color.FromArgb(39, 39, 58);
                             if (boardState[j, i] == Game.state.player1)
                             {
-                                color2 = game.pieceColor1Plater1;
+                                color2 = game.PieceColor1Plater1;
                             }
                             else
                             if (boardState[j, i] == Game.state.player2)
                             {
-                                color2 = game.pieceColor1Plater2;
+                                color2 = game.PieceColor1Plater2;
                             }
                             DrawElipse(i, j, color2);
                         }
@@ -320,16 +319,16 @@ namespace The_Box_v0._1.Forms
 
 
                 
-                if (Creator.username == this.game.user1.username)
+                if (Creator.Username == this.game.User1.Username)
                 {
 
-                    if (IsStateChanged(temp, game.boardState, game.row, game.col))
+                    if (IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
                     {
-                        game.drawGamePiece(index, graphics, this, game.pieceColor1Plater1, Game.state.player1);
+                        game.drawGamePiece(index, graphics, this, game.PieceColor1Plater1, Game.state.player1);
 
               
                             Game.SendGame(game, ClientSocket.streamWriter);
-                        temp = game.boardState;    
+                        game.Prev = game.BoardState;    
                         
 
                     }
@@ -337,20 +336,20 @@ namespace The_Box_v0._1.Forms
                 }
                 else
                 {
-                    if (IsStateChanged(temp, game.boardState, game.row, game.col))
+                    if (IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
                     {
 
                         game.drawGamePiece(index, graphics, this, Color.Green, Game.state.player2);
 
                         Game.SendGame(game, ClientSocket.streamWriter);
-                        temp = game.boardState;
+                        game.Prev = game.BoardState;
 
 
                     }
                         
                     
                 }
-                DrawElipsesThrowGame(game.boardState);
+                DrawElipsesThrowGame(game.BoardState);
             }
 
 
@@ -370,20 +369,20 @@ namespace The_Box_v0._1.Forms
         public void drawallpieces(Game.state[,] mystate)
         {
 
-            for (int i = 0; i < game.row; i++)
+            for (int i = 0; i < game.Row; i++)
             {
-                for (int j = 0; j < game.col; j++)
+                for (int j = 0; j < game.Col; j++)
                 {
                     if (mystate[j, i] == Game.state.player1)
                     {
-                        DrawElipse(j, i, game.pieceColor1Plater1);
+                        DrawElipse(j, i, game.PieceColor1Plater1);
 
                     }
                     if ((mystate[j, i] == Game.state.player2))
                     {
                         //DrawElipse(i, j, Color.FromArgb(39, 39, 58));
 
-                        DrawElipse(j, i, game.pieceColor1Plater2);
+                        DrawElipse(j, i, game.PieceColor1Plater2);
                     }
 
                 }

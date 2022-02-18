@@ -13,16 +13,13 @@ namespace Connect_4
     public class User
     {
 
-        public string username;
-        public int Score;
-        public bool IsRoomOwner;
-        public bool IsPlayer;
-
-        //        public ClientSocket socketconfig;
-        public Room room;
         static public List<User> players = new List<User>();
 
-        public string color;
+        private string username;
+
+        private Room room;
+
+        private string color;
 
 
 
@@ -30,13 +27,20 @@ namespace Connect_4
         {
             get
             {
-                return username;
+                return Username;
             }
             set
             {
-                username = value;
+                Username = value;
             }
         }
+
+        public string Username { get => Username1; set => Username1 = value; }
+        public Room Room { get => Room1; set => Room1 = value; }
+        public string Color { get => Color1; set => Color1 = value; }
+        public string Username1 { get => username; set => username = value; }
+        public Room Room1 { get => room; set => room = value; }
+        public string Color1 { get => color; set => color = value; }
 
         //  public ClientSocket Socketconfig { get => socketconfig; set => socketconfig = value; }
 

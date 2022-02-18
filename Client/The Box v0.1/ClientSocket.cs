@@ -73,7 +73,7 @@ namespace The_Box_v0._1
         public static void StateConfigPlayer1()
         {   // sync with server that it will go in player 1 loop
             String s = streamReader.ReadString();
-            streamWriter.Write(User.CurrentRoom.id);
+            streamWriter.Write(User.CurrentRoom.Id);
 
 
 
@@ -84,7 +84,7 @@ namespace The_Box_v0._1
         {// sync with server that it will go in player 2 loop
 
             String s = streamReader.ReadString();
-            streamWriter.Write(User.CurrentRoom.id);
+            streamWriter.Write(User.CurrentRoom.Id);
 
 
 

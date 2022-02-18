@@ -102,7 +102,7 @@ namespace The_Box_v0._1
             int flag = 1;
             for (int i = 0; i < roomForms.Count && flag ==1; i++)
             {
-                if (Room_Name.Text == roomForms[i].id)
+                if (Room_Name.Text == roomForms[i].Id)
                 {
                     labelError.Visible = true;
                     labelError.Text = "Invaled";

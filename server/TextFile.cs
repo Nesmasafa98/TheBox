@@ -21,7 +21,7 @@ namespace Connect_4
             else
             {
                 LogFile = File.AppendText("Logs.csv");
-                LogFile.WriteLine(room.id + "," + room.Player2.username + "," + "Win" + "," + room.Player2.username + "," + "Lose");
+                LogFile.WriteLine(room.Id + "," + room.Player2.Username + "," + "Win" + "," + room.Player2.Username + "," + "Lose");
 
             }
             LogFile.Close();
@@ -32,16 +32,16 @@ namespace Connect_4
         {
 
             LogFile = File.CreateText("Game.csv");
-            LogFile.WriteLine(room.id);
-            LogFile.WriteLine(room.Player1.username);
-            LogFile.WriteLine(room.Player2.username);
+            LogFile.WriteLine(room.Id);
+            LogFile.WriteLine(room.Player1.Username);
+            LogFile.WriteLine(room.Player2.Username);
             LogFile.WriteLine("state");
             LogFile.WriteLine("start");
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    LogFile.Write(room.game.boardState[i, j].ToString() + ",");
+                    LogFile.Write(room.Game.BoardState[i, j].ToString() + ",");
 
                 }
                 LogFile.WriteLine("");

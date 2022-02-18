@@ -76,8 +76,8 @@ namespace The_Box_v0._1.Forms
                 disallowTimer();
                 ClientSocket.SendRequest("create");
                 Room m = ClientSocket.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize, dlg.P1Color);
-                user.room = m;
-                roomForm = new RoomForm(user,user.room, mainForm, this);
+                user.Room = m;
+                roomForm = new RoomForm(user,user.Room, mainForm, this);
 
                 roomForm.Show();
                 //this.Hide();
@@ -87,7 +87,7 @@ namespace The_Box_v0._1.Forms
 
             for (int i = 0; i < Room.rooms.Count; i++)
             {
-                Available_Rooms_listBox.Items.Add(Room.rooms[i].id);
+                Available_Rooms_listBox.Items.Add(Room.rooms[i].Id);
             }
 
         }
@@ -119,12 +119,12 @@ namespace The_Box_v0._1.Forms
                     disallowTimer();
                     ClientSocket.SendRequest("join");
 
-                    user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id, dlg.P2Color);
-                    User.CurrentRoom = user.room;
+                    user.Room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).Id, dlg.P2Color);
+                    User.CurrentRoom = user.Room;
                     // System.Threading.Thread.Sleep(10000);
-                    roomForm = new RoomForm(user, user.room, mainForm, this);
+                    roomForm = new RoomForm(user, user.Room, mainForm, this);
                     roomForm.Show();
-                    roomForm.OpenChildForm(new Forms.BoardForm(user.room.Player2, user.room.game, this, roomForm, false), sender);
+                    roomForm.OpenChildForm(new Forms.BoardForm(user.Room.Player2, user.Room.Game, this, roomForm, false), sender);
 
                     roomForm.PlayBtn.Hide();
 
@@ -140,9 +140,9 @@ namespace The_Box_v0._1.Forms
         {
             for (int i = 0; i < Room.rooms.Count; i++)
             {
-                if (Room.rooms[i].id == RoomName)
+                if (Room.rooms[i].Id == RoomName)
                 {
-                    string p1Color = Room.rooms[i].player1Color;
+                    string p1Color = Room.rooms[i].Player1Color;
                     return p1Color;
                 }
             }
@@ -158,7 +158,7 @@ namespace The_Box_v0._1.Forms
                 Available_Rooms_listBox.Items.Clear();
                 for (int i = 0; i < Room.rooms.Count; i++)
                 {
-                    Available_Rooms_listBox.Items.Add(Room.rooms[i].id);
+                    Available_Rooms_listBox.Items.Add(Room.rooms[i].Id);
                 }
                 checkFullRooms(Room.rooms);
         }
@@ -169,7 +169,7 @@ namespace The_Box_v0._1.Forms
             Full_Rooms_listBox.Items.Clear();
             for (int i = 0; i < Room.fullRooms.Count; i++)
             {
-                Full_Rooms_listBox.Items.Add(Room.fullRooms[i].id);
+                Full_Rooms_listBox.Items.Add(Room.fullRooms[i].Id);
             }
             Room.fullRooms.Clear();
         }
@@ -178,14 +178,14 @@ namespace The_Box_v0._1.Forms
         {
             for (int i = 0; i < rooms.Count; i++)
             {
-                if (rooms[i].roomIsFull)
+                if (rooms[i].RoomIsFull)
                 {
                     Room.fullRooms.Add(rooms[i]);
 
                     for (int j = 0; j < Available_Rooms_listBox.Items.Count; j++)
                     {
 
-                        if (Available_Rooms_listBox.Items[j].ToString() == rooms[i].id)
+                        if (Available_Rooms_listBox.Items[j].ToString() == rooms[i].Id)
                         {
                             Available_Rooms_listBox.Items.RemoveAt(j);
                         }
@@ -205,7 +205,7 @@ namespace The_Box_v0._1.Forms
             for (int i = 0; i < avaibleplayerS.Count; i++)
             {
                 // MessageBox.Show(avaibleplayerS[i].username);
-                Online_Players_listBox.Items.Add(avaibleplayerS[i].username);
+                Online_Players_listBox.Items.Add(avaibleplayerS[i].Username);
             }
 
         }
@@ -274,8 +274,8 @@ namespace The_Box_v0._1.Forms
             disallowTimer();
             roomForm = new RoomForm(user, RecievedRoom, mainForm, this);
             roomForm.Show();
-            user.room = RecievedRoom;
-            roomForm.OpenChildForm(new Forms.BoardForm(user, RecievedRoom.game, this, roomForm, true), sender);
+            user.Room = RecievedRoom;
+            roomForm.OpenChildForm(new Forms.BoardForm(user, RecievedRoom.Game, this, roomForm, true), sender);
 
             roomForm.PlayBtn.Hide();
 

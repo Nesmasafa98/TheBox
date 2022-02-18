@@ -114,7 +114,7 @@ namespace Connect_4
                             for (int i = 0; i < User.players.Count; i++)
 
                             {
-                                if (User.players[i].username==UserName)
+                                if (User.players[i].Username==UserName)
                                 {
                                     Boolean x = true;
                                     streamWriter.Write(x);
@@ -173,26 +173,26 @@ namespace Connect_4
                             streamWriter.Write("ConfigPlayer1");
                             string id = streamReader.ReadString();
                             Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
-                            Console.WriteLine(roomState.player1Color);
-                            roomState.game = Game.Receiver(streamReader);
+                            Console.WriteLine(roomState.Player1Color);
+                            roomState.Game = Game.Receiver(streamReader);
                             Console.WriteLine("Change Turn");
                             //streamReader.ReadString();
-                            roomState.game.playerTurn();
-                            bool Iswinner = roomState.game.Iswinner(); 
+                            roomState.Game.playerTurn();
+                            bool Iswinner = roomState.Game.Iswinner(); 
                             while (!Iswinner)
                             {
 
-                                while (roomState.game.player1 == false) ;
+                                while (roomState.Game.Player1 == false) ;
                                 Console.WriteLine("Send player 1");
 
-                                Game.SendGame(roomState.game, streamWriter);
-                                Iswinner = roomState.game.Iswinner();
+                                Game.SendGame(roomState.Game, streamWriter);
+                                Iswinner = roomState.Game.Iswinner();
                                 streamWriter.Write(Iswinner);
 
                                 if (Iswinner)
                                 {
                                     Console.WriteLine("111111111111111111111111111111");
-                                    roomState.game.playerTurn();
+                                    roomState.Game.playerTurn();
 
                                     //        MessageBox.Show("Ana");
 
@@ -201,9 +201,9 @@ namespace Connect_4
                                 }
                                 Console.WriteLine("Send recive  1");
 
-                                roomState.game = Game.Receiver(streamReader);
+                                roomState.Game = Game.Receiver(streamReader);
 
-                                roomState.game.playerTurn();
+                                roomState.Game.playerTurn();
 
                             }
 
@@ -215,27 +215,27 @@ namespace Connect_4
 
                             string id = streamReader.ReadString();
                             Room roomState = Room.avaibleRoom[Room.FindindexOfRoom(id)];
-                            bool Iswinner = roomState.game.Iswinner();
+                            bool Iswinner = roomState.Game.Iswinner();
 
                             while (!Iswinner)
                             {
-                                while (roomState.game.player2 == false) ;
+                                while (roomState.Game.Player2 == false) ;
                                 Console.WriteLine("Send  player 2");
-                                Game.SendGame(roomState.game, streamWriter);
-                                 Iswinner =roomState.game.Iswinner();
+                                Game.SendGame(roomState.Game, streamWriter);
+                                 Iswinner =roomState.Game.Iswinner();
                                 streamWriter.Write(Iswinner);
 
                                 if (Iswinner)
                                 {
                                     Console.WriteLine("222222222222222222222222222222222");
-                                    roomState.game.playerTurn();
+                                    roomState.Game.playerTurn();
 
                                     break;
                                 }
-                                roomState.game = Game.Receiver(streamReader);
+                                roomState.Game = Game.Receiver(streamReader);
                                 Console.WriteLine("reciving  player 2");
 
-                                roomState.game.playerTurn();
+                                roomState.Game.playerTurn();
 
 
 
@@ -269,12 +269,12 @@ namespace Connect_4
                             string id = streamReader.ReadString();
 
                             
-                            while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame == false) ;
-                            Room.avaibleRoom[Room.FindindexOfRoom(id)].roomIsFull = true;
+                            while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame1 == false) ;
+                            Room.avaibleRoom[Room.FindindexOfRoom(id)].RoomIsFull = true;
 
-                            row = Room.avaibleRoom[Room.FindindexOfRoom(id)].game.row;
-                            col= Room.avaibleRoom[Room.FindindexOfRoom(id)].game.col;
-                           temp = Room.avaibleRoom[Room.FindindexOfRoom(id)].game;
+                            row = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Row;
+                            col= Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Col;
+                           temp = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game;
                             Room.DeepSend(Room.avaibleRoom[Room.FindindexOfRoom(id)],streamWriter);
                             //   Room currentRoom = Room.avaibleRoom[Room.FindindexOfRoom(id)];
                             Console.WriteLine("Send  player player1");

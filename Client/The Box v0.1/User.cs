@@ -10,26 +10,28 @@ namespace The_Box_v0._1
 {
     public class User
     {
-        public string username;
-        public int Score;
-        public bool IsRoomOwner;
         public static Room CurrentRoom;
-        public bool IsPlayer;
-        public string color;
+        private string username;
 
-        //        public ClientSocket socketconfig;
-        public Room room;
+        private Room room;
+
+        private string color;
+
         public string UserName
         {
             get
             {
-                return username;
+                return Username;
             }
             set
             {
-                username = value;
+                Username = value;
             }
         }
+
+        public string Username { get => username; set => username = value; }
+        public Room Room { get => room; set => room = value; }
+        public string Color { get => color; set => color = value; }
 
         public User(string name)
         {

@@ -11,22 +11,33 @@ namespace The_Box_v0._1
 {
     public class Room
     {
-        public string id;
-        public User Player1;
-        public User Player2;
-        public User[] Watchers;
-        //public Board board;
-        public bool StartGame = false;
-        public Game game;
         public static List<Room> rooms;
         public static List<Room> fullRooms = new List<Room>();
-        public int _row;
-        public int _col;
-        public bool roomIsFull = false;
-        public string player1Color = "red";
-        public string player2Color = "green";
+        private string id;
+        private User player1;
+        private User player2;
+        //public Board board;
+        private bool StartGame = false;
+        private Game game;
+
+        private int _row;
+        private int _col;
+        private bool roomIsFull = false;
+        private string player1Color = "red";
+        private string player2Color = "green";
 
         public int index;
+
+        public string Id { get => id; set => id = value; }
+        public User Player1 { get => player1; set => player1 = value; }
+        public User Player2 { get => player2; set => player2 = value; }
+        public bool StartGame1 { get => StartGame; set => StartGame = value; }
+        public Game Game { get => game; set => game = value; }
+        public int Row { get => _row; set => _row = value; }
+        public int Col { get => _col; set => _col = value; }
+        public bool RoomIsFull { get => roomIsFull; set => roomIsFull = value; }
+        public string Player1Color { get => player1Color; set => player1Color = value; }
+        public string Player2Color { get => player2Color; set => player2Color = value; }
 
         public Room(User owner, string Id, int index)
         {
@@ -34,7 +45,7 @@ namespace The_Box_v0._1
 
 
             //     Player1.color = "red";
-            this.id = Id;
+            this.Id = Id;
             //board = new Board(size);
             this.index = index;
             DetrimineSize(index);
@@ -43,9 +54,9 @@ namespace The_Box_v0._1
         public void PlayBtn(User player)
         {
             Player2 = player;
-            game = new Game(_row, _col, Player1, Player2, player1Color, player2Color);
+            Game = new Game(Row, Col, Player1, Player2, Player1Color, Player2Color);
 
-            StartGame = true;
+            StartGame1 = true;
 
         }
         public void DetrimineSize(int index)
@@ -53,21 +64,21 @@ namespace The_Box_v0._1
             switch (index)
             {
                 case 1:
-                    _row = 7;
-                    _col = 8;
+                    Row = 7;
+                    Col = 8;
 
                     break;
                 case 2:
-                    _row = 7;
-                    _col = 9;
+                    Row = 7;
+                    Col = 9;
                     break;
                 case 3:
-                    _row = 7;
-                    _col = 10;
+                    Row = 7;
+                    Col = 10;
                     break;
                 default:
-                    _row = 6;
-                    _col = 7;
+                    Row = 6;
+                    Col = 7;
                     break;
             }
         }
@@ -114,8 +125,8 @@ namespace The_Box_v0._1
 
             for (int i = 0; i < rooms.Count; i++)
             {
-                MessageBox.Show(rooms[i].roomIsFull.ToString());
-                if (roomName == rooms[i].id)
+                MessageBox.Show(rooms[i].RoomIsFull.ToString());
+                if (roomName == rooms[i].Id)
                 {
 
                     return rooms[i];

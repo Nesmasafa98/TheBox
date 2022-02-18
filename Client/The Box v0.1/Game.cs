@@ -14,41 +14,44 @@ namespace The_Box_v0._1
 
     public class Game
     {
-        public bool player1;
-        public bool player2;
-        public Color pieceColor1Plater1;
-        public Color pieceColor1Plater2;
+        private bool player1;
+        private bool player2;
+        private Color pieceColor1Plater1;
+        private Color pieceColor1Plater2;
         public User creatorUser;
         public enum state { empty = 0, player1 = 1, player2 = 2 };
-        public state[,] boardState;
+        private state[,] boardState;
+
+        private state[,] prev;
         public List<int> full = new List<int>();
 
         //int X;        
-        public int row;
-        public int col;
-        public User user1, user2;
+        private int row;
+        private int col;
+        private User user1;
+           private User user2;
 
 
         public Game(int r, int c, User u1, User u2, string player1Color, string player2Color)
         {
-            player1 = true;
-            player2 = false;
-            user1 = u1;
-            user2 = u2;
-            row = r;
-            col = c;
+            Player1 = true;
+            Player2 = false;
+            User1 = u1;
+            User2 = u2;
+            Row = r;
+            Col = c;
             //pieceColor1Plater1 = Color.Red;
             //pieceColor1Plater2 = Color.Green;
-            boardState = new state[col, row];
-            for (int i = 0; i < col; i++)
+            BoardState = new state[Col, Row];
+            for (int i = 0; i < Col; i++)
             {
-                full.Add(row - 1);
+                full.Add(Row - 1);
             }
-            for (int i = 0; i < col; i++)
+            for (int i = 0; i < Col; i++)
             {
-                for (int j = 0; j < row; j++)
+                for (int j = 0; j < Row; j++)
                 {
-                    boardState[i, j] = state.empty;
+                    BoardState[i, j] = state.empty;
                 }
             }
         }
@@ -57,8 +60,8 @@ namespace The_Box_v0._1
         //Method that changes the players turn and game piece color
         public void playerTurn()
         {
-            player1 = !player1;
-            player2 = !player2;
+            Player1 = !Player1;
+            Player2 = !Player2;
 
         }
 
@@ -70,18 +73,18 @@ namespace The_Box_v0._1
 
         public void Reset()
         {
-            player1 = true;
-            player2 = false;
+            Player1 = true;
+            Player2 = false;
             //  pieceColor = Color.Red;
-            for (int i = 0; i < col; i++)
+            for (int i = 0; i < Col; i++)
             {
-                full[i] = row - 1;
+                full[i] = Row - 1;
             }
-            for (int i = 0; i < col; i++)
+            for (int i = 0; i < Col; i++)
             {
-                for (int j = 0; j < row; j++)
+                for (int j = 0; j < Row; j++)
                 {
-                    boardState[i, j] = state.empty;
+                    BoardState[i, j] = state.empty;
                 }
             }
         }
@@ -126,9 +129,9 @@ namespace The_Box_v0._1
         {
             //if (full[index] >= 0)
             //{
-            if (boardState[index, full[index]] == state.empty)
+            if (BoardState[index, full[index]] == state.empty)
             {
-                boardState[index, full[index]] = newState;
+                BoardState[index, full[index]] = newState;
                 boardForm.DrawElipse(full[index], index, type);
                 full[index]--;
                 //playerTurn();
@@ -147,13 +150,33 @@ namespace The_Box_v0._1
         }
 
         System.Threading.Timer PlayerTimer;
+
+        public int Row { get => row; set => row = value; }
+        public int Col { get => col; set => col = value; }
+        public User User1 { get => User11; set => User11 = value; }
+        public User User2 { get => User21; set => User21 = value; }
+        public bool Player1 { get => player1; set => player1 = value; }
+        public bool Player2 { get => player2; set => player2 = value; }
+        public Color PieceColor1Plater1 { get => PieceColor1Plater11; set => PieceColor1Plater11 = value; }
+        public Color PieceColor1Plater2 { get => PieceColor1Plater21; set => PieceColor1Plater21 = value; }
+        public state[,] BoardState { get => boardState; set => boardState = value; }
+        public state[,] Prev { get => prev; set => prev = value; }
+        public User User11 { get => User12; set => User12 = value; }
+        public User User21 { get => User22; set => User22 = value; }
+        public User User12 { get => User13; set => User13 = value; }
+        public User User22 { get => User23; set => User23 = value; }
+        public User User13 { get => user1; set => user1 = value; }
+        public User User23 { get => user2; set => user2 = value; }
+        public Color PieceColor1Plater11 { get => pieceColor1Plater1; set => pieceColor1Plater1 = value; }
+        public Color PieceColor1Plater21 { get => pieceColor1Plater2; set => pieceColor1Plater2 = value; }
+
         public static void GameReceiveingConfigration(bool Iswatcher,Game game,User Creator,Thread receiverloopThread,Thread checkWinner, System.Threading.Timer PlayerTimer)
         {
 
 
             if (!Iswatcher)
             {
-                if (Creator.username == game.user1.username)
+                if (Creator.Username == game.User1.Username)
                 {
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
@@ -167,7 +190,7 @@ namespace The_Box_v0._1
                 {
                     ClientSocket.SendRequest("ConfigPlayer2");
                     ClientSocket.StateConfigPlayer2();
-                    Forms.BoardForm.temp = game.boardState;
+                   game.Prev = game.BoardState;
                    
                 }
 
@@ -203,15 +226,15 @@ namespace The_Box_v0._1
             bool  Playerone= false;
             bool playertwo = false;
             //vertical win
-            for (int i = 0; i < boardState.GetLength(0) - 3; i++)
+            for (int i = 0; i < BoardState.GetLength(0) - 3; i++)
             {
-                for (int j = 0; j < boardState.GetLength(1); j++)
+                for (int j = 0; j < BoardState.GetLength(1); j++)
                 {
-                    if (boardState[i, j] == state.player1 && boardState[i + 1, j] == state.player1 && boardState[i + 2, j] == state.player1 && boardState[i + 3, j] == state.player1)
+                    if (BoardState[i, j] == state.player1 && BoardState[i + 1, j] == state.player1 && BoardState[i + 2, j] == state.player1 && BoardState[i + 3, j] == state.player1)
                     {
                         Playerone = true;
                     }
-                    if (boardState[i, j] == state.player2 && boardState[i + 1, j] == state.player2 && boardState[i + 2, j] == state.player2 && boardState[i + 3, j] == state.player2)
+                    if (BoardState[i, j] == state.player2 && BoardState[i + 1, j] == state.player2 && BoardState[i + 2, j] == state.player2 && BoardState[i + 3, j] == state.player2)
                     {
                         playertwo = true;
                     }
@@ -220,15 +243,15 @@ namespace The_Box_v0._1
 
 
             //horizontal win
-            for (int j = 0; j < boardState.GetLength(1) - 3; j++)
+            for (int j = 0; j < BoardState.GetLength(1) - 3; j++)
             {
-                for (int i = 0; i < boardState.GetLength(0); i++)
+                for (int i = 0; i < BoardState.GetLength(0); i++)
                 {
-                    if (boardState[i, j] == state.player1 && boardState[i, j + 1] == state.player1 && boardState[i, j + 2] == state.player1 && this.boardState[i, j + 3] == state.player1)
+                    if (BoardState[i, j] == state.player1 && BoardState[i, j + 1] == state.player1 && BoardState[i, j + 2] == state.player1 && this.BoardState[i, j + 3] == state.player1)
                     {
                         Playerone = true;
                     }
-                    else if (boardState[i, j] == state.player2 && boardState[i, j + 1] == state.player2 && boardState[i, j + 2] == state.player2 && this.boardState[i, j + 3] == state.player2)
+                    else if (BoardState[i, j] == state.player2 && BoardState[i, j + 1] == state.player2 && BoardState[i, j + 2] == state.player2 && this.BoardState[i, j + 3] == state.player2)
                     {
                         playertwo = true;
                     }
@@ -237,15 +260,15 @@ namespace The_Box_v0._1
 
 
             //ascending diagonal 
-            for (int i = 3; i < boardState.GetLength(0); i++)
+            for (int i = 3; i < BoardState.GetLength(0); i++)
             {
-                for (int j = 0; j < boardState.GetLength(1) - 3; j++)
+                for (int j = 0; j < BoardState.GetLength(1) - 3; j++)
                 {
-                    if (boardState[i, j] == state.player1 && this.boardState[i - 1, j + 1] == state.player1 && boardState[i - 2, j + 2] == state.player1 && boardState[i - 3, j + 3] == state.player1)
+                    if (BoardState[i, j] == state.player1 && this.BoardState[i - 1, j + 1] == state.player1 && BoardState[i - 2, j + 2] == state.player1 && BoardState[i - 3, j + 3] == state.player1)
                     {
                         Playerone = true;
                     }
-                    else if (boardState[i, j] == state.player2 && this.boardState[i - 1, j + 1] == state.player2 && boardState[i - 2, j + 2] == state.player2 && boardState[i - 3, j + 3] == state.player2)
+                    else if (BoardState[i, j] == state.player2 && this.BoardState[i - 1, j + 1] == state.player2 && BoardState[i - 2, j + 2] == state.player2 && BoardState[i - 3, j + 3] == state.player2)
                     {
                         playertwo = true;
                     }
@@ -253,15 +276,15 @@ namespace The_Box_v0._1
             }
 
             //descending diagonal
-            for (int i = 3; i < boardState.GetLength(0); i++)
+            for (int i = 3; i < BoardState.GetLength(0); i++)
             {
-                for (int j = 3; j < boardState.GetLength(1); j++)
+                for (int j = 3; j < BoardState.GetLength(1); j++)
                 {
-                    if (boardState[i, j] == state.player1 && boardState[i - 1, j - 1] == state.player1 && boardState[i - 2, j - 2] == state.player1 && boardState[i - 3, j - 3] == state.player1)
+                    if (BoardState[i, j] == state.player1 && BoardState[i - 1, j - 1] == state.player1 && BoardState[i - 2, j - 2] == state.player1 && BoardState[i - 3, j - 3] == state.player1)
                     {
                         Playerone = true;
                     }
-                    if (boardState[i, j] == state.player2 && boardState[i - 1, j - 1] == state.player2 && boardState[i - 2, j - 2] == state.player2 && boardState[i - 3, j - 3] == state.player2)
+                    if (BoardState[i, j] == state.player2 && BoardState[i - 1, j - 1] == state.player2 && BoardState[i - 2, j - 2] == state.player2 && BoardState[i - 3, j - 3] == state.player2)
                     {
                         playertwo = true;
                     }

@@ -41,10 +41,10 @@ namespace The_Box_v0._1.Forms
             SetColorForBrush();
             logicalroom = room;
             logicalroom.DetrimineSize(room.index);
-            RoomName = room.id;
+            RoomName = room.Id;
             LabelRoomName.Text = RoomName;
-            Player1_Name.Text = myuser.username;
-            Player1_Color.Text = room.player1Color;
+            Player1_Name.Text = myuser.Username;
+            Player1_Color.Text = room.Player1Color;
             mainForm = mForm;
             ordinaryUser = myuser; 
             playForm = pForm;
@@ -152,10 +152,10 @@ namespace The_Box_v0._1.Forms
         private void PlayBtn_Click(object sender, EventArgs e)
         {
             ClientSocket.SendRequest("play");
-            Room receiveRoom= ClientSocket.Responseplay(logicalroom.id);
+            Room receiveRoom= ClientSocket.Responseplay(logicalroom.Id);
             User.CurrentRoom = receiveRoom;
             //MessageBox.Show(receiveRoom.Player2.color);
-            Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.game, playForm, this, false);
+            Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.Game, playForm, this, false);
             OpenChildForm(form, sender);
         }
 
@@ -193,7 +193,7 @@ namespace The_Box_v0._1.Forms
         private void Reset_Click(object sender, EventArgs e)
         {
             ClientSocket.SendRequest("Reset");
-            if (boardform.game.user1.username== ordinaryUser.username)
+            if (boardform.game.User1.Username== ordinaryUser.Username)
             {
 
 

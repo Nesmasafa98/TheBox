@@ -39,7 +39,7 @@ namespace The_Box_v0._1.Forms
             SetColorForBrush();
             logicalroom = room;
             logicalroom.DetrimineSize(room.index);
-            RoomName = room.id;
+            RoomName = room.Id;
             LabelRoomName.Text = RoomName;
             mainForm = mForm;
             playForm = pForm;

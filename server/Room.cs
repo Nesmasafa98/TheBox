@@ -10,21 +10,32 @@ namespace Connect_4
 {
     public class Room
     {
-        public string id;
-        public User Player1;
-        public User Player2;
-        public User[] Watchers;
+        static public List<Room> avaibleRoom = new List<Room>();
+        private string id;
+        private User player1;
+        private User player2;
         //public Board board;
-        public bool StartGame = false;
-        public Game game;
-       static public List<Room> avaibleRoom = new List<Room>();
-        public int _row;
-        public int _col;
-        public bool roomIsFull = false;
-        public string player1Color ;
-        public string player2Color ;
+        private bool StartGame = false;
+        private Game game;
+
+        private int _row;
+        private int _col;
+        private bool roomIsFull = false;
+        private string player1Color = "red";
+        private string player2Color = "green";
 
         public int index;
+
+        public string Id { get => id; set => id = value; }
+        public User Player1 { get => player1; set => player1 = value; }
+        public User Player2 { get => player2; set => player2 = value; }
+        public bool StartGame1 { get => StartGame; set => StartGame = value; }
+        public Game Game { get => game; set => game = value; }
+        public int Row { get => _row; set => _row = value; }
+        public int Col { get => _col; set => _col = value; }
+        public bool RoomIsFull { get => roomIsFull; set => roomIsFull = value; }
+        public string Player1Color { get => player1Color; set => player1Color = value; }
+        public string Player2Color { get => player2Color; set => player2Color = value; }
 
         public Room(User owner, string Id, int index, string p1color)
         {
@@ -32,22 +43,22 @@ namespace Connect_4
 
 
             //     Player1.color = "red";
-            this.id = Id;
+            this.Id = Id;
             //board = new Board(size);
             this.index = index;
             DetrimineSize(index);
-            player1Color = p1color;
+            Player1Color = p1color;
         }
 
         public void PlayBtn(User player)
         {
             Player2 = player;
-            Console.WriteLine(player1Color + "Game");
-            game = new Game(_row, _col, Player1, Player2);
-            game.pieceColor1Plater1 = Color.FromName(player1Color);
-            game.pieceColor1Plater2 = Color.FromName(player2Color);
+            Console.WriteLine(Player1Color + "Game");
+            Game = new Game(Row, Col, Player1, Player2);
+            Game.PieceColor1Plater1 = Color.FromName(Player1Color);
+            Game.PieceColor1Plater2 = Color.FromName(Player2Color);
 
-            StartGame = true;
+            StartGame1 = true;
 
         }
         public void DetrimineSize(int index)
@@ -55,21 +66,21 @@ namespace Connect_4
             switch (index)
             {
                 case 1:
-                    _row = 7;
-                    _col = 8;
+                    Row = 7;
+                    Col = 8;
 
                     break;
                 case 2:
-                    _row = 7;
-                    _col = 9;
+                    Row = 7;
+                    Col = 9;
                     break;
                 case 3:
-                    _row = 7;
-                    _col = 10;
+                    Row = 7;
+                    Col = 10;
                     break;
                 default:
-                    _row = 6;
-                    _col = 7;
+                    Row = 6;
+                    Col = 7;
                     break;
             }
         }
@@ -111,7 +122,7 @@ namespace Connect_4
 
             for (; i < avaibleRoom.Count; i++)
             {
-                if (avaibleRoom[i].id == Id)
+                if (avaibleRoom[i].Id == Id)
 
                 {
                    // Console.WriteLine("i find it ");
@@ -146,10 +157,10 @@ namespace Connect_4
             int i = 0;
             for (; i < avaibleRoom.Count; i++)
             {
-                if (avaibleRoom[i].id == roomId)
+                if (avaibleRoom[i].Id == roomId)
 
                 {
-                    avaibleRoom[i].player2Color = p2Color;
+                    avaibleRoom[i].Player2Color = p2Color;
                     avaibleRoom[i].PlayBtn(player2);
                     
 
