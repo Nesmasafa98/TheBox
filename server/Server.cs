@@ -220,7 +220,7 @@ namespace Connect_4
 
                                 if (Iswinner)
                                 {
-                                    MessageBox.Show("Ana2");
+                                 //   MessageBox.Show("Ana2");
 
                                     break;
                                 }
@@ -251,10 +251,6 @@ namespace Connect_4
                             
 
 
-
-                            //    SendServerInfo(streamWriter,streamReader);
-                            Thread.Sleep(10);
-                            //      new Server(9000, 6);
 
 
                         }
@@ -290,8 +286,8 @@ namespace Connect_4
                             string p1color = streamReader.ReadString();
                             Room room = new Room(player1, id, index, p1color);
                             Room.avaibleRoom.Add(room);
-                            Console.Write(" i create a room ");
-                            Console.Write(room.player1Color);
+                            //Console.Write(" i create a room ");
+//                            Console.Write(room.player1Color);
 
                             //  Room.FindindexOfRoom(id);
 
