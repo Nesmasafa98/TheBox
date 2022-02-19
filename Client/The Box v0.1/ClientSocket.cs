@@ -13,9 +13,9 @@ using static The_Box_v0._1.Game;
 
 //using Newtonsoft.Json;
 
-namespace The_Box_v0._1
+namespace The_Box_v0._1 
 {
-    class ClientSocket
+    class ClientSocket 
     {
      public   static NetworkStream networkStream;
         static int port = 5002;
@@ -49,7 +49,23 @@ namespace The_Box_v0._1
             if (s == "play")
             {
                 streamWriter.Write(id);
-                return Room.DeepReceive(streamReader);
+
+                streamReader.ReadString();
+                string message = "Do you want to close this window?";
+                string title = "Close Window";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+                    streamWriter.Write("yes");
+                    return Room.DeepReceive(streamReader);
+                }
+                else
+                {
+                    streamWriter.Write("no");
+                    return null;
+                }
+                
             }
             return null;
 
@@ -116,8 +132,13 @@ namespace The_Box_v0._1
                 //    String Idroom = Console.ReadLine();
                 streamWriter.Write(id);
                 streamWriter.Write(p2Color);
+                string x = streamReader.ReadString();
+                Console.WriteLine("Receive oop");
 
-                return Room.ReceiveRoom(streamReader);
+                if (x == "yes")
+                    return Room.ReceiveRoom(streamReader);
+                else
+                    return null;
                 //   Console.WriteLine("I receive room!");
             }
             return null;

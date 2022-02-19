@@ -22,6 +22,8 @@ namespace The_Box_v0._1
         Login loginPage;
         User player;
 
+ 
+
         public MainForm()
         {
             InitializeComponent();
@@ -36,6 +38,7 @@ namespace The_Box_v0._1
             CloseFormbtn.Visible = false;
             player = newUser;
             Player_Name.Text = newUser.UserName;
+         
         }
 
 

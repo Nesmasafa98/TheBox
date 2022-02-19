@@ -52,15 +52,15 @@ namespace The_Box_v0._1.Forms
         protected float yCoor;
         // public Game.state[,] mystate;
         protected int _index;
-        User Creator;
+        public User Creator;
         int constant;
         int index;
         Room WatcherRoom;
 
-        bool ThereIsAWinner;
-        bool Iswinner=false;
+        
+       // bool Iswinner=false;
         System.Threading.Timer watcherTimer;
-        bool thereIsWinner=false;
+        
         PlayForm playForm;
         RoomForm roomForm;
 
@@ -79,7 +79,7 @@ namespace The_Box_v0._1.Forms
             rForm.Player1_Color.Text = game.PieceColor1Plater1.ToString();
             rForm.Player2_Color.Text = game.PieceColor1Plater2.ToString();
             Control.CheckForIllegalCrossThreadCalls = false;
-            ThereIsAWinner = false;
+            
             _row = game.Row; _col = game.Col;
             this.game = game;
            // temp = game.boardState;
@@ -90,10 +90,10 @@ namespace The_Box_v0._1.Forms
             roomForm = rForm;
             pieceColor = Color.Red; 
 
-            receiverloopThread = new Thread(() => Receiverloop());
+            receiverloopThread = new Thread(() => game.Receiverloop(this));
 
 
-            checkWinner = new Thread(() => CheckWhoIsWin());
+            checkWinner = new Thread(() => CheckWhoIsWin(this));
 
             if (Iswatcher)
             {
@@ -108,28 +108,6 @@ namespace The_Box_v0._1.Forms
 
         }
 
-        public void CheckWhoIsWin()
-        {
-            while (!ThereIsAWinner)
-            {
-                Thread.Sleep(1000);
-                if (game.WinningPlayer() == "player1")
-                {
-                    MessageBox.Show("Red Player Wins,  Beats blue");
-                    ThereIsAWinner = true;
-                    MessageBox.Show("Hard Luck blue");
-                    //  ChooseToResetOrNot();
-                }
-                else if (game.WinningPlayer() == "player2")
-                {
-                    ThereIsAWinner = true;
-                    MessageBox.Show("Blue Player Wins", "Blue Beat Red");
-                    MessageBox.Show("Hard Luck red");
-                    //ChooseToResetOrNot();
-                }
-            }
-
-        }
             public void WatcherFunction(object o)
         {
 
@@ -155,37 +133,7 @@ namespace The_Box_v0._1.Forms
         }
 
 
-        private void Receiverloop()
-        {
-            while (!thereIsWinner)
-            {
-
-
-
-                if (Creator.Username == this.game.User1.Username)
-                {
-                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
-           
-                        game = Game.Receiver(ClientSocket.streamReader);
-                    
-                        DrawElipsesThrowGame(game.BoardState);
-                    thereIsWinner= ClientSocket.streamReader.ReadBoolean();
-
-                }
-
-                else
-                {
-                    game = Game.Receiver(ClientSocket.streamReader);
-                    DrawElipsesThrowGame(game.BoardState);
-                   thereIsWinner= ClientSocket.streamReader.ReadBoolean();
-
-                }
-            }
-            Game.SendGame(game, ClientSocket.streamWriter);
-
-            ClientSocket.SendRequest("log");
-            ClientSocket.ResponseLog(Creator);
-        }
+        
 
         protected override void OnResize(EventArgs e)
         {
@@ -251,7 +199,7 @@ namespace The_Box_v0._1.Forms
 
 
 
-        public void DrawElipsesThrowGame(Game.state[,] boardState)
+        public void  DrawElipsesThrowGame(Game.state[,] boardState)
         {
             Color color2;
 
@@ -281,29 +229,6 @@ namespace The_Box_v0._1.Forms
             }
         }
 
-        public  Boolean IsStateChanged(state[,] oldState, state[,] current, int row, int col)
-        {
-            if (oldState == null)               
-                return true;
-
-            //Boolean changed = false;
-            for (int i = 0; i < col; i++)
-            {
-                for (int j = 0; j < row; j++)
-                {
-                    if (current[i, j] != oldState[i, j])
-                    {
-                        Console.Write(current[i, j]);
-                        return true;
-                    }
-
-                }
-
-            }
-       
-
-            return false;
-        }
 
         private void BoardForm_MouseClick(object sender, MouseEventArgs e)
         {
@@ -322,7 +247,7 @@ namespace The_Box_v0._1.Forms
                 if (Creator.Username == this.game.User1.Username)
                 {
 
-                    if (IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
+                    if (Game.IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
                     {
                         game.drawGamePiece(index, graphics, this, game.PieceColor1Plater1, Game.state.player1);
 
@@ -336,7 +261,7 @@ namespace The_Box_v0._1.Forms
                 }
                 else
                 {
-                    if (IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
+                    if (Game.IsStateChanged(game.Prev, game.BoardState, game.Row, game.Col))
                     {
 
                         game.drawGamePiece(index, graphics, this, Color.Green, Game.state.player2);

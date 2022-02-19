@@ -20,10 +20,11 @@ namespace Connect_4
 
         private int _row;
         private int _col;
+        public int play1Accecptance = 0;
         private bool roomIsFull = false;
         private string player1Color = "red";
         private string player2Color = "green";
-
+        public bool someOneEnter = false;
         public int index;
 
         public string Id { get => id; set => id = value; }

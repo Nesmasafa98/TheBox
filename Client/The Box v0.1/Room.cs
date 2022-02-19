@@ -19,6 +19,8 @@ namespace The_Box_v0._1
         //public Board board;
         private bool StartGame = false;
         private Game game;
+        public int play1Accecptance = 0;
+        public bool someOneEnter = false;
 
         private int _row;
         private int _col;

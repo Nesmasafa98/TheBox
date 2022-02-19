@@ -12,8 +12,10 @@ using System.Windows.Forms;
 namespace The_Box_v0._1
 {
 
-    public class Game
+    public class Game :IGame
     {
+
+     public   bool thereIsWinner = false;
         private bool player1;
         private bool player2;
         private Color pieceColor1Plater1;
@@ -32,8 +34,33 @@ namespace The_Box_v0._1
            private User user2;
 
 
+
+        public static void CheckWhoIsWin(Forms.BoardForm boardForm)
+        {
+            while (!boardForm.game.thereIsWinner)
+            {
+                Thread.Sleep(1000);
+                if (boardForm.game.WinningPlayer() == "player1")
+                {
+                    MessageBox.Show("Red Player Wins,  Beats blue");
+                    boardForm.game.thereIsWinner = true;
+                    MessageBox.Show("Hard Luck blue");
+                    //  ChooseToResetOrNot();
+                }
+                else if (boardForm.game.WinningPlayer() == "player2")
+                {
+                    boardForm.game.thereIsWinner = true;
+                    MessageBox.Show("Blue Player Wins", "Blue Beat Red");
+                    MessageBox.Show("Hard Luck red");
+                    //ChooseToResetOrNot();
+                }
+            }
+
+        }
+
         public Game(int r, int c, User u1, User u2, string player1Color, string player2Color)
         {
+            thereIsWinner = false;
             Player1 = true;
             Player2 = false;
             User1 = u1;
@@ -203,6 +230,29 @@ namespace The_Box_v0._1
 
         }
 
+        public static Boolean IsStateChanged(state[,] oldState, state[,] current, int row, int col)
+        {
+            if (oldState == null)
+                return true;
+
+            //Boolean changed = false;
+            for (int i = 0; i < col; i++)
+            {
+                for (int j = 0; j < row; j++)
+                {
+                    if (current[i, j] != oldState[i, j])
+                    {
+                        Console.Write(current[i, j]);
+                        return true;
+                    }
+
+                }
+
+            }
+
+
+            return false;
+        }
 
 
         //==== will change it 
@@ -298,6 +348,39 @@ namespace The_Box_v0._1
                 return "player2";
             else
                 return "NoWinner!";
+        }
+
+
+        public void Receiverloop(Forms.BoardForm boardForm)
+        {
+            while (!thereIsWinner)
+            {
+
+
+
+                if (boardForm.Creator.Username == this.User1.Username)
+                {
+                    //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
+
+                    boardForm.game = ( Game.Receiver(ClientSocket.streamReader));
+
+                    boardForm.DrawElipsesThrowGame(boardForm.game.BoardState);
+                    thereIsWinner = ClientSocket.streamReader.ReadBoolean();
+
+                }
+
+                else
+                {
+                    boardForm.game = Game.Receiver(ClientSocket.streamReader);
+                    boardForm.DrawElipsesThrowGame(boardForm.game.BoardState);
+                    thereIsWinner = ClientSocket.streamReader.ReadBoolean();
+
+                }
+            }
+            Game.SendGame(boardForm.game, ClientSocket.streamWriter);
+
+            ClientSocket.SendRequest("log");
+            ClientSocket.ResponseLog(boardForm.Creator);
         }
     }
 }

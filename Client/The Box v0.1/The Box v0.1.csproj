@@ -91,6 +91,8 @@
       <DependentUpon>WatchersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="IProtocol.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

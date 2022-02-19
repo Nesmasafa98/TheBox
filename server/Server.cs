@@ -40,7 +40,7 @@ namespace Connect_4
             //avaibleRoom.Add(new Room(new User("ahmed"), "ahmed", "tarek"));
            
 
-            Console.WriteLine("************This is Server program************" + PortNum);
+            Console.WriteLine("************This is  program************" + PortNum);
            
             int numberOfClientsYouNeedToConnect = numOFClient;
             for (int i = 0; i < numberOfClientsYouNeedToConnect; i++)
@@ -266,18 +266,37 @@ namespace Connect_4
                         if (theString == "play")
                         {
                             streamWriter.Write("play");
+
+
                             string id = streamReader.ReadString();
 
+                            while (Room.avaibleRoom[Room.FindindexOfRoom(id)].someOneEnter == false) ;
                             
-                            while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame1 == false) ;
-                            Room.avaibleRoom[Room.FindindexOfRoom(id)].RoomIsFull = true;
 
-                            row = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Row;
-                            col= Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Col;
-                           temp = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game;
-                            Room.DeepSend(Room.avaibleRoom[Room.FindindexOfRoom(id)],streamWriter);
-                            //   Room currentRoom = Room.avaibleRoom[Room.FindindexOfRoom(id)];
-                            Console.WriteLine("Send  player player1");
+                            streamWriter.Write("sendAplayer");
+                            //Room.SendRoom(Room.avaibleRoom[Room.FindindexOfRoom(id)], streamWriter);
+                            string x = streamReader.ReadString();
+                            if (x == "yes")
+                            {
+                                Room.avaibleRoom[Room.FindindexOfRoom(id)].play1Accecptance = 1;
+
+
+                                while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame1 == false) ;
+                                Room.avaibleRoom[Room.FindindexOfRoom(id)].RoomIsFull = true;
+
+                                row = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Row;
+                                col = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game.Col;
+                                temp = Room.avaibleRoom[Room.FindindexOfRoom(id)].Game;
+                                Room.DeepSend(Room.avaibleRoom[Room.FindindexOfRoom(id)], streamWriter);
+                                //   Room currentRoom = Room.avaibleRoom[Room.FindindexOfRoom(id)];
+                                Console.WriteLine("Send  player player1");
+                            }
+                            else
+                            {
+                                Console.WriteLine("dasssssssssssssssssss");  
+                                Room.avaibleRoom[Room.FindindexOfRoom(id)].play1Accecptance = 2;
+
+                            }
 
 
                         }
@@ -295,12 +314,19 @@ namespace Connect_4
                             string p1color = streamReader.ReadString();
                             Room room = new Room(player1, id, index, p1color);
                             Room.avaibleRoom.Add(room);
+
+                            
                             //Console.Write(" i create a room ");
 //                            Console.Write(room.player1Color);
 
                             //  Room.FindindexOfRoom(id);
 
                             Room.SendRoom(Room.avaibleRoom[Room.FindindexOfRoom(id)], streamWriter);
+                            
+                            
+
+
+                            
                             /*
                              ****************lazem t3ml uncomment************
                             while (Room.avaibleRoom[Room.FindindexOfRoom(id)].StartGame == false) ;
@@ -347,9 +373,30 @@ namespace Connect_4
                             User player2 = JsonConvert.DeserializeObject<User>(streamReader.ReadString());
                             string roomId = streamReader.ReadString();
                             string p2Color = streamReader.ReadString();
-                            Room.addSecoondPlayTORoom(roomId, streamWriter, player2, p2Color);
 
-                            
+                            Room.avaibleRoom[Room.FindindexOfRoom(roomId)].someOneEnter = true;
+
+                            while (Room.avaibleRoom[Room.FindindexOfRoom(roomId)].play1Accecptance == 0) ;
+
+                           
+
+                            if (Room.avaibleRoom[Room.FindindexOfRoom(roomId)].play1Accecptance == 1)
+                            {
+                                streamWriter.Write("yes");
+                                Room.addSecoondPlayTORoom(roomId, streamWriter, player2, p2Color);
+                            }
+                            else
+                            {
+
+                                Console.WriteLine("ana nennnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnna");
+                                streamWriter.Write("no");
+                                Room.avaibleRoom[Room.FindindexOfRoom(roomId)].play1Accecptance = 0;
+                                Room.avaibleRoom[Room.FindindexOfRoom(roomId)].someOneEnter = false;
+
+
+                            }
+
+
 
                             Console.WriteLine("ok I did it ");
                             Console.WriteLine("End Join");

@@ -154,9 +154,12 @@ namespace The_Box_v0._1.Forms
             ClientSocket.SendRequest("play");
             Room receiveRoom= ClientSocket.Responseplay(logicalroom.Id);
             User.CurrentRoom = receiveRoom;
-            //MessageBox.Show(receiveRoom.Player2.color);
-            Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.Game, playForm, this, false);
-            OpenChildForm(form, sender);
+            if (User.CurrentRoom != null)
+            {
+                //MessageBox.Show(receiveRoom.Player2.color);
+                Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.Game, playForm, this, false);
+                OpenChildForm(form, sender);
+            }
         }
 
         public void AskforPlay(User user)

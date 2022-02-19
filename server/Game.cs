@@ -13,6 +13,8 @@ namespace Connect_4
     //return
     public class Game
     {
+        public bool thereIsWinner = false;
+
         private bool player1;
         private bool player2;
         private Color pieceColor1Plater1;

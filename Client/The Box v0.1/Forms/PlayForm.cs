@@ -121,15 +121,19 @@ namespace The_Box_v0._1.Forms
 
                     user.Room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).Id, dlg.P2Color);
                     User.CurrentRoom = user.Room;
-                    // System.Threading.Thread.Sleep(10000);
-                    roomForm = new RoomForm(user, user.Room, mainForm, this);
-                    roomForm.Show();
-                    roomForm.OpenChildForm(new Forms.BoardForm(user.Room.Player2, user.Room.Game, this, roomForm, false), sender);
+                    if (User.CurrentRoom != null)
+                    {
+                        // System.Threading.Thread.Sleep(10000);
+                        roomForm = new RoomForm(user, user.Room, mainForm, this);
+                        roomForm.Show();
+                        roomForm.OpenChildForm(new Forms.BoardForm(user.Room.Player2, user.Room.Game, this, roomForm, false), sender);
 
-                    roomForm.PlayBtn.Hide();
+                        roomForm.PlayBtn.Hide();
 
-                    //  this.Hide();
-                    mainForm.Hide();
+                        //  this.Hide();
+                        mainForm.Hide();
+                    }
+
 
                 }
             }

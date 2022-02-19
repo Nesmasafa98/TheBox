@@ -21,9 +21,11 @@ namespace The_Box_v0._1
         float _heightBox;
         User user1;
         public static List<User> allUsers;
+        ClientSocket Isocket;
         public Login()
         {
             InitializeComponent();
+      
             allUsers = new List<User>();
            Room.rooms  = new List<Room>();
         }
