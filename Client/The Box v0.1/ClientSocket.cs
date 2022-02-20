@@ -126,7 +126,7 @@ namespace The_Box_v0._1
                 Console.WriteLine("Start Join");
 
                 Console.WriteLine("AnaBreceive");
-                User.SendPlayer(Myuser, streamWriter);
+                Myuser.SendPlayer(streamWriter);
 
                 Console.WriteLine("Enter Id of Room");
                 //    String Idroom = Console.ReadLine();
@@ -165,7 +165,7 @@ namespace The_Box_v0._1
 
             if (s == "log")
             {
-                User.SendPlayer(user, streamWriter);
+                user.SendPlayer(streamWriter);
 
 
 
@@ -238,7 +238,7 @@ namespace The_Box_v0._1
             // receive Create request from protocol
             if (s == "create")
             {
-                User.SendPlayer(player1, streamWriter);
+                player1.SendPlayer(streamWriter);
 
                 streamWriter.Write(id);
 

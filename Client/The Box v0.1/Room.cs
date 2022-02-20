@@ -107,15 +107,15 @@ namespace The_Box_v0._1
 
             return received;
         }
-        public static void SendRoom(Room room, BinaryWriter binaryWriter)
+        public  void SendRoom(BinaryWriter binaryWriter)
         {
 
-            string strJson = JsonConvert.SerializeObject(room);
+            string strJson = JsonConvert.SerializeObject(this);
 
             binaryWriter.Write(strJson);
 
         }
-        public static Room ReceiveRoom(String s)
+        public  static Room  ReceiveRoom(String s)
         {
 
             return JsonConvert.DeserializeObject<Room>(s);

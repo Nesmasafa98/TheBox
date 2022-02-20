@@ -39,16 +39,17 @@ namespace The_Box_v0._1
        //     this.socket = socket;
         }
 
-        public static void SendPlayer(User player, BinaryWriter binaryWriter)
+        public  void SendPlayer(BinaryWriter binaryWriter)
         {
 
-            string strJson = JsonConvert.SerializeObject(player);
+            string strJson = JsonConvert.SerializeObject(this);
 
             binaryWriter.Write(strJson);
         }
 
 
-        public static User Receiver(string s)
+
+        public  static User Receiver(string s)
         {
 
             return JsonConvert.DeserializeObject<User>(s);

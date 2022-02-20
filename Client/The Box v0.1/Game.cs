@@ -37,24 +37,24 @@ namespace The_Box_v0._1
 
         public static void CheckWhoIsWin(Forms.BoardForm boardForm)
         {
-            while (!boardForm.game.thereIsWinner)
-            {
-                Thread.Sleep(1000);
-                if (boardForm.game.WinningPlayer() == "player1")
-                {
-                    MessageBox.Show("Red Player Wins,  Beats blue");
-                    boardForm.game.thereIsWinner = true;
-                    MessageBox.Show("Hard Luck blue");
-                    //  ChooseToResetOrNot();
-                }
-                else if (boardForm.game.WinningPlayer() == "player2")
-                {
-                    boardForm.game.thereIsWinner = true;
-                    MessageBox.Show("Blue Player Wins", "Blue Beat Red");
-                    MessageBox.Show("Hard Luck red");
-                    //ChooseToResetOrNot();
-                }
-            }
+            //while (!boardForm.game.thereIsWinner)
+            //{
+            //    Thread.Sleep(1000);
+            //    if (boardForm.game.WinningPlayer() == "player1")
+            //    {
+            //        MessageBox.Show("Red Player Wins,  Beats blue");
+            //        boardForm.game.thereIsWinner = true;
+            //        MessageBox.Show("Hard Luck blue");
+            //        //  ChooseToResetOrNot();
+            //    }
+            //    else if (boardForm.game.WinningPlayer() == "player2")
+            //    {
+            //        boardForm.game.thereIsWinner = true;
+            //        MessageBox.Show("Blue Player Wins", "Blue Beat Red");
+            //        MessageBox.Show("Hard Luck red");
+            //        //ChooseToResetOrNot();
+            //    }
+            //}
 
         }
 
@@ -132,16 +132,16 @@ namespace The_Box_v0._1
             return JsonConvert.DeserializeObject<state[,]>(br.ReadString());
 
         }
-        public static void SendGame(Game game, BinaryWriter binaryWriter)
+        public  void SendGame (BinaryWriter binaryWriter)
         {
 
-            string strJson = JsonConvert.SerializeObject(game);
+            string strJson = JsonConvert.SerializeObject(this);
 
             binaryWriter.Write(strJson);
         }
 
 
-        public static Game Receiver(BinaryReader br)
+        public  Game Receiver(BinaryReader br)
         {
 
             return JsonConvert.DeserializeObject<Game>(br.ReadString());
@@ -294,6 +294,8 @@ namespace The_Box_v0._1
 
             //horizontal win
             for (int j = 0; j < BoardState.GetLength(1) - 3; j++)
+         
+            
             {
                 for (int i = 0; i < BoardState.GetLength(0); i++)
                 {
@@ -362,7 +364,7 @@ namespace The_Box_v0._1
                 {
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
-                    boardForm.game = ( Game.Receiver(ClientSocket.streamReader));
+                    boardForm.game = (boardForm.game.Receiver(ClientSocket.streamReader));
 
                     boardForm.DrawElipsesThrowGame(boardForm.game.BoardState);
                     thereIsWinner = ClientSocket.streamReader.ReadBoolean();
@@ -371,14 +373,14 @@ namespace The_Box_v0._1
 
                 else
                 {
-                    boardForm.game = Game.Receiver(ClientSocket.streamReader);
+                    boardForm.game = boardForm.game.Receiver(ClientSocket.streamReader);
                     boardForm.DrawElipsesThrowGame(boardForm.game.BoardState);
                     thereIsWinner = ClientSocket.streamReader.ReadBoolean();
 
                 }
             }
-            Game.SendGame(boardForm.game, ClientSocket.streamWriter);
-
+            boardForm.game.SendGame(ClientSocket.streamWriter);
+             
             ClientSocket.SendRequest("log");
             ClientSocket.ResponseLog(boardForm.Creator);
         }

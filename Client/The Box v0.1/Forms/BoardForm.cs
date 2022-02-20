@@ -251,8 +251,8 @@ namespace The_Box_v0._1.Forms
                     {
                         game.drawGamePiece(index, graphics, this, game.PieceColor1Plater1, Game.state.player1);
 
-              
-                            Game.SendGame(game, ClientSocket.streamWriter);
+
+                        game.SendGame(ClientSocket.streamWriter);
                         game.Prev = game.BoardState;    
                         
 
@@ -266,7 +266,7 @@ namespace The_Box_v0._1.Forms
 
                         game.drawGamePiece(index, graphics, this, Color.Green, Game.state.player2);
 
-                        Game.SendGame(game, ClientSocket.streamWriter);
+                        game.SendGame(ClientSocket.streamWriter);
                         game.Prev = game.BoardState;
 
 
