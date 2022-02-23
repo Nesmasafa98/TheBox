@@ -15,7 +15,7 @@ using static The_Box_v0._1.Game;
 
 namespace The_Box_v0._1 
 {
-    class ClientSocket 
+   public  class ClientSocket 
     {
      public   static NetworkStream networkStream;
         static int port = 5002;
@@ -23,7 +23,26 @@ namespace The_Box_v0._1
         public static BinaryReader streamReader;
 
         static public  TcpClient ny;
-        static ClientSocket()
+
+
+        private static readonly object locker = new object();
+
+        private static ClientSocket instance = null;
+        public static ClientSocket SingletonClient()
+        {
+
+
+            lock (locker)
+            {
+                if (instance == null)
+                {
+                    instance = new ClientSocket();
+                }
+                return instance;
+            }
+
+        }
+        private  ClientSocket()
         {
             ny = new TcpClient();
 
@@ -38,12 +57,17 @@ namespace The_Box_v0._1
                  new BinaryReader(networkStream);
         }
 
-        public static void SendRequest(string s)
+        public static void CheckThereAreSameNameOrNot(string s)
+        {   // send request which you want form the server 
+            streamWriter.Write(s);
+        }
+
+        public void SendRequest(string s)
         {   // send request which you want form the server 
             streamWriter.Write(s);
         }
         //  Responoe player one  when clicking on play bn
-        public static Room Responseplay(string id)
+        public  Room Responseplay(string id)
         {
             String s = streamReader.ReadString();
             if (s == "play")
@@ -73,7 +97,7 @@ namespace The_Box_v0._1
         }
 
 
-        public static Boolean ResponsecheckIfisInList(string UserName)
+        public    Boolean ResponsecheckIfisInList(string UserName)
         {
             String s = streamReader.ReadString();
             if (s == "IfisInList")
@@ -86,7 +110,7 @@ namespace The_Box_v0._1
 
         }
 
-        public static void StateConfigPlayer1()
+        public  void StateConfigPlayer1()
         {   // sync with server that it will go in player 1 loop
             String s = streamReader.ReadString();
             streamWriter.Write(User.CurrentRoom.Id);
@@ -96,7 +120,7 @@ namespace The_Box_v0._1
         }
 
 
-        public static void StateConfigPlayer2()
+        public  void StateConfigPlayer2()
         {// sync with server that it will go in player 2 loop
 
             String s = streamReader.ReadString();
@@ -108,7 +132,7 @@ namespace The_Box_v0._1
 
 
         }
-        public static state[,] ResponseReceiveState()
+        public  state[,] ResponseReceiveState()
         { // received state from server
             String s = streamReader.ReadString();
             if (s == "ReceiveState")
@@ -118,7 +142,7 @@ namespace The_Box_v0._1
             }
             return null;
         }
-        public static Room ResponseJoin(User Myuser, string id, string p2Color)
+        public  Room ResponseJoin(User Myuser, string id, string p2Color)
         {       //receive room when player to request join in loop
             String s = streamReader.ReadString();
             if (s == "join")
@@ -145,7 +169,7 @@ namespace The_Box_v0._1
         }
 
 
-        public static Room ResponseWatch(string id)
+        public  Room ResponseWatch(string id)
         {       //receive room when player to request join in loop
             String s = streamReader.ReadString();
             if (s == "Watch")
@@ -158,7 +182,7 @@ namespace The_Box_v0._1
             }
             return null;
         }
-        public static void ResponseLog(User user)
+        public  void ResponseLog(User user)
         {
                 //log in Game
             String s = streamReader.ReadString();
@@ -173,7 +197,7 @@ namespace The_Box_v0._1
             }
         }
 
-        public static void ResponseShowplayer(List<User> players)
+        public  void ResponseShowplayer(List<User> players)
         {
             // receiving list of (active) players from server
             String s = streamReader.ReadString();
@@ -202,7 +226,7 @@ namespace The_Box_v0._1
             }
         }
 
-        public static void ResponseShowRooms(List<Room> rooms)
+        public  void ResponseShowRooms(List<Room> rooms)
         {       //receiving avaible rooms from serveer
             String s = streamReader.ReadString();
             if (s == "showRooms")
@@ -231,7 +255,7 @@ namespace The_Box_v0._1
 
         }
 
-        public static Room ResponseCreate(User player1, string id, int index, string p1color)
+        public  Room ResponseCreate(User player1, string id, int index, string p1color)
         {   // receiving owner and id and size of board you want
             // index will reflect with size specific in Room 
             String s = streamReader.ReadString();

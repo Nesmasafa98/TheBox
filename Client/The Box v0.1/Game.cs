@@ -208,15 +208,15 @@ namespace The_Box_v0._1
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
 
-                    ClientSocket.SendRequest("ConfigPlayer1");
-                    ClientSocket.StateConfigPlayer1();
+                    Creator.socket1.SendRequest("ConfigPlayer1");
+                    Creator.socket1.StateConfigPlayer1();
 
 
                 }
                 else
                 {
-                    ClientSocket.SendRequest("ConfigPlayer2");
-                    ClientSocket.StateConfigPlayer2();
+                    Creator.socket1.SendRequest("ConfigPlayer2");
+                    Creator.socket1.StateConfigPlayer2();
                    game.Prev = game.BoardState;
                    
                 }
@@ -353,7 +353,7 @@ namespace The_Box_v0._1
         }
 
 
-        public void Receiverloop(Forms.BoardForm boardForm)
+        public void ReceiveStateOfOthterPlayer(Forms.BoardForm boardForm)
         {
             while (!thereIsWinner)
             {
@@ -380,9 +380,9 @@ namespace The_Box_v0._1
                 }
             }
             boardForm.game.SendGame(ClientSocket.streamWriter);
-             
-            ClientSocket.SendRequest("log");
-            ClientSocket.ResponseLog(boardForm.Creator);
+
+            //Creator.socket1.SendRequest("log");
+            //ClientSocket.ResponseLog(boardForm.Creator);
         }
     }
 }

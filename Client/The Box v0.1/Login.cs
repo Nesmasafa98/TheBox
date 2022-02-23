@@ -19,15 +19,19 @@ namespace The_Box_v0._1
         float _yEndBox;
         float _widthBox;
         float _heightBox;
-        User user1;
+        //User user1;
         public static List<User> allUsers;
-        ClientSocket Isocket;
+        ClientSocket UserSocket;
+        public User Creator;
         public Login()
         {
             InitializeComponent();
       
             allUsers = new List<User>();
            Room.rooms  = new List<Room>();
+            
+            UserSocket = ClientSocket.SingletonClient();
+            
         }
 
         // Make Form Movable
@@ -44,12 +48,16 @@ namespace The_Box_v0._1
         ///
         
         private void button1_Click(object sender, EventArgs e)
-        {   
-            user1 = new User(User_Name.Text);
+        {
+            
+            Creator = new User(User_Name.Text);
+            Creator.socket1 = UserSocket;
+
             //allUsers.Add(user1);
-            ClientSocket.SendRequest("log");
-            ClientSocket.ResponseLog(user1);
-            MainForm mainForm = new MainForm(this, user1);
+
+            Creator.socket1.SendRequest("log");
+            Creator.socket1.ResponseLog(Creator);
+            MainForm mainForm = new MainForm(this, Creator);
             mainForm.Show();
             this.Hide();
             
@@ -76,9 +84,9 @@ namespace The_Box_v0._1
             {
                 label4.Visible = false;
                 Log_In_Button.Enabled = true;
-                ClientSocket.SendRequest("IfisInList");
+                UserSocket.SendRequest("IfisInList");
 
-                if (ClientSocket.ResponsecheckIfisInList(User_Name.Text))
+                if (UserSocket.ResponsecheckIfisInList(User_Name.Text))
                 {
 
                     label3.Visible = true;

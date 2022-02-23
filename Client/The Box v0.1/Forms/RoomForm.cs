@@ -28,7 +28,7 @@ namespace The_Box_v0._1.Forms
         Color _color;
         Brush _elipsBrush;
         Room logicalroom;
-        User ordinaryUser;
+       // User ordinaryUser;
         public string RoomName
         {
             get;
@@ -46,11 +46,11 @@ namespace The_Box_v0._1.Forms
             Player1_Name.Text = myuser.Username;
             Player1_Color.Text = room.Player1Color;
             mainForm = mForm;
-            ordinaryUser = myuser; 
+          //  ordinaryUser = myuser; 
             playForm = pForm;
           //  myThread = new Thread(new ThreadStart(MyThreadMethod));
          //   myThread.Start();
-            owner = room.Player1;
+            owner = myuser;
           
         }
   
@@ -151,20 +151,20 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            ClientSocket.SendRequest("play");
-            Room receiveRoom= ClientSocket.Responseplay(logicalroom.Id);
+            owner.socket1.SendRequest("play");
+            Room receiveRoom= owner.socket1.Responseplay(logicalroom.Id);
             User.CurrentRoom = receiveRoom;
             if (User.CurrentRoom != null)
             {
                 //MessageBox.Show(receiveRoom.Player2.color);
-                Forms.BoardForm form = new Forms.BoardForm(receiveRoom.Player1, receiveRoom.Game, playForm, this, false);
+                Forms.BoardForm form = new Forms.BoardForm(owner, receiveRoom.Game, playForm, this, false);
                 OpenChildForm(form, sender);
             }
         }
 
         public void AskforPlay(User user)
         {
-            MessageBox.Show(user.UserName + " want to Play with you!", "Form Playing", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
+            MessageBox.Show(user.Username + " want to Play with you!", "Form Playing", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
             //player = user;
         }
 
@@ -195,8 +195,8 @@ namespace The_Box_v0._1.Forms
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            ClientSocket.SendRequest("Reset");
-            if (boardform.game.User1.Username== ordinaryUser.Username)
+            owner.socket1.SendRequest("Reset");
+            if (boardform.game.User1.Username== owner.Username)
             {
 
 

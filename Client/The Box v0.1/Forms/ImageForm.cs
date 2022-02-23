@@ -17,5 +17,10 @@ namespace The_Box_v0._1.Forms
             InitializeComponent();
             MainImage.Image = Image.FromFile(@path);
         }
+
+        private void MainImage_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

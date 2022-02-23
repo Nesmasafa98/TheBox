@@ -52,6 +52,7 @@
             this.MainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.MainImage.TabIndex = 0;
             this.MainImage.TabStop = false;
+            this.MainImage.Click += new System.EventHandler(this.MainImage_Click);
             // 
             // ImageForm
             // 

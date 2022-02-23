@@ -12,22 +12,12 @@ namespace The_Box_v0._1
     {
         public static Room CurrentRoom;
         private string username;
-    //    public ClientSocket socket;
+        public  ClientSocket socket1;
         private Room room;
 
         private string color;
 
-        public string UserName
-        {
-            get
-            {
-                return Username;
-            }
-            set
-            {
-                Username = value;
-            }
-        }
+
 
         public string Username { get => username; set => username = value; }
         public Room Room { get => room; set => room = value; }
@@ -35,8 +25,9 @@ namespace The_Box_v0._1
 
         public User(string name)
         {
-            UserName = name;
-       //     this.socket = socket;
+            username = name;
+            //     this.socket = socket;
+           
         }
 
         public  void SendPlayer(BinaryWriter binaryWriter)

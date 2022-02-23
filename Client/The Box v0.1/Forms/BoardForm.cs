@@ -90,7 +90,7 @@ namespace The_Box_v0._1.Forms
             roomForm = rForm;
             pieceColor = Color.Red; 
 
-            receiverloopThread = new Thread(() => game.Receiverloop(this));
+            receiverloopThread = new Thread(() => game.ReceiveStateOfOthterPlayer(this));
 
 
             checkWinner = new Thread(() => CheckWhoIsWin(this));
@@ -111,9 +111,9 @@ namespace The_Box_v0._1.Forms
             public void WatcherFunction(object o)
         {
 
-            ClientSocket.SendRequest("Watch");
+            Creator.socket1.SendRequest("Watch");
 
-            WatcherRoom = ClientSocket.ResponseWatch(
+            WatcherRoom = Creator.socket1.ResponseWatch(
                  Creator.Room.Id);
 
             game = WatcherRoom.Game;

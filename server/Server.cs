@@ -21,7 +21,6 @@ namespace Connect_4
         //List<Room> avaibleRoom = new List<Room>();
         ArrayList players = new ArrayList();
         // static Game laststate;
-        private static readonly object locker = new object();
 
         int port;
         static int row;
@@ -51,8 +50,9 @@ namespace Connect_4
 
         }
 
-       
-    private static Server instance = null;
+        private static readonly object locker = new object();
+
+        private static Server instance = null;
         public static Server SingletonServer( int port , int  numofClients)
         {
             

@@ -18,7 +18,7 @@ namespace The_Box_v0._1
 
 
 
-        void Receiverloop(Forms.BoardForm boardForm);
+        void ReceiveStateOfOthterPlayer(Forms.BoardForm boardForm);
 
     }
 }

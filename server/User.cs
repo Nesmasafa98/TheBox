@@ -15,45 +15,26 @@ namespace Connect_4
 
         static public List<User> players = new List<User>();
 
-        private string username;
 
+        public static Room CurrentRoom;
+        private string username;
+     //   public ClientSocket socket1;
         private Room room;
 
         private string color;
 
 
 
-        public string UserName
-        {
-            get
-            {
-                return Username;
-            }
-            set
-            {
-                Username = value;
-            }
-        }
 
-        public string Username { get => Username1; set => Username1 = value; }
-        public Room Room { get => Room1; set => Room1 = value; }
-        public string Color { get => Color1; set => Color1 = value; }
-        public string Username1 { get => username; set => username = value; }
-        public Room Room1 { get => room; set => room = value; }
-        public string Color1 { get => color; set => color = value; }
-
-        //  public ClientSocket Socketconfig { get => socketconfig; set => socketconfig = value; }
+        public string Username { get => username; set => username = value; }
+        public Room Room { get => room; set => room = value; }
+        public string Color { get => color; set => color = value; }
 
         public User(string name)
         {
-            UserName = name;
-            // socketconfig = new ClientSocket(4000);
-            // this.score = 0;
-            //this.isplayer = false;
-            //this.isroomowner = false;
-            //room = null;
-
-
+            username = name;
+            //     this.socket = socket;
+            
         }
 
         public static void sendAvaibleUsers(BinaryWriter streamWriter)
