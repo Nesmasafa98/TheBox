@@ -17,7 +17,7 @@ and pick a color for their coin to start playing.
 
 ## Sequence Diagram 
 <p align="center">
-  <img src="https://drive.google.com/file/d/18E098xyXe30NV2xyVhDchx1-qBIazzHj/view?usp=sharing">
+  <img src="https://drive.google.com/file/d/1Rm7zm5eR56JMpf9Uc_3inzIlacXYmGWq/view?usp=sharing">
 </p>
 
 ## Design Patterns
