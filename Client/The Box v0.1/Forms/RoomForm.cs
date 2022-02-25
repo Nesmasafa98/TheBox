@@ -151,8 +151,8 @@ namespace The_Box_v0._1.Forms
 
         private void PlayBtn_Click(object sender, EventArgs e)
         {
-            owner.socket1.SendRequest("play");
-            Room receiveRoom= owner.socket1.Responseplay(logicalroom.Id);
+            ((ClientSocketInterface)owner.socket1).SendRequest("play");
+            Room receiveRoom= ((ClientSocketInterface)owner.socket1).Responseplay(logicalroom.Id);
             User.CurrentRoom = receiveRoom;
             if (User.CurrentRoom != null)
             {
@@ -195,7 +195,7 @@ namespace The_Box_v0._1.Forms
 
         private void Reset_Click(object sender, EventArgs e)
         {
-            owner.socket1.SendRequest("Reset");
+            ((ClientSocketInterface)owner.socket1).SendRequest("Reset");
             if (boardform.game.User1.Username== owner.Username)
             {
 

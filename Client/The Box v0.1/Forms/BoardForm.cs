@@ -111,9 +111,9 @@ namespace The_Box_v0._1.Forms
             public void WatcherFunction(object o)
         {
 
-            Creator.socket1.SendRequest("Watch");
+            ((ClientSocketInterface)Creator.socket1).SendRequest("Watch");
 
-            WatcherRoom = Creator.socket1.ResponseWatch(
+            WatcherRoom = ((ClientSocketInterface)Creator.socket1).ResponseWatch(
                  Creator.Room.Id);
 
             game = WatcherRoom.Game;

@@ -28,27 +28,33 @@ namespace Connect_4
         }
 
         // room.p1 room.p2 room.state[,]
-        public static void saveGame(Room room)
+        public static void CreateGameFile(Room room)
         {
+            if (!File.Exists("Rooms/Game" + room.Id + ".csv"))
+            {
+                LogFile = File.CreateText("Rooms/Game" +room.Id+ ".csv");
+                LogFile.WriteLine(room.Id);
+                LogFile.WriteLine(room.Player1.Username);
+                LogFile.WriteLine(room.Player2.Username);
+            }
+            LogFile.Close();
+        }
 
-            LogFile = File.CreateText("Game.csv");
-            LogFile.WriteLine(room.Id);
-            LogFile.WriteLine(room.Player1.Username);
-            LogFile.WriteLine(room.Player2.Username);
+        public static void AppendGameState(Game game, string roomName)
+        {
+            LogFile = File.AppendText("Rooms/Game" + roomName + ".csv");
             LogFile.WriteLine("state");
             LogFile.WriteLine("start");
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < game.BoardState.GetLength(0); i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < game.BoardState.GetLength(1); j++)
                 {
-                    LogFile.Write(room.Game.BoardState[i, j].ToString() + ",");
+                    LogFile.Write(game.BoardState[i, j].ToString() + ",");
 
                 }
                 LogFile.WriteLine("");
             }
             LogFile.WriteLine("end");
-
-
             LogFile.Close();
         }
 

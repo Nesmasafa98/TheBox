@@ -208,15 +208,15 @@ namespace The_Box_v0._1
                     //  game.drawGamePiece(index, graphics, this, Color.Red, Game.state.player1);
 
 
-                    Creator.socket1.SendRequest("ConfigPlayer1");
-                    Creator.socket1.StateConfigPlayer1();
+                    ((ClientSocketInterface)Creator.socket1).SendRequest("ConfigPlayer1");
+                    ((ClientSocketInterface)Creator.socket1).StateConfigPlayer1();
 
 
                 }
                 else
                 {
-                    Creator.socket1.SendRequest("ConfigPlayer2");
-                    Creator.socket1.StateConfigPlayer2();
+                    ((ClientSocketInterface)Creator.socket1).SendRequest("ConfigPlayer2");
+                    ((ClientSocketInterface)Creator.socket1).StateConfigPlayer2();
                    game.Prev = game.BoardState;
                    
                 }

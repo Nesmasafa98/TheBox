@@ -15,9 +15,25 @@ using static The_Box_v0._1.Game;
 
 namespace The_Box_v0._1 
 {
-   public  class ClientSocket 
+    public interface ClientSocketInterface
     {
-     public   static NetworkStream networkStream;
+        void SendRequest(string s);
+        Room Responseplay(string id);
+        Boolean ResponsecheckIfisInList(string UserName);
+        void StateConfigPlayer1();
+        void StateConfigPlayer2();
+        state[,] ResponseReceiveState();
+        Room ResponseJoin(User Myuser, string id, string p2Color);
+        Room ResponseWatch(string id);
+        void ResponseLog(User user);
+        void ResponseShowplayer(List<User> players);
+        void ResponseShowRooms(List<Room> rooms);
+        Room ResponseCreate(User player1, string id, int index, string p1color);
+
+    }
+    public  class ClientSocket : ClientSocketInterface
+    {
+        public   static NetworkStream networkStream;
         static int port = 5002;
         public static BinaryWriter streamWriter;
         public static BinaryReader streamReader;
@@ -52,7 +68,7 @@ namespace The_Box_v0._1
             networkStream = ny.GetStream();
 
             streamWriter =
-     new BinaryWriter(networkStream);
+                 new BinaryWriter(networkStream);
             streamReader =
                  new BinaryReader(networkStream);
         }
@@ -62,12 +78,12 @@ namespace The_Box_v0._1
             streamWriter.Write(s);
         }
 
-        public void SendRequest(string s)
+        void ClientSocketInterface.SendRequest(string s)
         {   // send request which you want form the server 
             streamWriter.Write(s);
         }
         //  Responoe player one  when clicking on play bn
-        public  Room Responseplay(string id)
+        Room ClientSocketInterface.Responseplay(string id)
         {
             String s = streamReader.ReadString();
             if (s == "play")
@@ -97,7 +113,7 @@ namespace The_Box_v0._1
         }
 
 
-        public    Boolean ResponsecheckIfisInList(string UserName)
+        Boolean ClientSocketInterface.ResponsecheckIfisInList(string UserName)
         {
             String s = streamReader.ReadString();
             if (s == "IfisInList")
@@ -110,29 +126,23 @@ namespace The_Box_v0._1
 
         }
 
-        public  void StateConfigPlayer1()
+        void ClientSocketInterface.StateConfigPlayer1()
         {   // sync with server that it will go in player 1 loop
             String s = streamReader.ReadString();
             streamWriter.Write(User.CurrentRoom.Id);
 
-
-
         }
 
 
-        public  void StateConfigPlayer2()
+        void ClientSocketInterface.StateConfigPlayer2()
         {// sync with server that it will go in player 2 loop
 
             String s = streamReader.ReadString();
             streamWriter.Write(User.CurrentRoom.Id);
 
 
-
-
-
-
         }
-        public  state[,] ResponseReceiveState()
+        state[,] ClientSocketInterface.ResponseReceiveState()
         { // received state from server
             String s = streamReader.ReadString();
             if (s == "ReceiveState")
@@ -142,7 +152,7 @@ namespace The_Box_v0._1
             }
             return null;
         }
-        public  Room ResponseJoin(User Myuser, string id, string p2Color)
+        Room ClientSocketInterface.ResponseJoin(User Myuser, string id, string p2Color)
         {       //receive room when player to request join in loop
             String s = streamReader.ReadString();
             if (s == "join")
@@ -169,7 +179,7 @@ namespace The_Box_v0._1
         }
 
 
-        public  Room ResponseWatch(string id)
+        Room ClientSocketInterface.ResponseWatch(string id)
         {       //receive room when player to request join in loop
             String s = streamReader.ReadString();
             if (s == "Watch")
@@ -182,7 +192,7 @@ namespace The_Box_v0._1
             }
             return null;
         }
-        public  void ResponseLog(User user)
+        void ClientSocketInterface.ResponseLog(User user)
         {
                 //log in Game
             String s = streamReader.ReadString();
@@ -197,7 +207,7 @@ namespace The_Box_v0._1
             }
         }
 
-        public  void ResponseShowplayer(List<User> players)
+        void ClientSocketInterface.ResponseShowplayer(List<User> players)
         {
             // receiving list of (active) players from server
             String s = streamReader.ReadString();
@@ -226,7 +236,7 @@ namespace The_Box_v0._1
             }
         }
 
-        public  void ResponseShowRooms(List<Room> rooms)
+        void ClientSocketInterface.ResponseShowRooms(List<Room> rooms)
         {       //receiving avaible rooms from serveer
             String s = streamReader.ReadString();
             if (s == "showRooms")
@@ -255,7 +265,7 @@ namespace The_Box_v0._1
 
         }
 
-        public  Room ResponseCreate(User player1, string id, int index, string p1color)
+        Room ClientSocketInterface.ResponseCreate(User player1, string id, int index, string p1color)
         {   // receiving owner and id and size of board you want
             // index will reflect with size specific in Room 
             String s = streamReader.ReadString();

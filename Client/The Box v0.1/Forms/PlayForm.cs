@@ -74,8 +74,8 @@ namespace The_Box_v0._1.Forms
 
                 //Room CreatedRoom = new Room(user, dlg.RoomName, dlg.IndexBoardSize);
                 disallowTimer();
-                user.socket1.SendRequest("create");
-                Room m = user.socket1.ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize, dlg.P1Color);
+                ((ClientSocketInterface)user.socket1).SendRequest("create");
+                Room m = ((ClientSocketInterface)user.socket1).ResponseCreate(user, dlg.RoomName, dlg.IndexBoardSize, dlg.P1Color);
                 user.Room = m;
                 roomForm = new RoomForm(user,user.Room, mainForm, this);
 
@@ -117,9 +117,9 @@ namespace The_Box_v0._1.Forms
                 {
               
                     disallowTimer();
-                    user.socket1.SendRequest("join");
+                    ((ClientSocketInterface)user.socket1).SendRequest("join");
 
-                    user.Room = user.socket1.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).Id, dlg.P2Color);
+                    user.Room = ((ClientSocketInterface)user.socket1).ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).Id, dlg.P2Color);
                     User.CurrentRoom = user.Room;
                     if (User.CurrentRoom != null)
                     {
@@ -156,8 +156,8 @@ namespace The_Box_v0._1.Forms
         {
             
                 Room.rooms.Clear();
-            user.socket1.SendRequest("showRooms");
-            user.socket1.ResponseShowRooms(Room.rooms);
+            ((ClientSocketInterface)user.socket1).SendRequest("showRooms");
+            ((ClientSocketInterface)user.socket1).ResponseShowRooms(Room.rooms);
 
                 Available_Rooms_listBox.Items.Clear();
                 for (int i = 0; i < Room.rooms.Count; i++)
@@ -202,8 +202,8 @@ namespace The_Box_v0._1.Forms
         {
 
             avaibleplayerS.Clear();
-            user.socket1.SendRequest("showplayer");
-            user.socket1.ResponseShowplayer(avaibleplayerS);
+            ((ClientSocketInterface)user.socket1).SendRequest("showplayer");
+            ((ClientSocketInterface)user.socket1).ResponseShowplayer(avaibleplayerS);
 
             Online_Players_listBox.Items.Clear();
             for (int i = 0; i < avaibleplayerS.Count; i++)
@@ -269,8 +269,8 @@ namespace The_Box_v0._1.Forms
         {
             RoomName = Full_Rooms_listBox.SelectedItem.ToString();
 
-            user.socket1.SendRequest("Watch");
-            Room RecievedRoom = user.socket1.ResponseWatch(RoomName);
+            ((ClientSocketInterface)user.socket1).SendRequest("Watch");
+            Room RecievedRoom = ((ClientSocketInterface)user.socket1).ResponseWatch(RoomName);
             //     user.room = ClientSocket.ResponseJoin(user, Room.FindRoomInListOfRoom(RoomName).id);
             //  User.CurrentRoom = user.room;
             // System.Threading.Thread.Sleep(10000);

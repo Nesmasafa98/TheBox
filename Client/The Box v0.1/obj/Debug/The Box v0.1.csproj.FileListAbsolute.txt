@@ -243,7 +243,6 @@ E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.For
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe.config
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.exe
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\The Box v0.1.pdb
-C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Gnrl-30\Documents\GitHub\TheBox\Client\The Box v0.1\obj\Debug\The Box v0.1.csprojAssemblyReference.cache

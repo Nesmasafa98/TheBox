@@ -55,8 +55,8 @@ namespace The_Box_v0._1
 
             //allUsers.Add(user1);
 
-            Creator.socket1.SendRequest("log");
-            Creator.socket1.ResponseLog(Creator);
+            ((ClientSocketInterface)Creator.socket1).SendRequest("log");
+            ((ClientSocketInterface)Creator.socket1).ResponseLog(Creator);
             MainForm mainForm = new MainForm(this, Creator);
             mainForm.Show();
             this.Hide();
@@ -84,9 +84,9 @@ namespace The_Box_v0._1
             {
                 label4.Visible = false;
                 Log_In_Button.Enabled = true;
-                UserSocket.SendRequest("IfisInList");
+                ((ClientSocketInterface)UserSocket).SendRequest("IfisInList");
 
-                if (UserSocket.ResponsecheckIfisInList(User_Name.Text))
+                if (((ClientSocketInterface)UserSocket).ResponsecheckIfisInList(User_Name.Text))
                 {
 
                     label3.Visible = true;
