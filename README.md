@@ -14,6 +14,12 @@ and pick a color for their coin to start playing.
 7. The winner gets a message to congratulate him, while the loser receives a message saying that he has lost.
 8. If a player wants to watch the game, he can select a room from the list of full rooms then press watch button.
 9. If player is done, he signs out from the game.
+
+## Sequence Diagram 
+<p align="center">
+  <img src="https://drive.google.com/file/d/18E098xyXe30NV2xyVhDchx1-qBIazzHj/view?usp=sharing">
+</p>
+
 ## Design Patterns
 - Memento
 - Singleton
