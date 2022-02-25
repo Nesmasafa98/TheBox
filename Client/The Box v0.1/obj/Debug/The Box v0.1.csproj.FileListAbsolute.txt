@@ -128,7 +128,6 @@ C:\Users\Mostafa M. Gad\OneDrive\Documents\GitHub\TheBox\Client\The Box v0.1\obj
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\The Box v0.1.exe.config
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\The Box v0.1.exe
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\The Box v0.1.pdb
-E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\bin\Debug\MaterialSkin.dll
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The Box v0.1.csproj.AssemblyReference.cache
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.BoardForm.resources
 E:\projectsWorkspace\ConnectFour\Client\The Box v0.1\obj\Debug\The_Box_v0._1.Forms.RoomForm.resources
