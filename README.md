@@ -20,6 +20,11 @@ and pick a color for their coin to start playing.
   <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
 </p>
 
+## UML
+<p align="center">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
+</p>
+
 ## Design Patterns
 - Memento
 - Singleton
