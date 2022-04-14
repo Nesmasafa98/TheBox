@@ -15,12 +15,32 @@ and pick a color for their coin to start playing.
 8. If a player wants to watch the game, he can select a room from the list of full rooms then press watch button.
 9. If player is done, he signs out from the game.
 
+## Use Case Diagram
+<p align="center">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
+</p>
+
+## Use Case Scenario
+<p align="center">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
+</p>
+
 ## Sequence Diagram 
 <p align="center">
   <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
 </p>
 
-## UML
+## Class Diagram
+<p align="center">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
+</p>
+
+## Activity Diagram 1
+<p align="center">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
+</p>
+
+## Activity Diagram 2
 <p align="center">
   <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
 </p>
