@@ -17,13 +17,11 @@ and pick a color for their coin to start playing.
 
 ## Use Case Diagram
 <p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/USeCase.png">
 </p>
 
 ## Use Case Scenario
-<p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/SeqDiagram.png">
-</p>
+[Use Case Scenario](https://docs.google.com/spreadsheets/d/1paeOypDQef4iQE7QlhAYTQWmZf36QmsAR7YySipvPeQ/edit?usp=sharing).
 
 ## Sequence Diagram 
 <p align="center">
@@ -37,12 +35,12 @@ and pick a color for their coin to start playing.
 
 ## Activity Diagram 1
 <p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/Activity Diagram 1.jpeg">
 </p>
 
 ## Activity Diagram 2
 <p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UML.png">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/Activity Diagram 2.png">
 </p>
 
 ## Design Patterns
