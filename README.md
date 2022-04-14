@@ -17,7 +17,7 @@ and pick a color for their coin to start playing.
 
 ## Use Case Diagram
 <p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/USeCase.png">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/UseCase.png">
 </p>
 
 ## Use Case Scenario
@@ -40,7 +40,7 @@ and pick a color for their coin to start playing.
 
 ## Activity Diagram 2
 <p align="center">
-  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/Activity Diagram 2.png">
+  <img src="https://github.com/ahmedsamy1234/TheBox/blob/GuiLogic/Activity diagram 2.png">
 </p>
 
 ## Design Patterns
